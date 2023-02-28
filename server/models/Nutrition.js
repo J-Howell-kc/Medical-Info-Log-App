@@ -15,3 +15,7 @@ const nutritionSchema = new Schema({
         trim: true,
     },
 })
+
+const Nutrition = model('Medication', nutritionSchema);
+
+module.exports = Nutrition;
