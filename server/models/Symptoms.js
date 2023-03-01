@@ -1,6 +1,15 @@
 const { Schema, model } = require('mongoose');
 
 const symptomsSchema = new Schema({
+    startDate: {
+        type: Date,
+        required: true,
+        trim: true,
+    },
+    endDate: {  
+        type: Date,
+        trim: true,
+    },
     description: {
         type: String,
         required: true,
