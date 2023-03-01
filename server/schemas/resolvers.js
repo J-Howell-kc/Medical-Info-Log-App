@@ -81,12 +81,61 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password, firstName, lastName, DOB, height, weight, address, phone }) => {
-      const user = await User.create({ username, email, password, firstName, lastName, DOB, height, weight, address, phone });
+    addUser: async (parent, { email, password, firstName, lastName, DOB, height, weight, address, phone }) => {
+      const user = await User.create({ email, password, firstName, lastName, DOB, height, weight, address, phone });
       const token = signToken(user);
 
       return { token, user };
     },
+
+    addSymptom: async (parent, { description, duration, intensity, actionTaken }) => {
+      const symptom = await Symptoms.create({ description, duration, intensity, actionTaken });
+      const token = signToken(symptom);
+      
+      return { token, symptom };
+    },
+
+    addNutrition: async (parent, { food, drinks, calories }) => {
+      const nutrition = await Nutrition.create({ food, drinks, calories });
+      const token = signToken(nutrition);
+
+      return { token, nutrition };
+    },
+
+    addMedication: async (parent, { medicationName, pillCount, taken }) => {
+      const medication = await Medication.create({ medicationName, pillCount, taken });
+      const token = signToken(medication);
+
+      return { token, medication };
+    },
+
+    addEmergencyContact: async (parent, { firstName, lastName, address, phone, relationship, }) => {
+      const emergencyContact = await EmergencyContact.create({ firstName, lastName, address, phone, relationship, });
+      const token = signToken(emergencyContact);
+
+      return { token, emergencyContact };
+    },
+
+    removeUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId });
+    },
+
+    removeSymptom: async (parent, { symptomId }) => {
+      return Symptoms.findOneAndDelete({ _id: symptomId });
+    },
+
+    removeNutrition: async (parent, { nutritionId }) => {
+      return Nutrition.findOneAndDelete({ _id: nutritionId });
+    },
+
+    removeMedication: async (parent, { medicationId }) => {
+      return Medication.findOneAndDelete({ _id: medicationId });
+    },
+
+    removeEmergencyContact: async (parent, { emergencyContactId }) => {
+      return EmergencyContact.findOneAndDelete({ _id: emergencyContactId });
+    },
+
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
 
