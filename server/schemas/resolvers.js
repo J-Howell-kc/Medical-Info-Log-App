@@ -116,6 +116,26 @@ const resolvers = {
       return { token, emergencyContact };
     },
 
+    removeUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId });
+    },
+
+    removeSymptom: async (parent, { symptomId }) => {
+      return Symptoms.findOneAndDelete({ _id: symptomId });
+    },
+
+    removeNutrition: async (parent, { nutritionId }) => {
+      return Nutrition.findOneAndDelete({ _id: nutritionId });
+    },
+
+    removeMedication: async (parent, { medicationId }) => {
+      return Medication.findOneAndDelete({ _id: medicationId });
+    },
+
+    removeEmergencyContact: async (parent, { emergencyContactId }) => {
+      return EmergencyContact.findOneAndDelete({ _id: emergencyContactId });
+    },
+
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
 
