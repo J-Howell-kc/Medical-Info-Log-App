@@ -1,0 +1,277 @@
+[
+  {
+    "firstName": "Brian", 
+    "lastName": "Kernighan",
+    "email": "bkernighan@techfriends.dev",
+    "password": "password01",
+    "DOB": "1942-06-17",
+    "height": "5'10\"",
+    "address": "123 Main St",
+    "phone": "555-555-5555",
+    "weight": "180lbs",
+    "medication": [
+      {
+        "medicationName": "Advil",
+        "dosage": "2",
+        "startDate": "2023-01-01"
+      },
+      {
+        "medicationName": "Tylenol",
+        "dosage": "1",
+        "frequency": "1x daily",
+        "startDate": "2023-01-01",
+        "endDate": "2023-01-03"
+      }
+    ],
+    "allergies": "none",
+    "nutrition": [
+      {
+        "food": "pizza",
+        "drink": "water",
+        "calories": "500",
+        "startDate": "2023-01-01"
+      },
+      {
+        "food": "salad",
+        "drink": "water",
+        "calories": "200",
+        "startDate": "2023-01-03"
+      }
+    ],
+    "emergencyContact": [
+      {
+        "firstName": "John",
+        "lastName": "Doe",
+        "address": "124 Main St",
+        "phone": "555-555-5555",
+        "relationship": "friend"
+      }
+    ],
+    "symptoms": [
+      {
+        "description": "headache",
+        "intensity": "3",
+        "startDate": "2023-01-01",
+        "duration": "1 hour"
+      },
+      {
+        "description": "stomachache",
+        "intensity": "2",
+        "startDate": "2023-01-03",
+        "duration": "1 hour"
+      }]
+  },
+  {
+    "firstName": "Max",
+    "lastName": "Kanat-Alexander",
+    "email": "mkanatalexander@techfriends.dev",
+    "password": "password02",
+    "DOB": "1980-01-01",
+    "height": "5'9\"",
+    "address": "125 Random St",
+    "phone": "555-555-5555",
+    "weight": "180lbs",
+    "medication": [
+      {
+        "medicationName": "metformin",
+        "dosage": "500mg",
+        "startDate": "2023-01-01"
+      },
+      {
+        "medicationName": "Advil",
+        "dosage": "200mg",
+        "frequency": "1x daily",
+        "startDate": "2023-01-01",
+        "endDate": "2023-01-03"
+      }
+    ],
+    "allergies": "penicillin",
+    "nutrition": [
+      {
+        "food": "pizza",
+        "drink": "water",
+        "calories": "500",
+        "startDate": "2023-01-01"
+      },
+      {
+        "food": "soup",
+        "drink": "diet coke",
+        "startDate": "2023-01-03"
+      }
+    ],
+    "emergencyContact": [
+      {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "address": "127 Market St",
+        "phone": "555-555-5555",
+        "relationship": "wife"
+      }
+    ],
+    "symptoms": [
+      {
+        "description": "nausea",
+        "startDate": "2023-01-01",
+        "duration": "1 hour"
+      },
+      {
+        "description": "stomachache",
+        "intensity": "2",
+        "startDate": "2023-01-03",
+        "duration": "1 hour"
+      }]
+  },
+  {
+    "firstName": "Amiko",
+    "lastName": "Kodama",
+    "email": "amiko@techfriends.dev",
+    "password": "password03",
+    "DOB": "1994-02-07",
+    "height": "5'4\"",
+    "address": "116 Main St",
+    "phone": "555-554-5555",
+    "weight": "130lbs",
+    "medication": [
+      {
+        "medicationName": "Advil",
+        "dosage": "2",
+        "startDate": "2023-01-01"
+      },
+      {
+        "medicationName": "Tylenol",
+        "dosage": "1",
+        "frequency": "1x daily",
+        "startDate": "2023-01-01",
+        "endDate": "2023-01-03"
+      }
+    ],
+    "allergies": "shellfish",
+    "nutrition": [
+      {
+        "food": "tacos",
+        "drink": "coke",
+        "calories": "900",
+        "date": "2023-01-01"
+      },
+      {
+        "food": "salad",
+        "drink": "water",
+        "calories": "200",
+        "date": "2023-01-03"
+      }
+    ],
+    "emergencyContact": [
+      {
+        "firstName": "Seth",
+        "lastName": "Dude",
+        "address": "1245 Main St",
+        "phone": "555-555-5555",
+        "relationship": "brother"
+      }
+    ],
+    "symptoms": [
+      {
+        "description": "runny nose",
+        "startDate": "2023-01-01",
+        "duration": "all day"
+      }
+      ]
+  },
+  {
+    "firstName": "Kent",
+    "lastName": "Beck",
+    "email": "kbeck@techfriends.dev",
+    "password": "password04",
+    "DOB": "1959-06-12",
+    "height": "5'6\"",
+    "address": "123 Main St",
+    "phone": "555-534-5555",
+    "weight": "180lbs",
+    "medication": [
+      {
+        "medicationName": "Lozol",
+        "dosage": "1.5mg",
+        "startDate": "2023-01-01"
+      }
+    ],
+    "allergies": "none",
+    "nutrition": [
+      {
+        "food": "brisket",
+        "drink": "pepsi",
+        "calories": "800",
+        "date": "2023-02-01"
+      },
+      {
+        "food": "salad",
+        "drink": "water",
+        "calories": "200",
+        "date": "2023-02-03"
+      }
+    ],
+    "emergencyContact": [
+      {
+        "firstName": "Jose",
+        "lastName": "Doe",
+        "address": "124 Main St",
+        "phone": "555-567-5555",
+        "relationship": "son"
+      }
+    ],
+    "symptoms": [
+      {
+        "description": "migraine",
+        "intensity": "3",
+        "startDate": "2023-01-01",
+        "duration": "1 hour"
+      },
+      {
+        "description": "backache",
+        "intensity": "6",
+        "startDate": "2023-01-03",
+        "endDate": "2023-01-10",
+        "duration": "1 week"
+      },
+      {
+        "description": "stomachache",
+        "intensity": "2",
+        "startDate": "2023-01-03",
+        "duration": "1 hour"
+      }]
+  },
+  {
+    "firstName": "Edward",
+    "lastName": "Berard",
+    "email": "evberard@techfriends.dev",
+    "password": "password05",
+    "DOB": "1970-01-01",
+    "height": "5'11\"",
+    "address": "12355 Mars St",
+    "phone": "555-566-5555",
+    "weight": "200lbs",
+    "medication": "none",
+    "allergies": "none",
+    "nutrition": "none",
+    "emergencyContact": [
+      {
+        "firstName": "Jake",
+        "lastName": "Torres",
+        "address": "111 Grape St",
+        "phone": "555-765-5555",
+        "relationship": "friend"
+      }
+    ],
+    "symptoms": [
+      {
+        "description": "nausea",
+        "intensity": "3",
+        "startDate": "2023-01-01",
+        "duration": "1 hour"
+      },
+      {
+        "description": "dizziness",
+        "startDate": "2023-01-03",
+        "duration": "20 minutes"
+      }]
+  }
+]
