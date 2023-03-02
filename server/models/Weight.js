@@ -6,7 +6,12 @@ pounds: {
     type: Number,
     trim: true,
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+},
 });
+
 
 const Weight = model('Weight', weightSchema);
 

@@ -29,6 +29,10 @@ const symptomsSchema = new Schema({
         type: String,
         trim: true,
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
 });
 
 const Symptoms = model('Symptoms', symptomsSchema);

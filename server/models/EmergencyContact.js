@@ -25,6 +25,10 @@ const emergencyContactSchema = new Schema({
     required: true,
     trim: true,
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+},
 });
 const emergencyContact = model('emergencyContact', emergencyContactSchema);
 
