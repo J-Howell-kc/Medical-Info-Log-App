@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Symptoms, Nutrition, Medication, EmergencyContact } = require('../models');
+const { User, Symptoms, Nutrition, Medication, EmergencyContact, Weight } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -35,11 +35,11 @@ const resolvers = {
     throw new AuthenticationError('You need to be logged in!');
   },
 
-  nutrition: async () => {
+  nutritions: async () => {
     return Nutrition.find();
   },
 
-  nutritions : async (parent, { nutritionId }) => {
+  nutrition : async (parent, { nutritionId }) => {
     return Nutrition.findOne({ _id: userId });
   },
   // By adding context to our query, we can retrieve the logged in user without specifically searching for them
@@ -50,7 +50,7 @@ const resolvers = {
     throw new AuthenticationError('You need to be logged in!');
   },
 
-  medication: async () => {
+  medications: async () => {
     return Medication.find();
   },
 
@@ -65,7 +65,7 @@ const resolvers = {
     throw new AuthenticationError('You need to be logged in!');
   },
 
-  emergencyContact: async () => {
+  emergencyContacts: async () => {
     return EmergencyContact.find();
   },
 
@@ -80,30 +80,45 @@ const resolvers = {
     throw new AuthenticationError('You need to be logged in!');
   },
 
+  weights: async () => {
+    return Weight.find();
+  },
+
+  weight : async (parent, { weightId }) => {
+    return Weight.findOne({ _id: weightId });
+  },
+  // By adding context to our query, we can retrieve the logged in user without specifically searching for them
+  me: async (parent, args, context) => {
+    if (context.weight) {
+      return EmergencyContact.findOne({ _id: context.weight._id });
+    }
+    throw new AuthenticationError('You need to be logged in!');
+  },
+
   Mutation: {
-    addUser: async (parent, { email, password, firstName, lastName, DOB, height, weight, address, phone }) => {
-      const user = await User.create({ email, password, firstName, lastName, DOB, height, weight, address, phone });
+    addUser: async (parent, { email, password, firstName, lastName, DOB, height, address, phone, allergies }) => {
+      const user = await User.create({ email, password, firstName, lastName, DOB, height, address, phone, allergies });
       const token = signToken(user);
 
       return { token, user };
     },
 
-    addSymptom: async (parent, { description, duration, intensity, actionTaken }) => {
-      const symptom = await Symptoms.create({ description, duration, intensity, actionTaken });
+    addSymptom: async (parent, { startDate, endDate, description, duration, intensity, actionTaken }) => {
+      const symptom = await Symptoms.create({ startDate, endDate, description, duration, intensity, actionTaken });
       const token = signToken(symptom);
       
       return { token, symptom };
     },
 
-    addNutrition: async (parent, { food, drinks, calories }) => {
-      const nutrition = await Nutrition.create({ food, drinks, calories });
+    addNutrition: async (parent, { food, drinks, calories, date }) => {
+      const nutrition = await Nutrition.create({ food, drinks, calories, date });
       const token = signToken(nutrition);
 
       return { token, nutrition };
     },
 
-    addMedication: async (parent, { medicationName, pillCount, taken }) => {
-      const medication = await Medication.create({ medicationName, pillCount, taken });
+    addMedication: async (parent, { medicationName, dosage, frequency, pillCount, startDate, endDate, taken }) => {
+      const medication = await Medication.create({ medicationName, dosage, frequency, pillCount, startDate, endDate, taken });
       const token = signToken(medication);
 
       return { token, medication };
@@ -114,6 +129,13 @@ const resolvers = {
       const token = signToken(emergencyContact);
 
       return { token, emergencyContact };
+    },
+
+    addWeight: async (parent, { weight }) => {
+      const weight = await Weight.create({ weight });
+      const token = signToken(weight);
+
+      return { token, weight };
     },
 
     removeUser: async (parent, { userId }) => {
@@ -136,6 +158,10 @@ const resolvers = {
       return EmergencyContact.findOneAndDelete({ _id: emergencyContactId });
     },
 
+    removeWeight: async (parent, { weightId }) => {
+      return Weight.findOneAndDelete({ _id: weightId });
+    },
+    
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
 
