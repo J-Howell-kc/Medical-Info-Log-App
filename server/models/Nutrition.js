@@ -14,6 +14,10 @@ const nutritionSchema = new Schema({
         default: 0,
         trim: true,
     },
+    date: { 
+        type: Date,
+        trim: true,
+    },
 })
 
 const Nutrition = model('Nutrition', nutritionSchema);

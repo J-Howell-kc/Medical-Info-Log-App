@@ -2,12 +2,6 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-  },
   email: {
     type: String,
     required: true,
@@ -37,10 +31,6 @@ const userSchema = new Schema({
     type: String,
     trim: true,
   },
-  weight: {
-    type: Number,
-    trim: true,
-  },
   address:{
     type: String,
     trim: true,
@@ -49,6 +39,14 @@ const userSchema = new Schema({
     type: String,
     unique: true,
     match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, 'Must be a valid phone number']
+  },
+  allergies: {
+    type: String,
+    trim: true,
+  },
+  weight: {
+    type: Schema.Types.ObjectId,
+    ref: 'Weight',
   },
   medication: {
     // not sure is the type is correct for the references //
