@@ -19,9 +19,9 @@ const typeDefs = gql`
     symptoms: [Symptoms]
   }
 
-  type weight {
+  type Weight {
     _id: ID
-    weight: String
+    pounds: String
     user: [User]
   }
   
