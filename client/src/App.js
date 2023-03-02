@@ -39,7 +39,7 @@ const App = () => (
     <Layout><Sider style={siderStyle}>Calendar Here</Sider>
       <Layout>
         <Header style={headerStyle}>Tab Links Here</Header>
-        <Content style={contentStyle}>Content for Sleceted Tab/section here</Content>
+        <Content style={contentStyle}>Content for Selected Tab/section here</Content>
         <Footer style={footerStyle}>HAMS by Group 2 2023</Footer>
       </Layout>
     </Layout>
