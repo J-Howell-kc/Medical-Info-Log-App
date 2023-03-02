@@ -1,5 +1,6 @@
 import React from "react";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar from "./components/Sidebar";
+import Selector from "./components/Header";
 // import '~antd/dist/antd.css';
 import { Layout, Space } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
@@ -8,6 +9,7 @@ const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
   textAlign: "center",
   color: "#fff",
+  width: "100%",
   paddingInline: 50,
   backgroundColor: "#7dbcea",
 };
@@ -18,8 +20,9 @@ const contentStyle = {
 };
 const siderStyle = {
   textAlign: "center",
+  height: "100vh",
   color: "#fff",
-  backgroundColor: "#3ba0e9",
+  backgroundColor: "#fff",
 };
 const footerStyle = {
   textAlign: "center",
@@ -39,7 +42,9 @@ const App = () => (
         <Sidebar />
       </Sider>
       <Layout>
-        <Header style={headerStyle}>Tab Links Here</Header>
+        <Header style={headerStyle}>
+          <Selector />
+          </Header>
         <Content style={contentStyle}>
           Content for Selected Tab/section here
         </Content>
