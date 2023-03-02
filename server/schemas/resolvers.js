@@ -131,8 +131,8 @@ const resolvers = {
       return { token, emergencyContact };
     },
 
-    addWeight: async (parent, { weight }) => {
-      const weight = await Weight.create({ weight });
+    addWeight: async (parent, { pounds }) => {
+      const weight = await Weight.create({ pounds });
       const token = signToken(weight);
 
       return { token, weight };
