@@ -1,4 +1,5 @@
 import React from 'react';
+import 'antd/dist/reset.css';
 // import "./app.css";
 import { Layout, Space } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
