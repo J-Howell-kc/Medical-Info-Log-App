@@ -1,4 +1,5 @@
 import React from 'react';
+// import '~antd/dist/antd.css';
 import { Layout, Space } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
@@ -35,11 +36,11 @@ const App = () => (
     }}
     size={[0, 48]}
   >
-    <Layout><Sider style={siderStyle}>Sider</Sider>
+    <Layout><Sider style={siderStyle}>Calendar Here</Sider>
       <Layout>
-        <Header style={headerStyle}>Header</Header>
-        <Content style={contentStyle}>Content</Content>
-        <Footer style={footerStyle}>Footer</Footer>
+        <Header style={headerStyle}>Tab Links Here</Header>
+        <Content style={contentStyle}>Content for Sleceted Tab/section here</Content>
+        <Footer style={footerStyle}>HAMS by Group 2 2023</Footer>
       </Layout>
     </Layout>
   </Space>
