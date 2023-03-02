@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const weightSchema = new Schema({
 
-weight: {
+pounds: {
     type: Number,
     trim: true,
   },
