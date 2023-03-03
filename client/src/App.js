@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import Selector from "./components/Header";
+import './app.css'
 // import '~antd/dist/antd.css';
 import { Layout, Space } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
