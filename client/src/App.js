@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "./components/Sidebar";
 import Selector from "./components/Header";
 import Biovitals from "./components/Biovitals";
+import Symptoms from "./components/Symptoms";
 import { useState } from "react";
 import './app.css'
 // import '~antd/dist/antd.css';
@@ -29,7 +30,7 @@ const footerStyle = {
 };
 const App = () => {
   
-  const [currentTab, setTab] = useState("About");
+  const [currentTab, setTab] = useState("symptoms");
 
   const renderTab = () => {
     switch (currentTab) {
@@ -45,8 +46,8 @@ const App = () => {
       // case "nutrition":
       //   return <Nutrition />;
 
-      // case "symptoms":
-      //   return <Symptoms />;
+       case "symptoms":
+        return <Symptoms />;
 
       //   case "emergencycontacts":
       //   return <EmergencyContacts />;
@@ -72,7 +73,8 @@ const App = () => {
           <Selector />
           </Header>
         <Content style={contentStyle}>
-          <Biovitals />
+          {/* <Biovitals /> */}
+          {renderTab()}
         </Content>
         <Footer style={footerStyle}>HAMS by Group 2 2023</Footer>
       </Layout>
