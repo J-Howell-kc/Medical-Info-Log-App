@@ -18,6 +18,10 @@ const nutritionSchema = new Schema({
         type: Date,
         trim: true,
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
 })
 
 const Nutrition = model('Nutrition', nutritionSchema);

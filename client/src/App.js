@@ -1,46 +1,53 @@
-import React from 'react';
-import 'antd/dist/reset.css';
-// import "./app.css";
-import { Layout, Space } from 'antd';
+import React from "react";
+import Sidebar from "./components/Sidebar";
+import Selector from "./components/Header";
+// import '~antd/dist/antd.css';
+import { Layout, Space } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
+
+
 const headerStyle = {
-  textAlign: 'center',
-  color: '#fff',
-  height: 64,
+  textAlign: "center",
+  color: "#fff",
+  width: "100%",
   paddingInline: 50,
-  lineHeight: '64px',
-  backgroundColor: '#7dbcea',
+  backgroundColor: "#7dbcea",
 };
 const contentStyle = {
-  textAlign: 'center',
-  minHeight: 120,
-  lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#108ee9',
+  textAlign: "center",
+  color: "#fff",
+  backgroundColor: "#108ee9",
 };
 const siderStyle = {
-  textAlign: 'center',
-  lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#3ba0e9',
+  textAlign: "center",
+  height: "100vh",
+  color: "#fff",
+  backgroundColor: "#fff",
 };
 const footerStyle = {
-  textAlign: 'center',
-  color: '#fff',
-  backgroundColor: '#7dbcea',
+  textAlign: "center",
+  color: "#fff",
+  backgroundColor: "#7dbcea",
 };
 const App = () => (
   <Space
     direction="vertical"
     style={{
-      width: '100%',
+      width: "100%",
     }}
-    size={[0, 48]}
+    
   >
-    <Layout><Sider style={siderStyle}>Calendar Here</Sider>
+    <Layout>
+      <Sider style={siderStyle}>
+        <Sidebar />
+      </Sider>
       <Layout>
-        <Header style={headerStyle}>Tab Links Here</Header>
-        <Content style={contentStyle}>Content for Selected Tab/section here</Content>
+        <Header style={headerStyle}>
+          <Selector />
+          </Header>
+        <Content style={contentStyle}>
+          Content for Selected Tab/section here
+        </Content>
         <Footer style={footerStyle}>HAMS by Group 2 2023</Footer>
       </Layout>
     </Layout>
@@ -85,31 +92,29 @@ export default App;
 //   cache: new InMemoryCache(),
 // });
 
-
-
 //     <ApolloProvider client={client}>
 //       <Router>
 //         <div className="flex-column justify-flex-start min-100-vh">
 //           <Header />
 //           <div className="container">
 //             <Routes>
-//               <Route 
-//                 path="/" 
+//               <Route
+//                 path="/"
 //                 element={<Home />}
 //               />
-//               <Route 
-//                 path="/login" 
+//               <Route
+//                 path="/login"
 //                 element={<Login />}
 //               />
-//               <Route 
-//                 path="/signup" 
+//               <Route
+//                 path="/signup"
 //                 element={<Signup />}
 //               />
-//               <Route 
-//                 path="/me" 
+//               <Route
+//                 path="/me"
 //                 element={<Profile />}
 //               />
-//               <Route 
+//               <Route
 //                 path="/profiles/:profileId"
 //                 element={<Profile />}
 //               />
@@ -121,5 +126,3 @@ export default App;
 //     </ApolloProvider>
 //   );
 // }
-
-
