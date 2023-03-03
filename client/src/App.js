@@ -3,6 +3,10 @@ import Sidebar from "./components/Sidebar";
 import Selector from "./components/Header";
 import Biovitals from "./components/Biovitals";
 import Symptoms from "./components/Symptoms";
+import Emergencycontacts from "./components/Emergencycontacts";
+import Allergies from "./components/Allergies";
+import Medications from "./components/Medications";
+import Nutrition from "./components/Nutrition";
 import { useState } from "react";
 import './app.css'
 // import '~antd/dist/antd.css';
@@ -37,14 +41,14 @@ const App = () => {
       case "biovitals":
         return <Biovitals />;
 
-      // case "medications":
-      //   return <Medications />;
+      case "medications":
+        return <Medications />;
 
-      // case "allergies":
-      //   return <Allergies />;
+     case "allergies":
+       return <Allergies />;
 
-      // case "nutrition":
-      //   return <Nutrition />;
+     case "nutrition":
+         return <Nutrition />;
 
        case "symptoms":
         return <Symptoms />;
