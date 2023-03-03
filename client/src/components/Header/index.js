@@ -13,13 +13,13 @@ const Selector = () => {
           <div className="logo" />
           <Menu
             theme="light"
-            // backgroundColor = '#7dbcea' 
+             
             mode="horizontal"
             defaultSelectedKeys={['1']}
             items={[
               {
                 label: 'Bio/Vitals',
-                // backgroundColor: '#7dbcea',
+                
                 key: 'biovitals',
                
               },
