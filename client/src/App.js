@@ -37,14 +37,14 @@ const App = () => {
       case "biovitals":
         return <Biovitals />;
 
-      // case "medications":
-      //   return <Medications />;
+      case "medications":
+        return <Medications />;
 
-      // case "allergies":
-      //   return <Allergies />;
+     case "allergies":
+       return <Allergies />;
 
-      // case "nutrition":
-      //   return <Nutrition />;
+     case "nutrition":
+         return <Nutrition />;
 
        case "symptoms":
         return <Symptoms />;
