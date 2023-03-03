@@ -1,4 +1,4 @@
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button} from 'antd';
 const { Header } = Layout;
 const Selector = () => {
 
@@ -12,7 +12,7 @@ const Selector = () => {
         <Header  style={headerStyle} >
           <div className="logo" />
           <Menu
-            theme="light"
+            theme="dark"
              
             mode="horizontal"
             defaultSelectedKeys={['1']}

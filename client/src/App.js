@@ -1,10 +1,13 @@
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import Selector from "./components/Header";
+import Biovitals from "./components/Biovitals";
+import Symptoms from "./components/Symptoms";
+import { useState } from "react";
 import './app.css'
 // import '~antd/dist/antd.css';
 import { Layout, Space } from "antd";
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
 
 const headerStyle = {
@@ -25,7 +28,35 @@ const footerStyle = {
   color: "#fff",
   backgroundColor: "#7dbcea",
 };
-const App = () => (
+const App = () => {
+  
+  const [currentTab, setTab] = useState("symptoms");
+
+  const renderTab = () => {
+    switch (currentTab) {
+      case "biovitals":
+        return <Biovitals />;
+
+      // case "medications":
+      //   return <Medications />;
+
+      // case "allergies":
+      //   return <Allergies />;
+
+      // case "nutrition":
+      //   return <Nutrition />;
+
+       case "symptoms":
+        return <Symptoms />;
+
+      //   case "emergencycontacts":
+      //   return <EmergencyContacts />;
+
+      default:
+        return <Biovitals />;
+    }
+  };
+  return (
   <Space
     direction="vertical"
     style={{
@@ -42,13 +73,15 @@ const App = () => (
           <Selector />
           </Header>
         <Content style={contentStyle}>
-          Content for Selected Tab/section here
+          {/* <Biovitals /> */}
+          {renderTab()}
         </Content>
         <Footer style={footerStyle}>HAMS by Group 2 2023</Footer>
       </Layout>
     </Layout>
   </Space>
 );
+};
 export default App;
 
 // import {
