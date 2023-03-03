@@ -5,9 +5,10 @@ const { Sider } = Layout;
 const siderStyle = {
   textAlign: "center",
   height: "100vh",
-  width: "100vw",
+  width: 300,
   color: "#fff",
   backgroundColor: "#fff",
+  flex: 'none',
 }
 const onFinish = (values) => {
   console.log("Success:", values);
@@ -28,7 +29,7 @@ const Sidebar = () => {
   };
   return (
     
-      <Sider style={siderStyle}>
+      <Sider id='sidercontainer' style={siderStyle} width={300}>
       <Form
         name="basic"
         labelCol={{
@@ -95,7 +96,7 @@ const Sidebar = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Calendar style={{ width: '100%', overflowX: 'hidden'}} fullscreen={false} onPanelChange={onPanelChange} />
+      <Calendar style={{ width: '100%'}} fullscreen={false} onPanelChange={onPanelChange} />
       </Sider>
   
   );
