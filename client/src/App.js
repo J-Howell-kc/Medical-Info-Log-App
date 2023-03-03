@@ -18,12 +18,7 @@ const contentStyle = {
   color: "#fff",
   backgroundColor: "#108ee9",
 };
-const siderStyle = {
-  textAlign: "center",
-  height: "100vh",
-  color: "#fff",
-  backgroundColor: "#fff",
-};
+
 const footerStyle = {
   textAlign: "center",
   color: "#fff",
@@ -38,9 +33,9 @@ const App = () => (
     
   >
     <Layout>
-      <Sider style={siderStyle}>
+      
         <Sidebar />
-      </Sider>
+    
       <Layout>
         <Header style={headerStyle}>
           <Selector />
