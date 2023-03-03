@@ -3,6 +3,10 @@ import Sidebar from "./components/Sidebar";
 import Selector from "./components/Header";
 import Biovitals from "./components/Biovitals";
 import Symptoms from "./components/Symptoms";
+import Emergencycontacts from "./components/Emergencycontacts";
+import Allergies from "./components/Allergies";
+import Medications from "./components/Medications";
+import Nutrition from "./components/Nutrition";
 import { useState } from "react";
 import './app.css'
 // import '~antd/dist/antd.css';
