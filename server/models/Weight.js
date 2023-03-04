@@ -6,6 +6,11 @@ pounds: {
     type: Number,
     trim: true,
   },
+  date: {
+    type: Date,
+    trim: true,
+    },
+
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
