@@ -91,7 +91,7 @@ const { TextArea } = Input;
         {/* <Form.Item label="Switch" valuePropName="checked">
           <Switch />
         </Form.Item> */}
-        <Form.Item label="Photo" valuePropName="fileList">
+        <Form.Item label="Photo" style = {{ marginTop: "30px" }} valuePropName="fileList">
           <Upload action="/upload.do" listType="picture-card">
             <div>
               <PlusOutlined />
