@@ -100,7 +100,7 @@ const { TextArea } = Input;
           </Upload>
         </Form.Item>
         <Form.Item label="Submit">
-          <Button type="primary" htmlType="submit" color="red">Submit</Button>
+          <Button type="primary" htmlType="submit" style = {{ marginTop: "12px"}}>Submit</Button>
         </Form.Item>
       </Form>
     </>
