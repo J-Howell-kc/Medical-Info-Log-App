@@ -36,8 +36,8 @@ const { TextArea } = Input;
         disabled={componentDisabled}
         style={{ maxWidth: 600 }}
       >
-        <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
-          <Checkbox>Checkbox</Checkbox>
+       <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
+          <Checkbox>Checkbox </Checkbox>
         </Form.Item>
         <Form.Item label="Radio">
           <Radio.Group>

@@ -13,30 +13,30 @@ import {
   Switch,
   Checkbox,
   Upload,
-} from 'antd';
+  Space} from 'antd';
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
  const Symptoms = () => {
-  const [componentDisabled, setComponentDisabled] = useState(true);
+//   const [componentDisabled, setComponentDisabled] = useState(true);
 
   return (
     <>
-      <Checkbox
+      {/* <Checkbox
         checked={componentDisabled}
         onChange={(e) => setComponentDisabled(e.target.checked)}
       >
         Form disabled
-      </Checkbox>
+      </Checkbox> */}
       <Form
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        disabled={componentDisabled}
+        // disabled={componentDisabled}
         style={{ maxWidth: 600 }}
       >
-        <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
+        {/* <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
           <Checkbox>Checkbox</Checkbox>
         </Form.Item>
         <Form.Item label="Radio">
@@ -44,7 +44,7 @@ const { TextArea } = Input;
             <Radio value="apple"> Apple </Radio>
             <Radio value="pear"> Pear </Radio>
           </Radio.Group>
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item label="Input">
           <Input />
         </Form.Item>
@@ -53,7 +53,7 @@ const { TextArea } = Input;
             <Select.Option value="demo">Demo</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item label="TreeSelect">
+        {/* <Form.Item label="TreeSelect">
           <TreeSelect
             treeData={[
               { title: 'Light', value: 'light', children: [{ title: 'Bamboo', value: 'bamboo' }] },
@@ -75,23 +75,23 @@ const { TextArea } = Input;
               },
             ]}
           />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item label="DatePicker">
           <DatePicker />
         </Form.Item>
         <Form.Item label="RangePicker">
           <RangePicker />
         </Form.Item>
-        <Form.Item label="InputNumber">
+        {/* <Form.Item label="InputNumber">
           <InputNumber />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item label="TextArea">
           <TextArea rows={4} />
         </Form.Item>
-        <Form.Item label="Switch" valuePropName="checked">
+        {/* <Form.Item label="Switch" valuePropName="checked">
           <Switch />
-        </Form.Item>
-        <Form.Item label="Upload" valuePropName="fileList">
+        </Form.Item> */}
+        <Form.Item label="Photo" valuePropName="fileList">
           <Upload action="/upload.do" listType="picture-card">
             <div>
               <PlusOutlined />
@@ -99,8 +99,8 @@ const { TextArea } = Input;
             </div>
           </Upload>
         </Form.Item>
-        <Form.Item label="Button">
-          <Button>Button</Button>
+        <Form.Item label="Submit">
+          <Button type="primary" htmlType="submit" color="red">Submit</Button>
         </Form.Item>
       </Form>
     </>
