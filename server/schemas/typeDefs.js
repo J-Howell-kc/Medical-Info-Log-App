@@ -78,7 +78,7 @@ type Symptoms {
   type Mutation {
     addUser(email: String!, password: String!, firstName: String!, lastName: String!, DOB: String!, height: String!, address: String!, phone: String!, allergies: String!): Auth
     login(email: String!, password: String!): Auth
-    removeUser: User
+    removeUser(userId: ID!): User
   }
 `;
 

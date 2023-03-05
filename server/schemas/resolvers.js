@@ -138,9 +138,9 @@ const resolvers = {
     //   return { token, weight };
     // },
 
-    // removeUser: async (parent, { userId }) => {
-    //   return User.findOneAndDelete({ _id: userId });
-    // },
+    removeUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId });
+    },
 
     // removeSymptom: async (parent, { symptomId }) => {
     //   return Symptoms.findOneAndDelete({ _id: symptomId });
@@ -162,8 +162,8 @@ const resolvers = {
     //   return Weight.findOneAndDelete({ _id: weightId });
     // },
     
-    login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('No user with this username found!');
