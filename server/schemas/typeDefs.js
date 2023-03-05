@@ -65,7 +65,7 @@ type Symptoms {
 
   type Auth {
     token: ID!
-    profile: Profile
+    user: User
   }
 
   type Query {
@@ -76,7 +76,7 @@ type Symptoms {
   }
 
   type Mutation {
-    addUser(name: String!, email: String!, password: String!): Auth
+    addUser(email: String!, password: String!, firstName: String!, lastName: String!, DOB: String!, height: String!, address: String!, phone: String!, allergies: String!): Auth
     login(email: String!, password: String!): Auth
     removeUser: User
   }
