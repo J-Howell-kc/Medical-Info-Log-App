@@ -4,16 +4,16 @@ import {
   Form,
   Input,
   Button,
-  Radio,
+//   Radio,
   Select,
-  Cascader,
+//   Cascader,
   DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-  Checkbox,
+//   InputNumber,
+//   TreeSelect,
+//   Switch,
+//   Checkbox,
   Upload,
-  Space} from 'antd';
+} from 'antd';
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
@@ -45,14 +45,14 @@ const { TextArea } = Input;
             <Radio value="pear"> Pear </Radio>
           </Radio.Group>
         </Form.Item> */}
-        <Form.Item label="Input">
+        <Form.Item label="Symptom">
           <Input />
         </Form.Item>
-        <Form.Item label="Select">
-          <Select>
+       {/* <Form.Item label="Select">
+          <Select> 
             <Select.Option value="demo">Demo</Select.Option>
           </Select>
-        </Form.Item>
+        </Form.Item> */}
         {/* <Form.Item label="TreeSelect">
           <TreeSelect
             treeData={[
@@ -76,16 +76,16 @@ const { TextArea } = Input;
             ]}
           />
         </Form.Item> */}
-        <Form.Item label="DatePicker">
+        <Form.Item label="Date">
           <DatePicker />
         </Form.Item>
-        <Form.Item label="RangePicker">
+        <Form.Item label="Date Start/Stop">
           <RangePicker />
         </Form.Item>
         {/* <Form.Item label="InputNumber">
           <InputNumber />
         </Form.Item> */}
-        <Form.Item label="TextArea">
+        <Form.Item label="Description">
           <TextArea rows={4} />
         </Form.Item>
         {/* <Form.Item label="Switch" valuePropName="checked">
