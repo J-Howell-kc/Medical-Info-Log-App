@@ -34,7 +34,7 @@ const footerStyle = {
 };
 const App = () => {
   
-  const [currentTab, setTab] = useState("symptoms");
+  const [currentTab, setTab] = useState("biovitals");
 
   const renderTab = () => {
     switch (currentTab) {
