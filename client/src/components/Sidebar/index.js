@@ -1,4 +1,4 @@
-import { Layout, Calendar, theme } from "antd";
+import { Layout, Calendar } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
 const { Sider } = Layout;
 
@@ -16,18 +16,21 @@ const onFinish = (values) => {
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
+const onClick = (value) => {
+  console.log(value)
+};
 
 const onPanelChange = (value, mode) => {
   console.log(value.format("YYYY-MM-DD"), mode);
 };
 const Sidebar = () => {
-  const { token } = theme.useToken();
-  const wrapperStyle = {
-    width: '20%',
-    border: `1px solid ${token.colorBorderSecondary}`,
-    borderRadius: token.borderRadiusLG,
-    // backgroundColor: '#7dbcea',
-  };
+  // const { token } = theme.useToken();
+  // const wrapperStyle = {
+  //   width: '20%',
+  //   border: `1px solid ${token.colorBorderSecondary}`,
+  //   borderRadius: token.borderRadiusLG,
+  //   backgroundColor: '#7dbcea',
+  // };
   return (
     
       <Sider id='sidercontainer' style={siderStyle} width={300}>
@@ -97,7 +100,7 @@ const Sidebar = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Calendar style={{ width: '100%'}} fullscreen={false} onPanelChange={onPanelChange} />
+      <Calendar style={{ width: '100%'}} fullscreen={false} onClick={onClick} onPanelChange={onPanelChange} />
       </Sider>
   
   );

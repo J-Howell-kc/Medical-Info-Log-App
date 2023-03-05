@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Input, DatePicker, Space } from "antd";
+import { Button, Form, Input, DatePicker } from "antd";
 import Col from "antd/lib/grid/col";
 import Row from "antd/lib/grid/row";
 const onFinish = (values) => {
@@ -124,8 +124,7 @@ const Biovitals = () => {
                 },
               ]}
             >
-              <Input />
-              <span>in.</span>
+              <Input suffix='in.'/>
             </Form.Item>
 
             <Form.Item
@@ -137,8 +136,7 @@ const Biovitals = () => {
                 },
               ]}
             >
-              <Input />
-              <span>lbs</span>
+              <Input suffix='lbs' />
             </Form.Item>
           </Form>
         </Col>

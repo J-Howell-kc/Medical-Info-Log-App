@@ -1,6 +1,8 @@
-import { useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
+import { useState } from "react";
+import { PlusOutlined } from "@ant-design/icons";
 import {
+  Row,
+  Space,
   Form,
   Input,
   Button,
@@ -13,16 +15,47 @@ import {
   Switch,
   Checkbox,
   Upload,
-} from 'antd';
+} from "antd";
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
- const Medications = () => {
+const Medications = () => {
   const [componentDisabled, setComponentDisabled] = useState(true);
 
   return (
     <>
+      <Row className="mt-5 ml-3">
+        <Space>
+          <Form.Item
+            label="Medication Name"
+            name="medicationname"
+            rules={[
+              {
+                message: "Please input your Email!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Dosage"
+            name="dosage"
+            rules={[
+              {
+                message: "Please input your Email!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Save
+            </Button>
+          </Form.Item>
+        </Space>
+      </Row>
       <Checkbox
         checked={componentDisabled}
         onChange={(e) => setComponentDisabled(e.target.checked)}
@@ -56,7 +89,11 @@ const { TextArea } = Input;
         <Form.Item label="TreeSelect">
           <TreeSelect
             treeData={[
-              { title: 'Light', value: 'light', children: [{ title: 'Bamboo', value: 'bamboo' }] },
+              {
+                title: "Light",
+                value: "light",
+                children: [{ title: "Bamboo", value: "bamboo" }],
+              },
             ]}
           />
         </Form.Item>
@@ -64,12 +101,12 @@ const { TextArea } = Input;
           <Cascader
             options={[
               {
-                value: 'zhejiang',
-                label: 'Zhejiang',
+                value: "zhejiang",
+                label: "Zhejiang",
                 children: [
                   {
-                    value: 'hangzhou',
-                    label: 'Hangzhou',
+                    value: "hangzhou",
+                    label: "Hangzhou",
                   },
                 ],
               },
@@ -105,6 +142,6 @@ const { TextArea } = Input;
       </Form>
     </>
   );
-        };
+};
 
 export default Medications;
