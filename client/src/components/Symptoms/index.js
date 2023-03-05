@@ -4,14 +4,14 @@ import {
   Form,
   Input,
   Button,
-  Radio,
+//   Radio,
   Select,
-  Cascader,
+//   Cascader,
   DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-  Checkbox,
+//   InputNumber,
+//   TreeSelect,
+//   Switch,
+//   Checkbox,
   Upload,
 } from 'antd';
 
@@ -19,24 +19,24 @@ const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
  const Symptoms = () => {
-  const [componentDisabled, setComponentDisabled] = useState(true);
+//   const [componentDisabled, setComponentDisabled] = useState(true);
 
   return (
     <>
-      <Checkbox
+      {/* <Checkbox
         checked={componentDisabled}
         onChange={(e) => setComponentDisabled(e.target.checked)}
       >
         Form disabled
-      </Checkbox>
+      </Checkbox> */}
       <Form
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        disabled={componentDisabled}
+        // disabled={componentDisabled}
         style={{ maxWidth: 600 }}
       >
-        <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
+        {/* <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
           <Checkbox>Checkbox</Checkbox>
         </Form.Item>
         <Form.Item label="Radio">
@@ -44,16 +44,16 @@ const { TextArea } = Input;
             <Radio value="apple"> Apple </Radio>
             <Radio value="pear"> Pear </Radio>
           </Radio.Group>
-        </Form.Item>
-        <Form.Item label="Input">
+        </Form.Item> */}
+        <Form.Item label="Symptom">
           <Input />
         </Form.Item>
-        <Form.Item label="Select">
-          <Select>
+       {/* <Form.Item label="Select">
+          <Select> 
             <Select.Option value="demo">Demo</Select.Option>
           </Select>
-        </Form.Item>
-        <Form.Item label="TreeSelect">
+        </Form.Item> */}
+        {/* <Form.Item label="TreeSelect">
           <TreeSelect
             treeData={[
               { title: 'Light', value: 'light', children: [{ title: 'Bamboo', value: 'bamboo' }] },
@@ -75,23 +75,23 @@ const { TextArea } = Input;
               },
             ]}
           />
-        </Form.Item>
-        <Form.Item label="DatePicker">
+        </Form.Item> */}
+        <Form.Item label="Date">
           <DatePicker />
         </Form.Item>
-        <Form.Item label="RangePicker">
+        <Form.Item label="Date Start/Stop">
           <RangePicker />
         </Form.Item>
-        <Form.Item label="InputNumber">
+        {/* <Form.Item label="InputNumber">
           <InputNumber />
-        </Form.Item>
-        <Form.Item label="TextArea">
+        </Form.Item> */}
+        <Form.Item label="Description">
           <TextArea rows={4} />
         </Form.Item>
-        <Form.Item label="Switch" valuePropName="checked">
+        {/* <Form.Item label="Switch" valuePropName="checked">
           <Switch />
-        </Form.Item>
-        <Form.Item label="Upload" valuePropName="fileList">
+        </Form.Item> */}
+        <Form.Item label="Photo" valuePropName="fileList">
           <Upload action="/upload.do" listType="picture-card">
             <div>
               <PlusOutlined />
@@ -99,8 +99,8 @@ const { TextArea } = Input;
             </div>
           </Upload>
         </Form.Item>
-        <Form.Item label="Button">
-          <Button>Button</Button>
+        <Form.Item label="Submit">
+          <Button type="primary" htmlType="submit" color="red">Submit</Button>
         </Form.Item>
       </Form>
     </>
