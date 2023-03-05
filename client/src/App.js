@@ -34,7 +34,7 @@ const footerStyle = {
 };
 const App = () => {
   
-  const [currentTab, setTab] = useState("biovitals");
+  const [currentTab, setTab] = useState("symptoms");
 
   const renderTab = () => {
     switch (currentTab) {
@@ -74,7 +74,7 @@ const App = () => {
     
       <Layout>
         <Header style={headerStyle}>
-          <Selector />
+          <Selector setTab = {setTab} />
           </Header>
         <Content style={contentStyle}>
           {/* <Biovitals /> */}

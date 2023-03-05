@@ -30,11 +30,11 @@ const { TextArea } = Input;
         Form disabled
       </Checkbox> */}
       <Form
-        labelCol={{ span: 4 }}
+        labelCol={{ span: 8 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
         // disabled={componentDisabled}
-        style={{ maxWidth: 600 }}
+        style={{ maxWidth: 600, marginTop: "50px"}}
       >
         {/* <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
           <Checkbox>Checkbox</Checkbox>
