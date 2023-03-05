@@ -19,24 +19,24 @@ const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
  const Allergies = () => {
-  const [componentDisabled, setComponentDisabled] = useState(true);
+//   const [componentDisabled, setComponentDisabled] = useState(true);
 
   return (
     <>
-      <Checkbox
+      {/* <Checkbox
         checked={componentDisabled}
         onChange={(e) => setComponentDisabled(e.target.checked)}
       >
         Form disabled
-      </Checkbox>
+      </Checkbox> */}
       <Form
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        disabled={componentDisabled}
-        style={{ maxWidth: 600 }}
+        // disabled={componentDisabled}
+        style={{ maxWidth: 600, marginTop:"50px" , placeholder: "Enter allergies here."}}
       >
-        <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
+        {/* <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
           <Checkbox>Checkbox</Checkbox>
         </Form.Item>
         <Form.Item label="Radio">
@@ -84,11 +84,11 @@ const { TextArea } = Input;
         </Form.Item>
         <Form.Item label="InputNumber">
           <InputNumber />
+        </Form.Item> */}
+        <Form.Item label="Allergies">
+          <TextArea rows={12} />
         </Form.Item>
-        <Form.Item label="TextArea">
-          <TextArea rows={4} />
-        </Form.Item>
-        <Form.Item label="Switch" valuePropName="checked">
+        {/* <Form.Item label="Switch" valuePropName="checked">
           <Switch />
         </Form.Item>
         <Form.Item label="Upload" valuePropName="fileList">
@@ -98,9 +98,9 @@ const { TextArea } = Input;
               <div style={{ marginTop: 8 }}>Upload</div>
             </div>
           </Upload>
-        </Form.Item>
-        <Form.Item label="Button">
-          <Button>Button</Button>
+        </Form.Item> */}
+        <Form.Item label="Finished?">
+        <Button type="primary" style ={{marginTop: "12px"}} htmlType="submit">Submit</Button>
         </Form.Item>
       </Form>
     </>
