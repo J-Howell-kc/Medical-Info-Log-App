@@ -9,12 +9,12 @@ const onFinishFailed = (errorInfo) => {
 };
 
 const onChange = (date, dateString) => {
-    console.log(date, dateString);
-  };
+  console.log(date, dateString);
+};
 
 const Biovitals = () => {
   return (
-    <div>
+    <div className="mt-5">
       <Row>
         <Col>
           <Form
@@ -23,7 +23,7 @@ const Biovitals = () => {
               span: 10,
             }}
             wrapperCol={{
-              span: 10,
+              span: 12,
             }}
             style={{
               maxWidth: 600,
@@ -68,19 +68,20 @@ const Biovitals = () => {
                 },
               ]}
             >
-              <Input className='mb-3' />
+              <Input className="mb-3" />
               <Input />
-              </Form.Item>
+            </Form.Item>
 
             <Form.Item
-              name="remember"
-              valuePropName="checked"
-              wrapperCol={{
-                offset: 8,
-                span: 8,
-              }}
+              label="Phone Number"
+              name="phonenumber"
+              rules={[
+                {
+                  message: "Please input your password!",
+                },
+              ]}
             >
-              <Checkbox>Remember me</Checkbox>
+              <Input />
             </Form.Item>
 
             <Form.Item
@@ -88,21 +89,17 @@ const Biovitals = () => {
                 offset: 8,
                 span: 8,
               }}
-            >
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Form.Item>
+            ></Form.Item>
           </Form>
         </Col>
         <Col>
           <Form
             name="basic"
             labelCol={{
-              span: 10,
+              span: 12,
             }}
             wrapperCol={{
-              span: 10,
+              span: 12,
             }}
             style={{
               maxWidth: 600,
@@ -114,11 +111,8 @@ const Biovitals = () => {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
           >
-            <Form.Item
-            label="Date of Birth"
-            name="dateofbirth">
-            <DatePicker 
-            onChange={onChange} />
+            <Form.Item label="Date of Birth" name="dateofbirth">
+              <DatePicker onChange={onChange} />
             </Form.Item>
 
             <Form.Item
@@ -126,16 +120,33 @@ const Biovitals = () => {
               name="Height"
               rules={[
                 {
-                  
                   message: "Please input your Email!",
                 },
               ]}
             >
               <Input />
-              <span>Inches</span>
+              <span>in.</span>
+            </Form.Item>
+
+            <Form.Item
+              label="Weight"
+              name="weight"
+              rules={[
+                {
+                  message: "Please input your Email!",
+                },
+              ]}
+            >
+              <Input />
+              <span>lbs</span>
             </Form.Item>
           </Form>
         </Col>
+      </Row>
+      <Row className=' display-block'>
+        <Button type="primary" htmlType="submit">
+          Save
+        </Button>
       </Row>
     </div>
   );
