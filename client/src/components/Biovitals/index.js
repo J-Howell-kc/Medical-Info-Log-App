@@ -1,50 +1,54 @@
-import { Button, Checkbox, Form, Input, DatePicker, Space } from "antd";
+import { Button, Form, Input, DatePicker } from "antd";
+import ADD_WEIGHT from "../../utils/mutations";
+import ADD_USER from "../../utils/mutations";
 import Col from "antd/lib/grid/col";
 import Row from "antd/lib/grid/row";
+
 const onFinish = (values) => {
+  
   console.log("Success:", values);
 };
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
 
-const onChange = (date, dateString) => {
-  console.log(date, dateString);
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("submit");
 };
 
 const Biovitals = () => {
   return (
     <div className="mt-5">
-      <Row>
-        <Col>
-          <Form
-            name="basic"
-            labelCol={{
-              span: 10,
-            }}
-            wrapperCol={{
-              span: 12,
-            }}
-            style={{
-              maxWidth: 600,
-            }}
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-          >
+      <Form
+        name="basic"
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+      >
+        <Row span={24}>
+          <Col span={12}>
             <Form.Item
               label="First Name"
               name="firstname"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your First Name!",
                 },
               ]}
             >
-              <Input />
+              <Input
+              // placeholder={user.name}
+              />
             </Form.Item>
 
             <Form.Item
@@ -52,7 +56,7 @@ const Biovitals = () => {
               name="lastname"
               rules={[
                 {
-                  message: "Please input your password!",
+                  message: "Please input your Last Name!",
                 },
               ]}
             >
@@ -64,7 +68,7 @@ const Biovitals = () => {
               name="address"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your Address!",
                 },
               ]}
             >
@@ -77,7 +81,7 @@ const Biovitals = () => {
               name="phonenumber"
               rules={[
                 {
-                  message: "Please input your password!",
+                  message: "Please input your Phone Number!",
                 },
               ]}
             >
@@ -90,29 +94,11 @@ const Biovitals = () => {
                 span: 8,
               }}
             ></Form.Item>
-          </Form>
-        </Col>
-        <Col>
-          <Form
-            name="basic"
-            labelCol={{
-              span: 12,
-            }}
-            wrapperCol={{
-              span: 12,
-            }}
-            style={{
-              maxWidth: 600,
-            }}
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-          >
+          </Col>
+
+          <Col span={12}>
             <Form.Item label="Date of Birth" name="dateofbirth">
-              <DatePicker onChange={onChange} />
+              <DatePicker style={{ width: '100%' }} />
             </Form.Item>
 
             <Form.Item
@@ -120,12 +106,11 @@ const Biovitals = () => {
               name="Height"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your Height!",
                 },
               ]}
             >
-              <Input />
-              <span>in.</span>
+              <Input suffix="in." />
             </Form.Item>
 
             <Form.Item
@@ -133,21 +118,29 @@ const Biovitals = () => {
               name="weight"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your Weight!",
                 },
               ]}
             >
-              <Input />
-              <span>lbs</span>
+              <Input suffix="lbs" />
             </Form.Item>
-          </Form>
-        </Col>
-      </Row>
-      <Row className=' display-block'>
-        <Button type="primary" htmlType="submit">
-          Save
-        </Button>
-      </Row>
+
+          </Col>
+        </Row>
+        <Row style={{ justifyContent: 'center' }} span={24}>
+            <Form.Item >
+              <Button
+              
+                className="mb-4"
+                onSubmit={handleSubmit}
+                type="primary"
+                htmlType="submit"
+              >
+                Save
+              </Button>
+            </Form.Item>
+            </Row>
+      </Form>
     </div>
   );
 };

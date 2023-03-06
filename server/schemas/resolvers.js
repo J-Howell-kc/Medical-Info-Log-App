@@ -131,12 +131,12 @@ const resolvers = {
     //   return { token, emergencyContact };
     // },
 
-    // addWeight: async (parent, { pounds }) => {
-    //   const weight = await Weight.create({ pounds });
-    //   const token = signToken(weight);
+    addWeight: async (parent, { pounds }) => {
+      const weight = await Weight.create({ pounds });
+      const token = signToken(weight);
 
-    //   return { token, weight };
-    // },
+      return { token, weight };
+    },
 
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
