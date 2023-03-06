@@ -73,7 +73,14 @@ type Symptoms {
     user(userId: ID!): User
     weights: [Weight]!
     weight(weightId: ID!): Weight
-    # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
+    medications: [Medication]!
+    medication(medicationId: ID!): Medication
+    nutritions: [Nutrition]!
+    nutrition(nutritionId: ID!): Nutrition
+    emergencyContacts: [EmergencyContact]!
+    emergencyContact(emergencyContactId: ID!): EmergencyContact
+    symptoms: [Symptoms]!
+    symptom(symptomId: ID!): Symptoms
     me: User
   }
 
@@ -81,6 +88,14 @@ type Symptoms {
     addUser(email: String!, password: String!, firstName: String!, lastName: String!, DOB: String!, height: String!, address: String!, phone: String!, allergies: String!): Auth
     addWeight(pounds: String!): Weight
     removeWeight(weightId: ID!): Weight
+    addMedication(medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
+    removeMedication(medicationId: ID!): Medication
+    addNutrition(food: String!, drinks: String!, calories: Int!, date: String!): Nutrition
+    removeNutrition(nutritionId: ID!): Nutrition
+    addEmergencyContact(firstName: String!, lastName: String!, address: String!, phone: String!, relationship: String!): EmergencyContact
+    removeEmergencyContact(emergencyContactId: ID!): EmergencyContact
+    addSymptom(symptom: String!, date: String!): Symptoms
+    removeSymptom(symptomId: ID!): Symptoms
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
   }
