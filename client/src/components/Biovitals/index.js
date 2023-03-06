@@ -3,6 +3,7 @@ import ADD_WEIGHT from "../../utils/mutations";
 import ADD_USER from "../../utils/mutations";
 import Col from "antd/lib/grid/col";
 import Row from "antd/lib/grid/row";
+const { TextArea } = Input;
 
 const onFinish = (values) => {
   
@@ -72,8 +73,7 @@ const Biovitals = () => {
                 },
               ]}
             >
-              <Input className="mb-3" />
-              <Input />
+              <TextArea />
             </Form.Item>
 
             <Form.Item
