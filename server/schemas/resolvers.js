@@ -18,7 +18,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-  },
 
   // symptoms: async () => {
   //   return Symptoms.find();
@@ -80,20 +79,14 @@ const resolvers = {
   //   throw new AuthenticationError('You need to be logged in!');
   // },
 
-  // weights: async () => {
-  //   return Weight.find();
-  // },
+  weights: async () => {
+    return Weight.find();
+  },
 
-  // weight : async (parent, { weightId }) => {
-  //   return Weight.findOne({ _id: weightId });
-  // },
-  // // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-  // me: async (parent, args, context) => {
-  //   if (context.weight) {
-  //     return EmergencyContact.findOne({ _id: context.weight._id });
-  //   }
-  //   throw new AuthenticationError('You need to be logged in!');
-  // },
+  weight : async (parent, { weightId }) => {
+    return Weight.findOne({ _id: weightId });
+  },
+  },
 
   Mutation: {
     addUser: async (parent, args) => {
@@ -158,9 +151,9 @@ const resolvers = {
     //   return EmergencyContact.findOneAndDelete({ _id: emergencyContactId });
     // },
 
-    // removeWeight: async (parent, { weightId }) => {
-    //   return Weight.findOneAndDelete({ _id: weightId });
-    // },
+    removeWeight: async (parent, { weightId }) => {
+      return Weight.findOneAndDelete({ _id: weightId });
+    },
     
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

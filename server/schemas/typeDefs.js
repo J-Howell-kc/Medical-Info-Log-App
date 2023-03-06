@@ -71,13 +71,16 @@ type Symptoms {
   type Query {
     users: [User]!
     user(userId: ID!): User
+    weights: [Weight]!
+    weight(weightId: ID!): Weight
     # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: User
   }
 
   type Mutation {
     addUser(email: String!, password: String!, firstName: String!, lastName: String!, DOB: String!, height: String!, address: String!, phone: String!, allergies: String!): Auth
-    addWeight(pounds: String!): Auth
+    addWeight(pounds: String!): Weight
+    removeWeight(weightId: ID!): Weight
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
   }
