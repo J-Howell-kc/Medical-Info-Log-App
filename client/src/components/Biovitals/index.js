@@ -12,6 +12,12 @@ const onChange = (date, dateString) => {
   console.log(date, dateString);
 };
 
+const handleSubmit = (e) => {
+  
+  e.preventDefault();
+  console.log("submit");
+};
+
 const Biovitals = () => {
   return (
     <div className="mt-5">
@@ -40,7 +46,7 @@ const Biovitals = () => {
               name="firstname"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your First Name!",
                 },
               ]}
             >
@@ -52,7 +58,7 @@ const Biovitals = () => {
               name="lastname"
               rules={[
                 {
-                  message: "Please input your password!",
+                  message: "Please input your Last Name!",
                 },
               ]}
             >
@@ -64,7 +70,7 @@ const Biovitals = () => {
               name="address"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your Address!",
                 },
               ]}
             >
@@ -77,7 +83,7 @@ const Biovitals = () => {
               name="phonenumber"
               rules={[
                 {
-                  message: "Please input your password!",
+                  message: "Please input your Phone Number!",
                 },
               ]}
             >
@@ -120,7 +126,7 @@ const Biovitals = () => {
               name="Height"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your Height!",
                 },
               ]}
             >
@@ -132,7 +138,7 @@ const Biovitals = () => {
               name="weight"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your Weight!",
                 },
               ]}
             >
@@ -142,7 +148,7 @@ const Biovitals = () => {
         </Col>
       </Row>
       <Row className=' display-block'>
-        <Button type="primary" htmlType="submit">
+        <Button className='mb-4' onSubmit={handleSubmit} type="primary" htmlType="submit">
           Save
         </Button>
       </Row>
