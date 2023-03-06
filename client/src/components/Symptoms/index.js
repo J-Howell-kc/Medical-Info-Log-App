@@ -86,12 +86,12 @@ const { TextArea } = Input;
           <InputNumber />
         </Form.Item> */}
         <Form.Item label="Description">
-          <TextArea rows={4} />
+          <TextArea rows={12} />
         </Form.Item>
         {/* <Form.Item label="Switch" valuePropName="checked">
           <Switch />
         </Form.Item> */}
-        <Form.Item label="Photo" valuePropName="fileList">
+        <Form.Item label="Photo" style = {{ marginTop: "30px" }} valuePropName="fileList">
           <Upload action="/upload.do" listType="picture-card">
             <div>
               <PlusOutlined />
@@ -100,7 +100,7 @@ const { TextArea } = Input;
           </Upload>
         </Form.Item>
         <Form.Item label="Submit">
-          <Button type="primary" htmlType="submit" color="red">Submit</Button>
+          <Button type="primary" htmlType="submit" style = {{ marginTop: "12px"}}>Submit</Button>
         </Form.Item>
       </Form>
     </>
