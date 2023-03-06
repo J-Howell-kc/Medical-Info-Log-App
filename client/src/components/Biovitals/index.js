@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Input, DatePicker, Space } from "antd";
+import { Button, Form, Input, DatePicker } from "antd";
 import Col from "antd/lib/grid/col";
 import Row from "antd/lib/grid/row";
 const onFinish = (values) => {
@@ -10,6 +10,12 @@ const onFinishFailed = (errorInfo) => {
 
 const onChange = (date, dateString) => {
   console.log(date, dateString);
+};
+
+const handleSubmit = (e) => {
+  
+  e.preventDefault();
+  console.log("submit");
 };
 
 const Biovitals = () => {
@@ -40,7 +46,7 @@ const Biovitals = () => {
               name="firstname"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your First Name!",
                 },
               ]}
             >
@@ -52,7 +58,7 @@ const Biovitals = () => {
               name="lastname"
               rules={[
                 {
-                  message: "Please input your password!",
+                  message: "Please input your Last Name!",
                 },
               ]}
             >
@@ -64,7 +70,7 @@ const Biovitals = () => {
               name="address"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your Address!",
                 },
               ]}
             >
@@ -77,7 +83,7 @@ const Biovitals = () => {
               name="phonenumber"
               rules={[
                 {
-                  message: "Please input your password!",
+                  message: "Please input your Phone Number!",
                 },
               ]}
             >
@@ -120,12 +126,11 @@ const Biovitals = () => {
               name="Height"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your Height!",
                 },
               ]}
             >
-              <Input />
-              <span>in.</span>
+              <Input suffix='in.'/>
             </Form.Item>
 
             <Form.Item
@@ -133,18 +138,17 @@ const Biovitals = () => {
               name="weight"
               rules={[
                 {
-                  message: "Please input your Email!",
+                  message: "Please input your Weight!",
                 },
               ]}
             >
-              <Input />
-              <span>lbs</span>
+              <Input suffix='lbs' />
             </Form.Item>
           </Form>
         </Col>
       </Row>
       <Row className=' display-block'>
-        <Button type="primary" htmlType="submit">
+        <Button className='mb-4' onSubmit={handleSubmit} type="primary" htmlType="submit">
           Save
         </Button>
       </Row>
