@@ -53,8 +53,8 @@ const App = () => {
        case "symptoms":
         return <Symptoms />;
 
-      //   case "emergencycontacts":
-      //   return <EmergencyContacts />;
+         case "emergencycontacts":
+         return <Emergencycontacts />;
 
       default:
         return <Biovitals />;
