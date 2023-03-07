@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { PlusOutlined } from "@ant-design/icons";
 import { Row, Space, Form, Input, Button, Table } from "antd";
+import { useMutation } from "@apollo/client";
+import { ADD_MEDICATION } from "../../utils/mutations";
 
 // const { RangePicker } = DatePicker;
 // const { TextArea } = Input;
 
 const Medications = () => {
   const [medications, setMedications] = useState("");
+
+  const [addMedication] = useMutation(ADD_MEDICATION);
 
   const columns = [
     {
@@ -39,6 +42,13 @@ const Medications = () => {
         { medicationname: data.medicationname, dosage: data.dosage },
       ];
     });
+    console.log(data);
+    addMedication({
+      variables: {
+        medicationname: data.medicationname,
+        dosage: data.dosage,
+      },
+    });
   };
 
   const onDeleteRecord = (record) => {
@@ -58,22 +68,12 @@ const Medications = () => {
             <Form.Item
               label="Medication Name"
               name="medicationname"
-              rules={[
-                {
-                  message: "Please input your Email!",
-                },
-              ]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               label="Dosage"
               name="dosage"
-              rules={[
-                {
-                  message: "Please input your Email!",
-                },
-              ]}
             >
               <Input />
             </Form.Item>
