@@ -23,7 +23,7 @@ const typeDefs = gql`
     _id: ID
     pounds: String
     timeTaken: String
-    user: [User]
+    createdBy: String
   }
   
   type Medication {
@@ -31,7 +31,7 @@ const typeDefs = gql`
     medicationName: String
     dosage: String
     timeTaken: String
-    user: [User]
+    createdBy: String
   }
 
 type Nutrition {
@@ -40,7 +40,7 @@ type Nutrition {
     drinks: String
     calories: Int
     date: String
-    user: [User]
+    createdBy: String
   }
 
 type EmergencyContact {
@@ -50,14 +50,14 @@ type EmergencyContact {
     address: String
     phone: String
     relationship: String
-    user: [User]
+    createdBy: String
   }
 
 type Symptoms {
     _id: ID
     symptom: String
     date: String
-    user: [User]
+    createdBy: String
   }
 
   type Auth {
