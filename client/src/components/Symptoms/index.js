@@ -86,7 +86,10 @@ const { TextArea } = Input;
           <InputNumber />
         </Form.Item> */}
         <Form.Item label="Description">
-          <TextArea rows={12} />
+          <TextArea rows={8} />
+        </Form.Item>
+        <Form.Item label="Action taken:">
+          <TextArea rows={8} />
         </Form.Item>
         {/* <Form.Item label="Switch" valuePropName="checked">
           <Switch />
