@@ -35,16 +35,12 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_MEDICATION = gql`
-  mutation addMedication($userId: ID!, $medicationName: String!, $dosage: String!, $frequency: String!, $pillCount: Int!, $startDate: String!, $endDate: String!, $taken: Boolean!) {
-    addSkill(userId: $userId, medicationName: $medicationName, dosage: $dosage, frequency: $frequency, pillCount: $pillCount, startDate: $startDate, endDate: $endDate, taken: $taken) {
+  mutation addMedication($userId: ID!, $medicationName: String!, $dosage: String!, $timetaken: String!) {
+    medication(userId: $userId, medicationName: $medicationName, dosage: $dosage, timetaken: $timetaken) {
       _id
       medicationName
       dosage
-      frequency
-      pillCount
-      startDate
-      endDate
-      taken
+      timetaken
     }
   }
 `;
