@@ -17,7 +17,7 @@ const Nutrition = () => {
         Form disabled
       </Checkbox> */}
       <Form
-        labelCol={{ span: 4 }}
+        labelCol={{ span: 8 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
         // disabled={componentDisabled}
