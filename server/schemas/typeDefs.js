@@ -21,9 +21,9 @@ const typeDefs = gql`
 
   type Weight {
     _id: ID
-    pounds: String
+    pounds: Int
     timeTaken: String
-    user: [User]
+    createdBy: String
   }
   
   type Medication {
@@ -31,7 +31,7 @@ const typeDefs = gql`
     medicationName: String
     dosage: String
     timeTaken: String
-    user: [User]
+    createdBy: String
   }
 
 type Nutrition {
@@ -40,7 +40,7 @@ type Nutrition {
     drinks: String
     calories: Int
     date: String
-    user: [User]
+    createdBy: String
   }
 
 type EmergencyContact {
@@ -50,14 +50,14 @@ type EmergencyContact {
     address: String
     phone: String
     relationship: String
-    user: [User]
+    createdBy: String
   }
 
 type Symptoms {
     _id: ID
     symptom: String
     date: String
-    user: [User]
+    createdBy: String
   }
 
   type Auth {
@@ -83,7 +83,7 @@ type Symptoms {
 
   type Mutation {
     addUser(email: String!, password: String!, firstName: String!, lastName: String!, DOB: String!, height: String!, address: String!, phone: String!, allergies: String!): Auth
-    addWeight(pounds: String!): Weight
+    addWeight(pounds: Int!, createdBy: String!): Weight
     removeWeight(weightId: ID!): Weight
     addMedication(medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
     removeMedication(medicationId: ID!): Medication
