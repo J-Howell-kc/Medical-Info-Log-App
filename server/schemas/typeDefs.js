@@ -22,6 +22,7 @@ const typeDefs = gql`
   type Weight {
     _id: ID
     pounds: String
+    timeTaken: String
     user: [User]
   }
   
@@ -29,11 +30,7 @@ const typeDefs = gql`
     _id: ID
     medicationName: String
     dosage: String
-    frequency: String
-    pillCount: Int
-    startDate: String
-    endDate: String
-    taken: Boolean
+    timeTaken: String
     user: [User]
   }
 
