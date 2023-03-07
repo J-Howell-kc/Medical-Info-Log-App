@@ -92,10 +92,10 @@ const Nutrition = () => {
         <Form.Item label="Time">
           <Input />
         </Form.Item>
-        <Form.Item label="Other">
+        <Form.Item label="Snacks/Other">
           <TextArea rows={4} />
         </Form.Item>
-        <Form.Item label="Time">
+        <Form.Item label="Time(s)">
           <Input />
         </Form.Item>
         <Form.Item label="Drinks">
