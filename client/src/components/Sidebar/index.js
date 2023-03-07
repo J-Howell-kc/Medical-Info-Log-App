@@ -17,12 +17,11 @@ const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
 const onClick = (value) => {
-  console.log(value)
+  value.preventDefault();
+  console.log('hello')
+  console.log(value.format("YYYY-MM-DD"));
 };
 
-const onPanelChange = (value, mode) => {
-  console.log(value.format("YYYY-MM-DD"), mode);
-};
 const Sidebar = () => {
   // const { token } = theme.useToken();
   // const wrapperStyle = {
@@ -100,7 +99,7 @@ const Sidebar = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Calendar style={{ width: '100%'}} fullscreen={false} onClick={onClick} onPanelChange={onPanelChange} />
+      <Calendar style={{ width: '100%'}} fullscreen={false} onChange={onClick} />
       </Sider>
   
   );

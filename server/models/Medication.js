@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const medicationSchema = new Schema ({
     medicationName: {
@@ -9,25 +10,11 @@ const medicationSchema = new Schema ({
         type: String,
         trim: true,
     },
-    frequency: {    
-        type: String,
-        trim: true,
-    },
-    pillCount: {
-        type: Number,
-        trim: true,
-    },
-    startDate: {
+    timeTaken: {
         type: Date,
-        trim: true,
-    },
-    endDate: {
-        type: Date,
-        trim: true,
-    },
-    taken: {
-        type: Boolean,
-    },
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
