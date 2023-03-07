@@ -1,4 +1,5 @@
 import React from "react";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import Sidebar from "./components/Sidebar";
 import Selector from "./components/Header";
 import Biovitals from "./components/Biovitals";
@@ -12,6 +13,10 @@ import './app.css'
 // import '~antd/dist/antd.css';
 import { Layout, Space } from "antd";
 const { Header, Footer, Content } = Layout;
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 
 const headerStyle = {
@@ -61,6 +66,7 @@ const App = () => {
     }
   };
   return (
+    <ApolloProvider client={client}>
   <Space
     direction="vertical"
     style={{
@@ -84,6 +90,7 @@ const App = () => {
       </Layout>
     </Layout>
   </Space>
+  </ApolloProvider>
 );
 };
 export default App;
