@@ -4,11 +4,9 @@ import {
   Form,
   Input,
   Button,
-//   Radio,
-//   Select,
-//   Cascader,
+
   DatePicker,
-//   InputNumber,
+  InputNumber,
 //   TreeSelect,
 //   Switch,
 //   Checkbox,
@@ -82,12 +80,13 @@ const { TextArea } = Input;
         <Form.Item label="Date Start/Stop">
           <RangePicker />
         </Form.Item>
-        {/* <Form.Item label="InputNumber">
-          <InputNumber />
-        </Form.Item> */}
+        
         <Form.Item label="Description">
           <TextArea rows={8} />
         </Form.Item>
+        <Form.Item label="Intensity (1-10)">
+          <InputNumber />
+         </Form.Item>
         <Form.Item label="Action taken:">
           <TextArea rows={8} />
         </Form.Item>
