@@ -68,36 +68,36 @@ const resolvers = {
       return { token, user };
     },
 
-    addSymptom: async (parent, { startDate, endDate, description, duration, intensity, actionTaken }) => {
-      const symptom = await Symptoms.create({ startDate, endDate, description, duration, intensity, actionTaken });
+    addSymptom: async (parent, args) => {
+      const symptom = await Symptoms.create(args);
       const token = signToken(symptom);
       
       return { token, symptom };
     },
 
-    addNutrition: async (parent, { food, drinks, calories, date }) => {
-      const nutrition = await Nutrition.create({ food, drinks, calories, date });
+    addNutrition: async (parent, args) => {
+      const nutrition = await Nutrition.create(args);
       const token = signToken(nutrition);
 
       return { token, nutrition };
     },
 
-    addMedication: async (parent, { medicationName, dosage, frequency, pillCount, startDate, endDate, taken }) => {
-      const medication = await Medication.create({ medicationName, dosage, frequency, pillCount, startDate, endDate, taken });
+    addMedication: async (parent, args) => {
+      const medication = await Medication.create(args);
       const token = signToken(medication);
 
       return { token, medication };
     },
 
-    addEmergencyContact: async (parent, { firstName, lastName, address, phone, relationship, }) => {
-      const emergencyContact = await EmergencyContact.create({ firstName, lastName, address, phone, relationship, });
+    addEmergencyContact: async (parent, args) => {
+      const emergencyContact = await EmergencyContact.create(args);
       const token = signToken(emergencyContact);
 
       return { token, emergencyContact };
     },
 
-    addWeight: async (parent, { pounds }) => {
-      const weight = await Weight.create({ pounds });
+    addWeight: async (parent, args) => {
+      const weight = await Weight.create(args);
       const token = signToken(weight);
 
       return { token, weight };
