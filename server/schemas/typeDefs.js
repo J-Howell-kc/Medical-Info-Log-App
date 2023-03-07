@@ -21,7 +21,7 @@ const typeDefs = gql`
 
   type Weight {
     _id: ID
-    pounds: String
+    pounds: Int
     timeTaken: String
     createdBy: String
   }
