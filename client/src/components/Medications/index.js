@@ -1,46 +1,58 @@
 import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
-import {
-  Row,
-  Space,
-  Form,
-  Input,
-  Button,
-  Table,
-} from "antd";
+import { Row, Space, Form, Input, Button, Table } from "antd";
 
 // const { RangePicker } = DatePicker;
 // const { TextArea } = Input;
 
 const Medications = () => {
-  const [medications, setMedications] = useState('');
+  const [medications, setMedications] = useState("");
 
-  const columns= [
+  const columns = [
     {
-      key: '1',
-      title: 'Medication Name',
-      dataIndex: 'medicationname'
+      key: "1",
+      title: "Medication Name",
+      dataIndex: "medicationname",
     },
     {
-      key: '2',
-      title: 'Dosage',
-      dataIndex: 'dosage'
-    }
-  ]
+      key: "2",
+      title: "Dosage",
+      dataIndex: "dosage",
+    },
+    {
+      key: "3",
+      title: "Action",
+      render: (record) => (
+        <Space size="middle">
+          <a onClick={onDeleteRecord} style={{ color: "red" }}>
+            Delete
+          </a>
+        </Space>
+      ),
+    },
+  ];
 
-  const onClick = (data) => {
-    setMedications(pre=>{
-      return [...pre, {medicationname: data.medicationname, dosage: data.dosage}]
-      
-    })
-  }
+  const onFinish = (data) => {
+    setMedications((pre) => {
+      return [
+        ...pre,
+        { medicationname: data.medicationname, dosage: data.dosage },
+      ];
+    });
+  };
 
-
+  const onDeleteRecord = (record) => {
+    setMedications((pre) => {
+      return pre.filter(
+        (item) => item.medicationname !== record.medicationname
+      );
+    });
+    console.log(record);
+  };
 
   return (
     <>
-      <Form
-      onFinish={onClick}>
+      <Form onFinish={onFinish}>
         <Row className="mt-5 ml-3">
           <Space>
             <Form.Item
@@ -74,12 +86,7 @@ const Medications = () => {
         </Row>
       </Form>
 
-      <Table
-      columns={columns}
-      dataSource={medications}
-      >
-
-      </Table>
+      <Table columns={columns} dataSource={medications}></Table>
     </>
   );
 };
