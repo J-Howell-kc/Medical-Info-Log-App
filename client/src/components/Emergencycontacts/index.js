@@ -56,8 +56,12 @@ const { TextArea } = Input;
         <Form.Item label="Relationship">
           <TreeSelect
             treeData={[
-              { title: 'Light', value: 'light', children: [{ title: 'Bamboo', value: 'bamboo' }] },
-            ]}
+              { title: 'Spouse/Partner', value: 'spouse'},
+            { title: 'Parent', value: 'parent'},
+        { title: 'Sibling', value: 'sibling'},
+    { title:"Child", value: 'child'},
+{title:'Other Family Member', value: 'otherfamily'},
+{title:'Other', value: 'other'}] }
           />
         </Form.Item>
         {/* <Form.Item label="Cascader">
