@@ -1,54 +1,45 @@
-import { useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-  Checkbox,
-  Upload,
-} from 'antd';
+import { useState } from "react";
+import { PlusOutlined } from "@ant-design/icons";
+import { Form, Input, Button, DatePicker } from "antd";
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
- const Nutrition = () => {
-  const [componentDisabled, setComponentDisabled] = useState(true);
+const Nutrition = () => {
+  //    const [componentDisabled, setComponentDisabled] = useState(true);
 
   return (
     <>
-      <Checkbox
+      {/* <Checkbox
         checked={componentDisabled}
         onChange={(e) => setComponentDisabled(e.target.checked)}
       >
         Form disabled
-      </Checkbox>
+      </Checkbox> */}
       <Form
-        labelCol={{ span: 4 }}
+        labelCol={{ span: 8 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        disabled={componentDisabled}
-        style={{ maxWidth: 600 }}
+        // disabled={componentDisabled}
+        style={{ maxWidth: 600, marginTop: "50px" }}
       >
-       <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
+        {/* <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
           <Checkbox>Checkbox </Checkbox>
-        </Form.Item>
-        <Form.Item label="Radio">
+        </Form.Item> */}
+        {/* <Form.Item label="Radio">
           <Radio.Group>
             <Radio value="apple"> Apple </Radio>
             <Radio value="pear"> Pear </Radio>
           </Radio.Group>
+        </Form.Item> */}
+
+        <Form.Item label="DatePicker">
+          <DatePicker />
         </Form.Item>
-        <Form.Item label="Input">
+        {/* <Form.Item label="Input">
           <Input />
-        </Form.Item>
-        <Form.Item label="Select">
+        </Form.Item> */}
+        {/* <Form.Item label="Select">
           <Select>
             <Select.Option value="demo">Demo</Select.Option>
           </Select>
@@ -59,8 +50,8 @@ const { TextArea } = Input;
               { title: 'Light', value: 'light', children: [{ title: 'Bamboo', value: 'bamboo' }] },
             ]}
           />
-        </Form.Item>
-        <Form.Item label="Cascader">
+        </Form.Item> */}
+        {/* <Form.Item label="Cascader">
           <Cascader
             options={[
               {
@@ -75,20 +66,42 @@ const { TextArea } = Input;
               },
             ]}
           />
-        </Form.Item>
-        <Form.Item label="DatePicker">
-          <DatePicker />
-        </Form.Item>
-        <Form.Item label="RangePicker">
+        </Form.Item> */}
+
+        {/* <Form.Item label="RangePicker">
           <RangePicker />
         </Form.Item>
         <Form.Item label="InputNumber">
           <InputNumber />
-        </Form.Item>
-        <Form.Item label="TextArea">
+        </Form.Item> */}
+        <Form.Item label="Meal 1">
           <TextArea rows={4} />
         </Form.Item>
-        <Form.Item label="Switch" valuePropName="checked">
+        <Form.Item label="Time">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Meal 2">
+          <TextArea rows={4} />
+        </Form.Item>
+        <Form.Item label="Time">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Meal 3">
+          <TextArea rows={4} />
+        </Form.Item>
+        <Form.Item label="Time">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Other">
+          <TextArea rows={4} />
+        </Form.Item>
+        <Form.Item label="Time">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Drinks">
+          <TextArea rows={4} />
+        </Form.Item>
+        {/* <Form.Item label="Switch" valuePropName="checked">
           <Switch />
         </Form.Item>
         <Form.Item label="Upload" valuePropName="fileList">
@@ -98,13 +111,19 @@ const { TextArea } = Input;
               <div style={{ marginTop: 8 }}>Upload</div>
             </div>
           </Upload>
-        </Form.Item>
-        <Form.Item label="Button">
-          <Button>Button</Button>
+        </Form.Item> */}
+        <Form.Item label="Submit">
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={{ marginTop: "12px" }}
+          >
+            Submit
+          </Button>
         </Form.Item>
       </Form>
     </>
   );
-        };
+};
 
 export default Nutrition;
