@@ -10,7 +10,7 @@ import Medications from "./components/Medications";
 import Nutrition from "./components/Nutrition";
 import { useState } from "react";
 import './app.css'
-// import '~antd/dist/antd.css';
+
 import { Layout, Space } from "antd";
 const { Header, Footer, Content } = Layout;
 const client = new ApolloClient({
