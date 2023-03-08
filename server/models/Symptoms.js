@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const symptomsSchema = new Schema({
     startDate: {
@@ -33,6 +34,15 @@ const symptomsSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
+    timeTaken: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
+    createdBy: {
+        type: String,
+        required: true,
+      },
 });
 
 module.exports = symptomsSchema;

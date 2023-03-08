@@ -11,6 +11,7 @@ const typeDefs = gql`
     nutrition: [Nutrition]
     emergencyContact: [EmergencyContact]
     symptoms: [Symptoms]
+    allergies: [Allergies]
   }
 
   type Bio {
@@ -28,6 +29,13 @@ const typeDefs = gql`
   type Weight {
     _id: ID
     pounds: Int
+    timeTaken: String
+    createdBy: String
+  }
+
+  type Allergies {
+    _id: ID
+    Allergies: String
     timeTaken: String
     createdBy: String
   }
@@ -74,18 +82,6 @@ type Symptoms {
   type Query {
     users: [User]!
     user(userId: ID!): User
-    bios: [Bio]!
-    bio(bioId: ID!): Bio
-    weights: [Weight]!
-    weight(weightId: ID!): Weight
-    medications: [Medication]!
-    medication(medicationId: ID!): Medication
-    nutritions: [Nutrition]!
-    nutrition(nutritionId: ID!): Nutrition
-    emergencyContacts: [EmergencyContact]!
-    emergencyContact(emergencyContactId: ID!): EmergencyContact
-    symptoms: [Symptoms]!
-    symptom(symptomId: ID!): Symptoms
     me: User
   }
 
@@ -93,7 +89,9 @@ type Symptoms {
     addUser(email: String!, password: String!): Auth
     addWeight(pounds: Int!): Weight
     removeWeight(weightId: ID!): Weight
-    addBio(firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!, allergies: String!): Bio
+    addAllergies(allergies: String!): Allergies
+    removeAllergies(allergiesId: ID!): Allergies    
+    addBio(firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!): Bio
     removeBio(bioId: ID!): Bio
     addMedication(medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
     removeMedication(medicationId: ID!): Medication
