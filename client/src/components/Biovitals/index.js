@@ -1,9 +1,13 @@
 import { Button, Form, Input, DatePicker } from "antd";
-// import ADD_WEIGHT from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
+import { ADD_WEIGHT } from "../../utils/mutations";
 // import ADD_USER from "../../utils/mutations";
 import Col from "antd/lib/grid/col";
 import Row from "antd/lib/grid/row";
 const { TextArea } = Input;
+
+const Biovitals = () => {
+const [addWeight] = useMutation(ADD_WEIGHT);
 
 const onFinish = (values) => {
   console.log("Success:", values);
@@ -13,10 +17,15 @@ const onFinishFailed = (errorInfo) => {
 };
 
 const handleWeightSubmit = (values) => {
+  addWeight({
+    variables: {
+      weight: values.weight,
+      date: values.date,
+      },
+      });
   console.log("submit", values);
 };
 
-const Biovitals = () => {
   return (
     <div className="mt-5">
       <Form
