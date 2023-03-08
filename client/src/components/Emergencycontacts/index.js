@@ -84,7 +84,7 @@ const Emergencycontacts = () => {
         <Form.Item label="Email">
           <Input />
         </Form.Item>
-        <Form.Item label="Notes">
+        <Form.Item label="Notes" labelWrap>
           <TextArea rows={4} />
         </Form.Item>
         {/* <Form.Item label="Switch" valuePropName="checked">

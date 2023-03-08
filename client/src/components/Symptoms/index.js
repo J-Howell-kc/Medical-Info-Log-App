@@ -34,7 +34,7 @@ const Symptoms = () => {
             <Radio value="pear"> Pear </Radio>
           </Radio.Group>
         </Form.Item> */}
-        <Form.Item label="Symptom">
+        <Form.Item label="Symptom" labelWrap>
           <Input />
         </Form.Item>
         {/* <Form.Item label="Select">
@@ -72,13 +72,13 @@ const Symptoms = () => {
           <RangePicker />
         </Form.Item>
 
-        <Form.Item label="Description">
+        <Form.Item label="Description" labelWrap>
           <TextArea rows={8} />
         </Form.Item>
         <Form.Item label="Intensity (1-10)">
           <InputNumber />
         </Form.Item>
-        <Form.Item label="Action taken:">
+        <Form.Item label="Action taken:" labelWrap>
           <TextArea rows={8} />
         </Form.Item>
         {/* <Form.Item label="Switch" valuePropName="checked">

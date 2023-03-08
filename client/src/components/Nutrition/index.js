@@ -76,31 +76,31 @@ const Nutrition = () => {
         <Form.Item label="InputNumber">
           <InputNumber />
         </Form.Item> */}
-        <Form.Item label="Meal 1">
+        <Form.Item label="Meal 1" labelWrap>
           <TextArea rows={4} />
         </Form.Item>
         <Form.Item label="Time">
           <Input />
         </Form.Item>
-        <Form.Item label="Meal 2">
+        <Form.Item label="Meal 2" labelWrap>
           <TextArea rows={4} />
         </Form.Item>
         <Form.Item label="Time">
           <Input />
         </Form.Item>
-        <Form.Item label="Meal 3">
+        <Form.Item label="Meal 3" labelWrap>
           <TextArea rows={4} />
         </Form.Item>
         <Form.Item label="Time">
           <Input />
         </Form.Item>
-        <Form.Item label="Snacks/Other">
+        <Form.Item label="Snacks/Other" labelWrap>
           <TextArea rows={4} />
         </Form.Item>
-        <Form.Item label="Time(s)">
+        <Form.Item label="Time(s)" labelWrap>
           <Input />
         </Form.Item>
-        <Form.Item label="Drinks">
+        <Form.Item label="Drinks" labelWrap>
           <TextArea rows={4} />
         </Form.Item>
         {/* <Form.Item label="Switch" valuePropName="checked">
