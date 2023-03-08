@@ -15,8 +15,8 @@ const Emergencycontacts = () => {
         layout="horizontal"
         style={{ maxWidth: 600, marginTop: "50px" }}
       >
-        <Form.Item label="Name">
-          <Input />
+        <Form.Item label="Name"  >
+          <Input placeholder= "Contact name" />
         </Form.Item>
 
         <Form.Item label="Relationship">
@@ -32,16 +32,18 @@ const Emergencycontacts = () => {
           />
         </Form.Item>
 
-        <Form.Item label="Phone">
-          <Input />
+        <Form.Item label="Phone" >
+          <Input placeholder ="Phone"/>
         </Form.Item>
         <Form.Item label="Email">
-          <Input />
+          <Input placeholder="Email"/>
+        </Form.Item>
+        <Form.Item label="Address" labelWrap>
+          <TextArea rows={4} placeholder="Address"/>
         </Form.Item>
         <Form.Item label="Notes" labelWrap>
-          <TextArea rows={4} />
+          <TextArea rows={4} placeholder = "Notes"/>
         </Form.Item>
-
         <Form.Item label="Submit">
           <Button
             type="primary"
@@ -51,9 +53,28 @@ const Emergencycontacts = () => {
             Submit
           </Button>
         </Form.Item>
+        {/* onSubmit={handleFormSubmit}
+        onChange={(event) => setEmergencycontacts(event.target.value)} */}
       </Form>
     </>
   );
 };
+
+// const [addEmergencycontacts, { error }] = useMutation(ADD_EMERGENCYCONTACT);
+
+//   const handleFormSubmit = async (event) => {
+//     event.preventDefault();
+//     try {
+//       // Execute mutation and pass in defined parameter data as variables
+//       const { data } = await addEmergencycontacts({
+//         variables: { name },
+//       });
+
+//       window.location.reload();
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
+
 
 export default Emergencycontacts;

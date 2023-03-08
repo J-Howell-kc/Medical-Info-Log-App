@@ -3,13 +3,11 @@ import { Row, Space, Form, Input, Button, Table } from "antd";
 import { useMutation } from "@apollo/client";
 import { ADD_MEDICATION } from "../../utils/mutations";
 
-
 const Medications = () => {
   const [medications, setMedications] = useState("");
 
   const [addMedication] = useMutation(ADD_MEDICATION);
 
-  
   const onFinish = (data) => {
     console.log(data);
     addMedication({
@@ -24,11 +22,13 @@ const Medications = () => {
     );
     console.log(setMedications)
   };
-  
-  const onDeleteMedication = (record) => {
+
+  const onDeleteRecord = (record) => {
     console.log(record);
     setMedications((pre) => {
-      return pre.filter((item) => item.medicationname !== record.medicationname);
+      return pre.filter(
+        (item) => item.medicationname !== record.medicationname
+      );
     });
   };
 
@@ -48,7 +48,7 @@ const Medications = () => {
       title: "Action",
       render: (record) => (
         <Space size="middle">
-          <a onClick={onDeleteMedication} style={{ color: "red" }}>
+          <a onClick={onDeleteRecord} style={{ color: "red" }}>
             Delete
           </a>
         </Space>
@@ -61,16 +61,10 @@ const Medications = () => {
       <Form onFinish={onFinish}>
         <Row className="mt-5 ml-3">
           <Space>
-            <Form.Item
-              label="Medication Name"
-              name="medicationname"
-            >
+            <Form.Item label="Medication Name" name="medicationname">
               <Input />
             </Form.Item>
-            <Form.Item
-              label="Dosage"
-              name="dosage"
-            >
+            <Form.Item label="Dosage" name="dosage">
               <Input />
             </Form.Item>
             <Form.Item>

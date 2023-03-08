@@ -39,13 +39,14 @@ const Biovitals = () => {
             <Form.Item
               label="First Name"
               name="firstname"
+              
               rules={[
                 {
                   message: "Please input your First Name!",
                 },
               ]}
             >
-              <Input
+              <Input placeholder = "First Name"
               // placeholder={user.name}
               />
             </Form.Item>
@@ -59,7 +60,7 @@ const Biovitals = () => {
                 },
               ]}
             >
-              <Input />
+              <Input  placeholder = "Last name"/>
             </Form.Item>
 
             <Form.Item
@@ -71,7 +72,7 @@ const Biovitals = () => {
                 },
               ]}
             >
-              <TextArea />
+              <TextArea placeholder = "Enter Address here."/>
             </Form.Item>
 
             <Form.Item
@@ -83,7 +84,7 @@ const Biovitals = () => {
                 },
               ]}
             >
-              <Input />
+              <Input placeholder = "Enter ten-digit phone number here."/>
             </Form.Item>
 
             <Form.Item

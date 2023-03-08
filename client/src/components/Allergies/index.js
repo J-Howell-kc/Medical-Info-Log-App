@@ -20,7 +20,7 @@ const Allergies = () => {
         }}
       >
         <Form.Item label="Allergies" labelWrap>
-          <TextArea rows={12} />
+          <TextArea rows={12} placeholder = "Enter all known allergies here."/>
         </Form.Item>
 
         <Form.Item label="Submit">

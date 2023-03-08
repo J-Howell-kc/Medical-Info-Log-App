@@ -1,8 +1,30 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const ADD_USER = gql`
-  mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $DOB: String!, $height: String!, $address: String!, $phone: String!, $allergies: String!, $weight: String!,) {
-    addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, DOB: $DOB, height: $height, address: $address, phone: $phone, allergies: $allergies, weight: $weight) {
+  mutation addUser(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
+    $DOB: String!
+    $height: String!
+    $address: String!
+    $phone: String!
+    $allergies: String!
+    $weight: String!
+  ) {
+    addUser(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+      DOB: $DOB
+      height: $height
+      address: $address
+      phone: $phone
+      allergies: $allergies
+      weight: $weight
+    ) {
       token
       user {
         _id
@@ -35,8 +57,18 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_MEDICATION = gql`
-  mutation addMedication($userId: ID!, $medicationName: String!, $dosage: String!, $timetaken: String!) {
-    medication(userId: $userId, medicationName: $medicationName, dosage: $dosage, timetaken: $timetaken) {
+  mutation addMedication(
+    $userId: ID!
+    $medicationName: String!
+    $dosage: String!
+    $timetaken: String!
+  ) {
+    medication(
+      userId: $userId
+      medicationName: $medicationName
+      dosage: $dosage
+      timetaken: $timetaken
+    ) {
       _id
       medicationName
       dosage
@@ -46,8 +78,26 @@ export const ADD_MEDICATION = gql`
 `;
 
 export const REMOVE_MEDICATION = gql`
-  mutation removeMedication($userId: ID!, $medicationName: String!, $dosage: String!, $frequency: String!, $pillCount: Int!, $startDate: String!, $endDate: String!, $taken: Boolean!) {
-    removeMedication(userId: $userId, medicationName: $medicationName, dosage: $dosage, frequency: $frequency, pillCount: $pillCount, startDate: $startDate, endDate: $endDate, taken: $taken) {
+  mutation removeMedication(
+    $userId: ID!
+    $medicationName: String!
+    $dosage: String!
+    $frequency: String!
+    $pillCount: Int!
+    $startDate: String!
+    $endDate: String!
+    $taken: Boolean!
+  ) {
+    removeMedication(
+      userId: $userId
+      medicationName: $medicationName
+      dosage: $dosage
+      frequency: $frequency
+      pillCount: $pillCount
+      startDate: $startDate
+      endDate: $endDate
+      taken: $taken
+    ) {
       _id
       medicationName
       dosage
@@ -61,8 +111,20 @@ export const REMOVE_MEDICATION = gql`
 `;
 
 export const ADD_NUTRITION = gql`
-  mutation addNutrition($userId: ID!, $food: String!, $drinks: String!, $calories: Int!, $date: String!) {
-    addNutrition(userId: $userId, food: $food, drinks: $drinks, calories: $calories, date: $date) {
+  mutation addNutrition(
+    $userId: ID!
+    $food: String!
+    $drinks: String!
+    $calories: Int!
+    $date: String!
+  ) {
+    addNutrition(
+      userId: $userId
+      food: $food
+      drinks: $drinks
+      calories: $calories
+      date: $date
+    ) {
       _id
       food
       drinks
@@ -73,8 +135,20 @@ export const ADD_NUTRITION = gql`
 `;
 
 export const REMOVE_NUTRITION = gql`
-  mutation removeNutrition($userId: ID!, $food: String!, $drinks: String!, $calories: Int!, $date: String!) {
-    removeNutrition(userId: $userId, food: $food, drinks: $drinks, calories: $calories, date: $date) {
+  mutation removeNutrition(
+    $userId: ID!
+    $food: String!
+    $drinks: String!
+    $calories: Int!
+    $date: String!
+  ) {
+    removeNutrition(
+      userId: $userId
+      food: $food
+      drinks: $drinks
+      calories: $calories
+      date: $date
+    ) {
       _id
       food
       drinks
@@ -85,8 +159,8 @@ export const REMOVE_NUTRITION = gql`
 `;
 
 export const ADD_WEIGHT = gql`
-  mutation addWeight($userId: ID!, $pounds: String! $date: String!) {
-    addWeight(userId: $userId, pounds: $pounds date: $date) {
+  mutation addWeight($userId: ID!, $pounds: String!, $date: String!) {
+    addWeight(userId: $userId, pounds: $pounds, date: $date) {
       _id
       pounds
       date
@@ -95,34 +169,74 @@ export const ADD_WEIGHT = gql`
 `;
 
 export const ADD_EMERGENCYCONTACT = gql`
-  mutation addEmergencyContact($userId: ID!, $firstName: String!, $lastName: String!, $address: String!, $phone: String!, $relationship: String!) {
-    addEmergencyContact(userId: $userId, firstName: $firstName, lastName: $lastName, address: $address, phone: $phone, relationship: $relationship) {
+  mutation addEmergencyContact(
+    $userId: ID!
+    $name: String!
+    $address: String!
+    $phone: String!
+    $relationship: String!
+    $notes: String!
+  ) {
+    addEmergencyContact(
+      userId: $userId
+      name: $name
+      address: $address
+      phone: $phone
+      relationship: $relationship
+      notes: $notes
+    ) {
       _id
-      firstName
-      lastName
+      name
       address
       phone
       relationship
+      notes
     }
   }
 `;
 
 export const REMOVE_EMERGENCYCONTACT = gql`
-  mutation removeEmergencyContact($userId: ID!, $firstName: String!, $lastName: String!, $address: String!, $phone: String!, $relationship: String!) {
-    removeEmergencyContact(userId: $userId, firstName: $firstName, lastName: $lastName, address: $address, phone: $phone, relationship: $relationship) {
+  mutation removeEmergencyContact(
+    $userId: ID!
+    $name: String!
+    $address: String!
+    $phone: String!
+    $relationship: String!
+    $notes: String!
+  ) {
+    removeEmergencyContact(
+      userId: $userId
+      name: $name
+      address: $address
+      phone: $phone
+      relationship: $relationship
+      notes: $notes
+    ) {
       _id
-      firstName
-      lastName
+      name
       address
       phone
       relationship
+      notes
     }
   }
 `;
 
 export const ADD_SYMPTOMS = gql`
-  mutation addSymptoms($userId: ID!, $description: String!, $intensity: String!, $date: String! $actionTaken: String!) {
-    addSymptoms(userId: $userId, description: $description, intensity: $intensity, date: $date actionTaken: $actionTaken) {
+  mutation addSymptoms(
+    $userId: ID!
+    $description: String!
+    $intensity: String!
+    $date: String!
+    $actionTaken: String!
+  ) {
+    addSymptoms(
+      userId: $userId
+      description: $description
+      intensity: $intensity
+      date: $date
+      actionTaken: $actionTaken
+    ) {
       _id
       startDate
       endDate
@@ -135,8 +249,20 @@ export const ADD_SYMPTOMS = gql`
 `;
 
 export const REMOVE_SYMPTOMS = gql`
-  mutation removeSymptoms($userId: ID!, $description: String!, $intensity: String!, $date: String!, $actionTaken: String!) {
-    removeSymptoms(userId: $userId, description: $description, intensity: $intensity, date: $date, actionTaken: $actionTaken) {
+  mutation removeSymptoms(
+    $userId: ID!
+    $description: String!
+    $intensity: String!
+    $date: String!
+    $actionTaken: String!
+  ) {
+    removeSymptoms(
+      userId: $userId
+      description: $description
+      intensity: $intensity
+      date: $date
+      actionTaken: $actionTaken
+    ) {
       _id
       startDate
       endDate
@@ -149,8 +275,8 @@ export const REMOVE_SYMPTOMS = gql`
 `;
 
 export const ADD_ALLERGIES = gql`
-  mutation addMedication($userId: ID!, $medicationName: String!, $dosage: String!, $frequency: String!, $pillCount: Int!, $startDate: String!, $endDate: String!, $taken: Boolean!) {
-    addSkill(userId: $userId, medicationName: $medicationName, dosage: $dosage, frequency: $frequency, pillCount: $pillCount, startDate: $startDate, endDate: $endDate, taken: $taken) {
+  mutation addAllergies($userId: ID!, $allergies: String!) {
+    addAllergies(userId: $userId, allergies: $allergies) {
       _id
       allergies
     }
@@ -158,8 +284,8 @@ export const ADD_ALLERGIES = gql`
 `;
 
 export const REMOVE_ALLERGIES = gql`
-  mutation removeMedication($userId: ID!, $medicationName: String!, $dosage: String!, $frequency: String!, $pillCount: Int!, $startDate: String!, $endDate: String!, $taken: Boolean!) {
-    removeMedication(userId: $userId, medicationName: $medicationName, dosage: $dosage, frequency: $frequency, pillCount: $pillCount, startDate: $startDate, endDate: $endDate, taken: $taken) {
+  mutation removeAllergies($userId: ID!, $allergies: String!) {
+    removeMedication(userId: $userId, allergies: $allergies) {
       _id
       allergies
     }
