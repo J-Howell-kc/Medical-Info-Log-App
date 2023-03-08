@@ -83,7 +83,7 @@ type Symptoms {
 
   type Mutation {
     addUser(email: String!, password: String!, firstName: String!, lastName: String!, DOB: String!, height: String!, address: String!, phone: String!, allergies: String!): Auth
-    addWeight(pounds: Int!, createdBy: String!): Weight
+    addWeight(pounds: Int!): Weight
     removeWeight(weightId: ID!): Weight
     addMedication(medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
     removeMedication(medicationId: ID!): Medication
