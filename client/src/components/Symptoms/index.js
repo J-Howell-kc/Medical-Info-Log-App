@@ -1,23 +1,14 @@
-import { useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
-import {
-  Form,
-  Input,
-  Button,
-
-  DatePicker,
-  InputNumber,
-//   TreeSelect,
-//   Switch,
-//   Checkbox,
-  Upload,
-} from 'antd';
+import { useState } from "react";
+import { PlusOutlined } from "@ant-design/icons";
+import { Form, Input, Button, DatePicker, InputNumber, Upload } from "antd";
+import { useMutation } from "@apollo/client";
+import { ADD_SYMPTOMS } from "../../utils/mutations";
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
- const Symptoms = () => {
-//   const [componentDisabled, setComponentDisabled] = useState(true);
+const Symptoms = () => {
+  //   const [componentDisabled, setComponentDisabled] = useState(true);
 
   return (
     <>
@@ -32,7 +23,7 @@ const { TextArea } = Input;
         wrapperCol={{ span: 14 }}
         layout="horizontal"
         // disabled={componentDisabled}
-        style={{ maxWidth: 600, marginTop: "50px"}}
+        style={{ maxWidth: 600, marginTop: "50px" }}
       >
         {/* <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
           <Checkbox>Checkbox</Checkbox>
@@ -46,7 +37,7 @@ const { TextArea } = Input;
         <Form.Item label="Symptom">
           <Input />
         </Form.Item>
-       {/* <Form.Item label="Select">
+        {/* <Form.Item label="Select">
           <Select> 
             <Select.Option value="demo">Demo</Select.Option>
           </Select>
@@ -80,20 +71,24 @@ const { TextArea } = Input;
         <Form.Item label="Date Start/Stop">
           <RangePicker />
         </Form.Item>
-        
+
         <Form.Item label="Description">
           <TextArea rows={8} />
         </Form.Item>
         <Form.Item label="Intensity (1-10)">
           <InputNumber />
-         </Form.Item>
+        </Form.Item>
         <Form.Item label="Action taken:">
           <TextArea rows={8} />
         </Form.Item>
         {/* <Form.Item label="Switch" valuePropName="checked">
           <Switch />
         </Form.Item> */}
-        <Form.Item label="Photo" style = {{ marginTop: "30px" }} valuePropName="fileList">
+        <Form.Item
+          label="Photo"
+          style={{ marginTop: "30px" }}
+          valuePropName="fileList"
+        >
           <Upload action="/upload.do" listType="picture-card">
             <div>
               <PlusOutlined />
@@ -102,11 +97,17 @@ const { TextArea } = Input;
           </Upload>
         </Form.Item>
         <Form.Item label="Submit">
-          <Button type="primary" htmlType="submit" style = {{ marginTop: "12px"}}>Submit</Button>
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={{ marginTop: "12px" }}
+          >
+            Submit
+          </Button>
         </Form.Item>
       </Form>
     </>
   );
-        };
+};
 
 export default Symptoms;

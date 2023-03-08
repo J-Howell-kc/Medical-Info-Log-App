@@ -1,22 +1,13 @@
-import { useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
-import {
-  Form,
-  Input,
-  Button,
-
- 
-  DatePicker,
-  
-  TreeSelect,
-  
-} from 'antd';
-
+import { useState } from "react";
+import { PlusOutlined } from "@ant-design/icons";
+import { Form, Input, Button, DatePicker, TreeSelect } from "antd";
+import { useMutation } from "@apollo/client";
+import { ADD_EMERGENCYCONTACT } from "../../utils/mutations";
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
- const Emergencycontacts = () => {
-//   const [componentDisabled, setComponentDisabled] = useState(true);
+const Emergencycontacts = () => {
+  //   const [componentDisabled, setComponentDisabled] = useState(true);
 
   return (
     <>
@@ -27,11 +18,11 @@ const { TextArea } = Input;
         Form disabled
       </Checkbox> */}
       <Form
-        labelCol={{ span: 8}}
+        labelCol={{ span: 8 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
         // disabled={componentDisabled}
-        style={{ maxWidth: 600 , marginTop: "50px"}}
+        style={{ maxWidth: 600, marginTop: "50px" }}
       >
         {/* <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
           <Checkbox>Checkbox</Checkbox>
@@ -53,12 +44,13 @@ const { TextArea } = Input;
         <Form.Item label="Relationship">
           <TreeSelect
             treeData={[
-              { title: 'Spouse/Partner', value: 'spouse'},
-            { title: 'Parent', value: 'parent'},
-        { title: 'Sibling', value: 'sibling'},
-    { title:"Child", value: 'child'},
-{title:'Other Family Member', value: 'otherfamily'},
-{title:'Other', value: 'other'}] }
+              { title: "Spouse/Partner", value: "spouse" },
+              { title: "Parent", value: "parent" },
+              { title: "Sibling", value: "sibling" },
+              { title: "Child", value: "child" },
+              { title: "Other Family Member", value: "otherfamily" },
+              { title: "Other", value: "other" },
+            ]}
           />
         </Form.Item>
         {/* <Form.Item label="Cascader">
@@ -107,11 +99,17 @@ const { TextArea } = Input;
           </Upload>
         </Form.Item> */}
         <Form.Item label="Submit">
-          <Button type="primary" htmlType="submit" style = {{ marginTop: "12px"}}>Submit</Button>
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={{ marginTop: "12px" }}
+          >
+            Submit
+          </Button>
         </Form.Item>
       </Form>
     </>
   );
-        };
+};
 
 export default Emergencycontacts;
