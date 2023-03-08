@@ -9,15 +9,14 @@ import Allergies from "./components/Allergies";
 import Medications from "./components/Medications";
 import Nutrition from "./components/Nutrition";
 import { useState } from "react";
-import './app.css'
+import "./app.css";
 
 import { Layout, Space } from "antd";
 const { Header, Footer, Content } = Layout;
 const client = new ApolloClient({
-  uri: '/graphql',
+  uri: "/graphql",
   cache: new InMemoryCache(),
 });
-
 
 const headerStyle = {
   textAlign: "center",
@@ -38,7 +37,6 @@ const footerStyle = {
   backgroundColor: "#7dbcea",
 };
 const App = () => {
-  
   const [currentTab, setTab] = useState("symptoms");
 
   const renderTab = () => {
@@ -49,17 +47,17 @@ const App = () => {
       case "medications":
         return <Medications />;
 
-     case "allergies":
-       return <Allergies />;
+      case "allergies":
+        return <Allergies />;
 
-     case "nutrition":
-         return <Nutrition />;
+      case "nutrition":
+        return <Nutrition />;
 
-       case "symptoms":
+      case "symptoms":
         return <Symptoms />;
 
-         case "emergencycontacts":
-         return <Emergencycontacts />;
+      case "emergencycontacts":
+        return <Emergencycontacts />;
 
       default:
         return <Biovitals />;
@@ -67,31 +65,29 @@ const App = () => {
   };
   return (
     <ApolloProvider client={client}>
-  <Space
-    direction="vertical"
-    style={{
-      width: "100%",
-    }}
-    
-  >
-    <Layout>
-      
-        <Sidebar />
-    
-      <Layout>
-        <Header style={headerStyle}>
-          <Selector setTab = {setTab} />
-          </Header>
-        <Content style={contentStyle}>
-          {/* <Biovitals /> */}
-          {renderTab()}
-        </Content>
-        <Footer style={footerStyle}>HAMS by Group 2 2023</Footer>
-      </Layout>
-    </Layout>
-  </Space>
-  </ApolloProvider>
-);
+      <Space
+        direction="vertical"
+        style={{
+          width: "100%",
+        }}
+      >
+        <Layout>
+          <Sidebar />
+
+          <Layout>
+            <Header style={headerStyle}>
+              <Selector setTab={setTab} />
+            </Header>
+            <Content style={contentStyle}>
+              {/* <Biovitals /> */}
+              {renderTab()}
+            </Content>
+            <Footer style={footerStyle}>HAMS by Group 2 2023</Footer>
+          </Layout>
+        </Layout>
+      </Space>
+    </ApolloProvider>
+  );
 };
 export default App;
 
