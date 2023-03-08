@@ -18,54 +18,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
-  symptoms: async () => {
-    return Symptoms.find();
-  },
-
-  symptom : async (parent, { symptomId }) => {
-    return Symptoms.findOne({ _id: symptomId });
-  },
-
-  nutritions: async () => {
-    return Nutrition.find();
-  },
-
-  nutrition : async (parent, { nutritionId }) => {
-    return Nutrition.findOne({ _id: userId });
-  },
-
-  medications: async () => {
-    return Medication.find();
-  },
-
-  medication : async (parent, { medicationId }) => {
-    return Medication.findOne({ _id: medicationId });
-  },
-
-  emergencyContacts: async () => {
-    return EmergencyContact.find();
-  },
-
-  emergencyContact : async (parent, { emergencyContactId }) => {
-    return EmergencyContact.findOne({ _id: emergencyContactId });
-  },
-
-  weights: async () => {
-    return Weight.find();
-  },
-
-  weight : async (parent, { weightId }) => {
-    return Weight.findOne({ _id: weightId });
-  },
-
-  bios: async () => {
-    return Bio.find();  
-  },
-
-  bio : async (parent, { bioId }) => {
-    return Bio.findOne({ _id: bioId });
-  },
 },
 
   Mutation: {
