@@ -1,11 +1,11 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Symptoms, Nutrition, Medication, EmergencyContact, Weight } = require('../models');
+const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find();
+      return User.find().populate('weight').populate('medication').populate('nutrition').populate('emergencyContact').populate('symptoms');
     },
 
     user : async (parent, { userId }) => {
@@ -18,47 +18,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
-  symptoms: async () => {
-    return Symptoms.find();
-  },
-
-  symptom : async (parent, { symptomId }) => {
-    return Symptoms.findOne({ _id: symptomId });
-  },
-
-  nutritions: async () => {
-    return Nutrition.find();
-  },
-
-  nutrition : async (parent, { nutritionId }) => {
-    return Nutrition.findOne({ _id: userId });
-  },
-
-  medications: async () => {
-    return Medication.find();
-  },
-
-  medication : async (parent, { medicationId }) => {
-    return Medication.findOne({ _id: medicationId });
-  },
-
-  emergencyContacts: async () => {
-    return EmergencyContact.find();
-  },
-
-  emergencyContact : async (parent, { emergencyContactId }) => {
-    return EmergencyContact.findOne({ _id: emergencyContactId });
-  },
-
-  weights: async () => {
-    return Weight.find();
-  },
-
-  weight : async (parent, { weightId }) => {
-    return Weight.findOne({ _id: weightId });
-  },
-  },
+},
 
   Mutation: {
     addUser: async (parent, args) => {
@@ -66,65 +26,6 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    },
-
-    addSymptom: async (parent, args) => {
-      const symptom = await Symptoms.create(args);
-      const token = signToken(symptom);
-      
-      return { token, symptom };
-    },
-
-    addNutrition: async (parent, args) => {
-      const nutrition = await Nutrition.create(args);
-      const token = signToken(nutrition);
-
-      return { token, nutrition };
-    },
-
-    addMedication: async (parent, args) => {
-      const medication = await Medication.create(args);
-      const token = signToken(medication);
-
-      return { token, medication };
-    },
-
-    addEmergencyContact: async (parent, args) => {
-      const emergencyContact = await EmergencyContact.create(args);
-      const token = signToken(emergencyContact);
-
-      return { token, emergencyContact };
-    },
-
-    addWeight: async (parent, args) => {
-      const weight = await Weight.create(args);
-      const token = signToken(weight);
-
-      return { token, weight };
-    },
-
-    removeUser: async (parent, { userId }) => {
-      return User.findOneAndDelete({ _id: userId });
-    },
-
-    removeSymptom: async (parent, { symptomId }) => {
-      return Symptoms.findOneAndDelete({ _id: symptomId });
-    },
-
-    removeNutrition: async (parent, { nutritionId }) => {
-      return Nutrition.findOneAndDelete({ _id: nutritionId });
-    },
-
-    removeMedication: async (parent, { medicationId }) => {
-      return Medication.findOneAndDelete({ _id: medicationId });
-    },
-
-    removeEmergencyContact: async (parent, { emergencyContactId }) => {
-      return EmergencyContact.findOneAndDelete({ _id: emergencyContactId });
-    },
-
-    removeWeight: async (parent, { weightId }) => {
-      return Weight.findOneAndDelete({ _id: weightId });
     },
     
     login: async (parent, { email, password }) => {
@@ -143,7 +44,221 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    
+    addSymptom: async (parent, { name, severity, date }, context) => {
+      if (context.user) {
+
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { symptoms: [{name, severity, date, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addNutrition: async (parent, { name, calories, fat, carbs, protein }, context) => {
+      if (context.user) {
+
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { nutrition: [{name, calories, fat, carbs, protein, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addMedication: async (parent, { name, dosage, frequency, startDate, endDate }, context) => {
+      if (context.user) {
+
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { medication: [{name, dosage, frequency, startDate, endDate, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addEmergencyContact: async (parent, { firstName, lastName, phone, address, relationship }, context) => {
+      if (context.user) {
+
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { emergencyContact: [{firstName, lastName, phone, address, relationship, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addWeight: async (parent, { pounds }, context) => {
+      if (context.user) {
+
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { weight: [{pounds, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addBio: async (parent, { firstName, lastName, DOB, height, gender, address, phone }, context) => {
+      if (context.user) {
+
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { bio: [{firstName, lastName, DOB, height, gender, address, phone, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    addAllergies: async (parent, { name, severity }, context) => {
+      if (context.user) {
+
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { allergies: [{name, severity, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    removeUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId });
+    },
+
+    removeSymptom: async (parent, { symptomId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              symptoms: {
+                _id: symptomId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    removeNutrition: async (parent, { nutritionId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              nutrition: {
+                _id: nutritionId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    removeMedication: async (parent, { medicationId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              medication: {
+                _id: medicationId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    removeEmergencyContact: async (parent, { emergencyContactId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              emergencyContact: {
+                _id: emergencyContactId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    
+    removeWeight: async (parent, { weightId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              weight: {
+                _id: weightId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    removeBio: async (parent, { bioId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              bio: {
+                _id: bioId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
   },
+
+    removeAllergies: async (parent, { allergiesId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              allergies: {
+                _id: allergiesId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    }
+},
 };
 
 module.exports = resolvers;

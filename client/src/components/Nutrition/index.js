@@ -1,117 +1,52 @@
 import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Form, Input, Button, DatePicker } from "antd";
+import { useMutation } from "@apollo/client";
+import { ADD_NUTRITION } from "../../utils/mutations";
 
-const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
 const Nutrition = () => {
-  //    const [componentDisabled, setComponentDisabled] = useState(true);
-
   return (
     <>
-      {/* <Checkbox
-        checked={componentDisabled}
-        onChange={(e) => setComponentDisabled(e.target.checked)}
-      >
-        Form disabled
-      </Checkbox> */}
       <Form
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        // disabled={componentDisabled}
         style={{ maxWidth: 600, marginTop: "50px" }}
       >
-        {/* <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
-          <Checkbox>Checkbox </Checkbox>
-        </Form.Item> */}
-        {/* <Form.Item label="Radio">
-          <Radio.Group>
-            <Radio value="apple"> Apple </Radio>
-            <Radio value="pear"> Pear </Radio>
-          </Radio.Group>
-        </Form.Item> */}
-
-        <Form.Item label="DatePicker">
+        <Form.Item label="Date">
           <DatePicker />
         </Form.Item>
-        {/* <Form.Item label="Input">
-          <Input />
-        </Form.Item> */}
-        {/* <Form.Item label="Select">
-          <Select>
-            <Select.Option value="demo">Demo</Select.Option>
-          </Select>
-        </Form.Item>
-        <Form.Item label="TreeSelect">
-          <TreeSelect
-            treeData={[
-              { title: 'Light', value: 'light', children: [{ title: 'Bamboo', value: 'bamboo' }] },
-            ]}
-          />
-        </Form.Item> */}
-        {/* <Form.Item label="Cascader">
-          <Cascader
-            options={[
-              {
-                value: 'zhejiang',
-                label: 'Zhejiang',
-                children: [
-                  {
-                    value: 'hangzhou',
-                    label: 'Hangzhou',
-                  },
-                ],
-              },
-            ]}
-          />
-        </Form.Item> */}
 
-        {/* <Form.Item label="RangePicker">
-          <RangePicker />
-        </Form.Item>
-        <Form.Item label="InputNumber">
-          <InputNumber />
-        </Form.Item> */}
-        <Form.Item label="Meal 1">
-          <TextArea rows={4} />
+        <Form.Item label="Meal 1" labelWrap>
+          <TextArea rows={4} placeholder="Enter breakfast information here."/>
         </Form.Item>
         <Form.Item label="Time">
-          <Input />
+          <Input placeholder =" Enter time of Breakfast here."/>
         </Form.Item>
-        <Form.Item label="Meal 2">
-          <TextArea rows={4} />
-        </Form.Item>
-        <Form.Item label="Time">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Meal 3">
-          <TextArea rows={4} />
+        <Form.Item label="Meal 2" labelWrap>
+          <TextArea rows={4} placeholder = "Enter lunch details here."/>
         </Form.Item>
         <Form.Item label="Time">
-          <Input />
+          <Input placeholder = "Enter time of lunch here."/>
         </Form.Item>
-        <Form.Item label="Other">
-          <TextArea rows={4} />
+        <Form.Item label="Meal 3" labelWrap>
+          <TextArea rows={4} placeholder = "Enter details of dinner here."/>
         </Form.Item>
         <Form.Item label="Time">
-          <Input />
+          <Input placeholder = "Enter time of dinner here." />
         </Form.Item>
-        <Form.Item label="Drinks">
-          <TextArea rows={4} />
+        <Form.Item label="Snacks/Other" labelWrap>
+          <TextArea rows={4} placeholder = "Enter snacks and other foods consumed today here."/>
         </Form.Item>
-        {/* <Form.Item label="Switch" valuePropName="checked">
-          <Switch />
+        <Form.Item label="Time(s)" labelWrap>
+          <Input placeholder = "Enter time(s) of snack(s) here."/>
         </Form.Item>
-        <Form.Item label="Upload" valuePropName="fileList">
-          <Upload action="/upload.do" listType="picture-card">
-            <div>
-              <PlusOutlined />
-              <div style={{ marginTop: 8 }}>Upload</div>
-            </div>
-          </Upload>
-        </Form.Item> */}
+        <Form.Item label="Drinks" labelWrap>
+          <TextArea rows={4} placeholder = "Enter drinks information here. Remember to drink plenty of water!"/>
+        </Form.Item>
+
         <Form.Item label="Submit">
           <Button
             type="primary"

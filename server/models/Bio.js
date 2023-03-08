@@ -1,40 +1,52 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const emergencyContactSchema = new Schema({
-  firstName: {
+const bioSchema = new Schema({
+
+firstName: {
     type: String,
+    required: true,
     trim: true,
-  },
-  lastName: {
+},
+lastName: {
     type: String, 
+    required: true,
     trim: true,
-  },
-  address:{
+},
+DOB: {
     type: String,
     trim: true,
-  },
-  phone: {
+},
+height: {
     type: String,
+    trim: true,
+},
+gender: {
+    type: String,
+    trim: true,
+},
+address:{
+    type: String,
+    trim: true,
+},
+phone: {
+    type: String,
+    unique: true,
     match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, 'Must be a valid phone number']
-  },
-  relationship: {
-    type: String,
-    trim: true,
-  },
-  user: {
+},
+user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-  },
-  timeTaken: {
+},
+timeTaken: {
     type: Date,
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  createdBy: {
+createdBy: {
     type: String,
     required: true,
   },
-});
+},);
 
-module.exports = emergencyContactSchema;
+module.exports = bioSchema;

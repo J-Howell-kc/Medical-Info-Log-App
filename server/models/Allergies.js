@@ -1,10 +1,10 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const weightSchema = new Schema({
+const allergySchema = new Schema({
 
-pounds: {
-    type: Number,
+allergies: {
+    type: String,
     trim: true,
   },
 user: {
@@ -22,4 +22,4 @@ createdBy: {
   },
 });
 
-module.exports = weightSchema;
+module.exports = allergySchema;

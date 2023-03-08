@@ -5,25 +5,39 @@ const typeDefs = gql`
     _id: ID
     email: String
     password: String
-    firstName: String
-    lastName: String
-    DOB: String
-    height: String
-    address: String
-    phone: String
-    allergies: String
+    bio: [Bio]
     weight: [Weight]
     medication: [Medication]
     nutrition: [Nutrition]
     emergencyContact: [EmergencyContact]
     symptoms: [Symptoms]
+    allergies: [Allergies]
   }
 
+  type Bio {
+    _id: ID
+    firstName: String
+    lastName: String
+    address: String
+    phone: String
+    DOB: String
+    height: String
+    gender: String
+    allergies: String
+  }
+  
   type Weight {
     _id: ID
-    pounds: String
+    pounds: Int
     timeTaken: String
-    user: [User]
+    createdBy: String
+  }
+
+  type Allergies {
+    _id: ID
+    Allergies: String
+    timeTaken: String
+    createdBy: String
   }
   
   type Medication {
@@ -31,7 +45,7 @@ const typeDefs = gql`
     medicationName: String
     dosage: String
     timeTaken: String
-    user: [User]
+    createdBy: String
   }
 
 type Nutrition {
@@ -40,7 +54,7 @@ type Nutrition {
     drinks: String
     calories: Int
     date: String
-    user: [User]
+    createdBy: String
   }
 
 type EmergencyContact {
@@ -50,14 +64,14 @@ type EmergencyContact {
     address: String
     phone: String
     relationship: String
-    user: [User]
+    createdBy: String
   }
 
 type Symptoms {
     _id: ID
     symptom: String
     date: String
-    user: [User]
+    createdBy: String
   }
 
   type Auth {
@@ -68,23 +82,17 @@ type Symptoms {
   type Query {
     users: [User]!
     user(userId: ID!): User
-    weights: [Weight]!
-    weight(weightId: ID!): Weight
-    medications: [Medication]!
-    medication(medicationId: ID!): Medication
-    nutritions: [Nutrition]!
-    nutrition(nutritionId: ID!): Nutrition
-    emergencyContacts: [EmergencyContact]!
-    emergencyContact(emergencyContactId: ID!): EmergencyContact
-    symptoms: [Symptoms]!
-    symptom(symptomId: ID!): Symptoms
     me: User
   }
 
   type Mutation {
     addUser(email: String!, password: String!): Auth
-    addWeight(pounds: String!, timeTaken: String!): Weight
+    addWeight(pounds: Int!): Weight
     removeWeight(weightId: ID!): Weight
+    addAllergies(allergies: String!): Allergies
+    removeAllergies(allergiesId: ID!): Allergies    
+    addBio(firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!): Bio
+    removeBio(bioId: ID!): Bio
     addMedication(medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
     removeMedication(medicationId: ID!): Medication
     addNutrition(food: String!, drinks: String!, calories: Int!, date: String!): Nutrition

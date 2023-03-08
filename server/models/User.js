@@ -1,5 +1,12 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const weightSchema = require('./Weight');
+const medicationSchema = require('./Medication');
+const nutritionSchema = require('./Nutrition');
+const emergencyContactSchema = require('./EmergencyContact');
+const symptomsSchema = require('./Symptoms');
+const bioSchema = require('./Bio');
+const allergiesSchema = require('./Allergies');
 
 const userSchema = new Schema({
   email: {
@@ -13,59 +20,21 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  firstName: {
-    type: String,
-    trim: true,
-  },
-  lastName: {
-    type: String, 
-    trim: true,
-  },
-  DOB: {
-    type: String,
-    trim: true,
-  },
-  height: {
-    type: String,
-    trim: true,
-  },
-  gender: {
-    type: String,
-    trim: true,
-  },
-  address:{
-    type: String,
-    trim: true,
-  },
-  phone: {
-    type: String,
-    match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, 'Must be a valid phone number']
-  },
-  allergies: {
-    type: String,
-    trim: true,
-  },
-  weight: {
-    type: Schema.Types.ObjectId,
-    ref: 'Weight',
-  },
-  medication: {
-    // not sure is the type is correct for the references //
-    type: Schema.Types.ObjectId,
-    ref: 'Medication',
-  },
-  nutrition: {
-    type: Schema.Types.ObjectId,
-    ref: 'Nutrition',
-  },
-  emergencyContact: {
-    type: Schema.Types.ObjectId,
-    ref: 'EmergencyContact'
-  },
-  symptoms: {
-    type: Schema.Types.ObjectId,
-    ref: 'Symptoms'
-  },
+
+  allergies: [allergiesSchema],
+  
+  weight:[weightSchema],
+
+  bio: [bioSchema],
+
+  medication: [medicationSchema],
+
+  nutrition: [nutritionSchema],
+
+  emergencyContact: [emergencyContactSchema],
+
+  symptoms: [symptomsSchema],
+
 });
 
 // set up pre-save middleware to create password

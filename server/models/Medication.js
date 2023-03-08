@@ -10,17 +10,23 @@ const medicationSchema = new Schema ({
         type: String,
         trim: true,
     },
+    action: {
+        type: Boolean,
+        default: false,
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
     timeTaken: {
         type: Date,
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp),
       },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
+    createdBy: {
+        type: String,
+        required: true,
+      },
 });
 
-const Medication = model('Medication', medicationSchema);
-
-module.exports = Medication;
+module.exports = medicationSchema;
