@@ -22,5 +22,4 @@ createdBy: {
   },
 });
 
-
 module.exports = weightSchema;
