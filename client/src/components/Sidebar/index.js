@@ -1,5 +1,7 @@
 import { Layout, Calendar } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
+import React, { useState } from "react";
+import Signup from "../../pages/Signup";
 const { Sider } = Layout;
 
 const siderStyle = {
@@ -30,8 +32,10 @@ const Sidebar = () => {
   //   borderRadius: token.borderRadiusLG,
   //   backgroundColor: '#7dbcea',
   // };
+  const [currentForm, setCurrentForm] = useState("login");
   return (
-    
+    <>
+    {currentForm === "login" && (
       <Sider id='sidercontainer' style={siderStyle} width={300}>
       <Form
         name="basic"
@@ -97,11 +101,17 @@ const Sidebar = () => {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
+
         </Form.Item>
       </Form>
+      <Button type="primary" onClick={() => setCurrentForm ("signup")}>
+            Signup
+          </Button>
       <Calendar style={{ width: '100%'}} fullscreen={false} onChange={onClick} />
       </Sider>
-  
+    )}
+    {currentForm === "signup" && (<Signup setCurrentForm={setCurrentForm} />)}
+    </>
   );
 };
 export default Sidebar;

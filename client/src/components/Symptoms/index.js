@@ -8,6 +8,21 @@ const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
 const Symptoms = () => {
+
+  const [form] = Form.useForm();
+const [addSymptoms] = useMutation(ADD_SYMPTOMS);
+
+const onFinish = (values) => {
+addSymptoms({
+variables: {
+...values,
+severity: parseInt(values.severity),
+date: values.date.format("YYYY-MM-DD"),
+},
+});
+form.resetFields();
+};
+
   return (
     <>
       <Form

@@ -14,6 +14,10 @@ const medicationSchema = new Schema ({
         type: Boolean,
         default: false,
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
     timeTaken: {
         type: Date,
         default: Date.now,
@@ -22,7 +26,7 @@ const medicationSchema = new Schema ({
     createdBy: {
         type: String,
         required: true,
-    },
+      },
 });
 
 module.exports = medicationSchema;
