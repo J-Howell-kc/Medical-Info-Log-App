@@ -8,6 +8,21 @@ const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
 const Symptoms = () => {
+
+  const [form] = Form.useForm();
+const [addSymptoms] = useMutation(ADD_SYMPTOMS);
+
+const onFinish = (values) => {
+addSymptoms({
+variables: {
+...values,
+severity: parseInt(values.severity),
+date: values.date.format("YYYY-MM-DD"),
+},
+});
+form.resetFields();
+};
+
   return (
     <>
       <Form
@@ -31,7 +46,7 @@ const Symptoms = () => {
           <TextArea rows={8} placeholder = "Describe your symptom here."/>
         </Form.Item>
         <Form.Item label="Intensity (1-10)">
-          <InputNumber />
+          <InputNumber min={1} max={10} />
         </Form.Item>
         <Form.Item label="Action taken:" labelWrap>
           <TextArea rows={8} placeholder = "Enter actions taken here."/>
