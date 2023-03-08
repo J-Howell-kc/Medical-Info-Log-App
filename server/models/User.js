@@ -6,6 +6,7 @@ const nutritionSchema = require('./Nutrition');
 const emergencyContactSchema = require('./EmergencyContact');
 const symptomsSchema = require('./Symptoms');
 const bioSchema = require('./Bio');
+const allergiesSchema = require('./Allergies');
 
 const userSchema = new Schema({
   email: {
@@ -20,6 +21,8 @@ const userSchema = new Schema({
     minlength: 5,
   },
 
+  allergies: [allergiesSchema],
+  
   weight:[weightSchema],
 
   bio: [bioSchema],
