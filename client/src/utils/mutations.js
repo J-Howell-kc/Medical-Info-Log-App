@@ -148,3 +148,20 @@ export const REMOVE_SYMPTOMS = gql`
   }
 `;
 
+export const ADD_ALLERGIES = gql`
+  mutation addMedication($userId: ID!, $medicationName: String!, $dosage: String!, $frequency: String!, $pillCount: Int!, $startDate: String!, $endDate: String!, $taken: Boolean!) {
+    addSkill(userId: $userId, medicationName: $medicationName, dosage: $dosage, frequency: $frequency, pillCount: $pillCount, startDate: $startDate, endDate: $endDate, taken: $taken) {
+      _id
+      allergies
+    }
+  }
+`;
+
+export const REMOVE_ALLERGIES = gql`
+  mutation removeMedication($userId: ID!, $medicationName: String!, $dosage: String!, $frequency: String!, $pillCount: Int!, $startDate: String!, $endDate: String!, $taken: Boolean!) {
+    removeMedication(userId: $userId, medicationName: $medicationName, dosage: $dosage, frequency: $frequency, pillCount: $pillCount, startDate: $startDate, endDate: $endDate, taken: $taken) {
+      _id
+      allergies
+    }
+  }
+`;
