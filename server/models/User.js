@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const weightSchema = require('./Weight');
 
 const userSchema = new Schema({
   email: {
@@ -48,10 +49,8 @@ const userSchema = new Schema({
     type: String,
     trim: true,
   },
-  weight: {
-    type: Schema.Types.ObjectId,
-    ref: 'Weight',
-  },
+  weight:[weightSchema],
+ 
   medication: {
     // not sure is the type is correct for the references //
     type: Schema.Types.ObjectId,

@@ -5,7 +5,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find();
+      return User.find().populate('weight').populate('medication').populate('nutrition').populate('emergencyContact').populate('symptoms');
     },
 
     user : async (parent, { userId }) => {
@@ -67,40 +67,62 @@ const resolvers = {
 
       return { token, user };
     },
+    
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
-    addSymptom: async (parent, args) => {
-      const symptom = await Symptoms.create(args);
-      const token = signToken(symptom);
+      if (!user) {
+        throw new AuthenticationError('No user with this username found!');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password!');
+      }
+
+      const token = signToken(user);
+      return { token, user };
+    },
+    
+    // addSymptom: async (parent, args) => {
+    //   const symptom = await Symptoms.create(args);
+    //   const token = signToken(symptom);
       
-      return { token, symptom };
-    },
+    //   return { token, symptom };
+    // },
 
-    addNutrition: async (parent, args) => {
-      const nutrition = await Nutrition.create(args);
-      const token = signToken(nutrition);
+    // addNutrition: async (parent, args) => {
+    //   const nutrition = await Nutrition.create(args);
+    //   const token = signToken(nutrition);
 
-      return { token, nutrition };
-    },
+    //   return { token, nutrition };
+    // },
 
-    addMedication: async (parent, args) => {
-      const medication = await Medication.create(args);
-      const token = signToken(medication);
+    // addMedication: async (parent, args) => {
+    //   const medication = await Medication.create(args);
+    //   const token = signToken(medication);
 
-      return { token, medication };
-    },
+    //   return { token, medication };
+    // },
 
-    addEmergencyContact: async (parent, args) => {
-      const emergencyContact = await EmergencyContact.create(args);
-      const token = signToken(emergencyContact);
+    // addEmergencyContact: async (parent, args) => {
+    //   const emergencyContact = await EmergencyContact.create(args);
+    //   const token = signToken(emergencyContact);
 
-      return { token, emergencyContact };
-    },
+    //   return { token, emergencyContact };
+    // },
 
-    addWeight: async (parent, args) => {
-      const weight = await Weight.create(args);
-      const token = signToken(weight);
+    addWeight: async (parent, { pounds }, context) => {
+      if (context.user) {
 
-      return { token, weight };
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { weight: [{pounds, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     removeUser: async (parent, { userId }) => {
@@ -125,23 +147,6 @@ const resolvers = {
 
     removeWeight: async (parent, { weightId }) => {
       return Weight.findOneAndDelete({ _id: weightId });
-    },
-    
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-
-      if (!user) {
-        throw new AuthenticationError('No user with this username found!');
-      }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError('Incorrect password!');
-      }
-
-      const token = signToken(user);
-      return { token, user };
     },
   },
 };
