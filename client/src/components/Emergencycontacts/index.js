@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
-import { Form, Input, Button, DatePicker, TreeSelect } from "antd";
+import { Form, Input, Button, TreeSelect } from "antd";
 import { useMutation } from "@apollo/client";
 import { ADD_EMERGENCYCONTACT } from "../../utils/mutations";
-const { RangePicker } = DatePicker;
+
 const { TextArea } = Input;
 
 const Emergencycontacts = () => {
@@ -15,8 +15,8 @@ const Emergencycontacts = () => {
         layout="horizontal"
         style={{ maxWidth: 600, marginTop: "50px" }}
       >
-        <Form.Item label="Name"  >
-          <Input placeholder= "Contact name" />
+        <Form.Item label="Name">
+          <Input placeholder="Contact name" />
         </Form.Item>
 
         <Form.Item label="Relationship">
@@ -32,17 +32,17 @@ const Emergencycontacts = () => {
           />
         </Form.Item>
 
-        <Form.Item label="Phone" >
-          <Input placeholder ="Phone"/>
+        <Form.Item label="Phone">
+          <Input placeholder="Phone" />
         </Form.Item>
         <Form.Item label="Email">
-          <Input placeholder="Email"/>
+          <Input placeholder="Email" />
         </Form.Item>
         <Form.Item label="Address" labelWrap>
-          <TextArea rows={4} placeholder="Address"/>
+          <TextArea rows={4} placeholder="Address" />
         </Form.Item>
         <Form.Item label="Notes" labelWrap>
-          <TextArea rows={4} placeholder = "Notes"/>
+          <TextArea rows={4} placeholder="Notes" />
         </Form.Item>
         <Form.Item label="Submit">
           <Button
@@ -75,6 +75,5 @@ const Emergencycontacts = () => {
 //       console.error(err);
 //     }
 //   };
-
 
 export default Emergencycontacts;
