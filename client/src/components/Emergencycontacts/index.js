@@ -53,9 +53,28 @@ const Emergencycontacts = () => {
             Submit
           </Button>
         </Form.Item>
+        onSubmit={handleFormSubmit}
+        onChange={(event) => setEmergencycontacts(event.target.value)}
       </Form>
     </>
   );
 };
+
+const [addEmergencycontacts, { error }] = useMutation(ADD_EMERGENCYCONTACT);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      // Execute mutation and pass in defined parameter data as variables
+      const { data } = await addEmergencycontacts({
+        variables: { name },
+      });
+
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
 
 export default Emergencycontacts;
