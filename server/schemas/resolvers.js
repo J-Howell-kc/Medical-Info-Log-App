@@ -93,26 +93,41 @@ const resolvers = {
       return { token, user };
     },
     
-    // addSymptom: async (parent, args) => {
-    //   const symptom = await Symptoms.create(args);
-    //   const token = signToken(symptom);
-      
-    //   return { token, symptom };
-    // },
+    addSymptom: async (parent, { name, severity, date }, context) => {
+      if (context.user) {
 
-    // addNutrition: async (parent, args) => {
-    //   const nutrition = await Nutrition.create(args);
-    //   const token = signToken(nutrition);
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { symptoms: [{name, severity, date, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
 
-    //   return { token, nutrition };
-    // },
+    addNutrition: async (parent, { name, calories, fat, carbs, protein }, context) => {
+      if (context.user) {
 
-    // addMedication: async (parent, args) => {
-    //   const medication = await Medication.create(args);
-    //   const token = signToken(medication);
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { nutrition: [{name, calories, fat, carbs, protein, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
 
-    //   return { token, medication };
-    // },
+    addMedication: async (parent, { name, dosage, frequency, startDate, endDate }, context) => {
+      if (context.user) {
+
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { medication: [{name, dosage, frequency, startDate, endDate, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
 
     addEmergencyContact: async (parent, { firstName, lastName, phone, address, relationship }, context) => {
       if (context.user) {
