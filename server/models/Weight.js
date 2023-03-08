@@ -16,9 +16,11 @@ timeTaken: {
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
+createdBy: {
+    type: String,
+    required: true,
+  },
 });
 
 
-const Weight = model('Weight', weightSchema);
-
-module.exports = Weight;
+module.exports = weightSchema;
