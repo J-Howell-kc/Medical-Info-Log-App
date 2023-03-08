@@ -48,7 +48,7 @@ const Medications = () => {
       title: "Action",
       render: (record) => (
         <Space size="middle">
-          <a onClick={onDeleteMedication} style={{ color: "red" }}>
+          <a onClick={onDeleteRecord} style={{ color: "red" }}>
             Delete
           </a>
         </Space>

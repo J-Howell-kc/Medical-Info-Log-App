@@ -17,7 +17,7 @@ const Symptoms = () => {
         style={{ maxWidth: 600, marginTop: "50px" }}
       >
         <Form.Item label="Symptom" labelWrap>
-          <Input />
+          <Input placeholder = "Symptom" />
         </Form.Item>
 
         <Form.Item label="Date">
@@ -28,13 +28,13 @@ const Symptoms = () => {
         </Form.Item>
 
         <Form.Item label="Description" labelWrap>
-          <TextArea rows={8} />
+          <TextArea rows={8} placeholder = "Describe your symptom here."/>
         </Form.Item>
         <Form.Item label="Intensity (1-10)">
           <InputNumber />
         </Form.Item>
         <Form.Item label="Action taken:" labelWrap>
-          <TextArea rows={8} />
+          <TextArea rows={8} placeholder = "Enter actions taken here."/>
         </Form.Item>
 
         <Form.Item
