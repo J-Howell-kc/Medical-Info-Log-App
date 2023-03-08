@@ -171,8 +171,7 @@ export const ADD_WEIGHT = gql`
 export const ADD_EMERGENCYCONTACT = gql`
   mutation addEmergencyContact(
     $userId: ID!
-    $firstName: String!
-    $lastName: String!
+    $name: String!
     $address: String!
     $phone: String!
     $relationship: String!
