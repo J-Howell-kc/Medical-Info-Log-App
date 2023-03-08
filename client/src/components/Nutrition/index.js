@@ -4,7 +4,6 @@ import { Form, Input, Button, DatePicker } from "antd";
 import { useMutation } from "@apollo/client";
 import { ADD_NUTRITION } from "../../utils/mutations";
 
-const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
 const Nutrition = () => {
@@ -16,7 +15,7 @@ const Nutrition = () => {
         layout="horizontal"
         style={{ maxWidth: 600, marginTop: "50px" }}
       >
-        <Form.Item label="DatePicker">
+        <Form.Item label="Date">
           <DatePicker />
         </Form.Item>
 
