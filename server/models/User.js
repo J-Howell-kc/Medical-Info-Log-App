@@ -34,6 +34,7 @@ const userSchema = new Schema({
   emergencyContact: [emergencyContactSchema],
 
   symptoms: [symptomsSchema],
+
 });
 
 // set up pre-save middleware to create password

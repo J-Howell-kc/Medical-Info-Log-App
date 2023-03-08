@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const Signup = () => {
+const Signup = ({setCurrentForm}) => {
   const [formState, setFormState] = useState({
-    name: '',
     email: '',
     password: '',
   });
-  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -30,11 +29,11 @@ const Signup = () => {
     console.log(formState);
 
     try {
-      const { data } = await addProfile({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
-      Auth.login(data.addProfile.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
@@ -53,14 +52,7 @@ const Signup = () => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="name"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
+              
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -85,8 +77,12 @@ const Signup = () => {
                   Submit
                 </button>
               </form>
+              
             )}
-
+            <button onClick={() => setCurrentForm("login")} className="btn btn-block btn-info mt-3"
+                  style={{ cursor: 'pointer' }}>
+              Login
+            </button>
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}

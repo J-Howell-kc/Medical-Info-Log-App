@@ -8,6 +8,7 @@ import Emergencycontacts from "./components/Emergencycontacts";
 import Allergies from "./components/Allergies";
 import Medications from "./components/Medications";
 import Nutrition from "./components/Nutrition";
+import Signup from "./pages/Signup";
 import { useState } from "react";
 import "./app.css";
 
@@ -58,6 +59,9 @@ const App = () => {
 
       case "emergencycontacts":
         return <Emergencycontacts />;
+
+         case "signup":
+          return <Signup />;
 
       default:
         return <Biovitals />;
