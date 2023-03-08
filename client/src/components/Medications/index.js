@@ -8,19 +8,32 @@ const Medications = () => {
 
   const [addMedication] = useMutation(ADD_MEDICATION);
 
-  const onFinish = (data) => {
-    console.log(data);
-    addMedication({
-      variables: {
-        medicationName: data.medicationname,
-        dosage: data.dosage,
-      },
+  
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setMedications({
+      ...medications,
+      [name]: value,
     });
-    setMedications((pre) => {
-      return [...pre, data];
+  };
+
+  const onFinish = async (event) => {
+    console.log(medications);
+
+    try {
+      const { data } = await addMedication({
+        variables: { ...medications },
+      });
+      console.log(data);
+    } catch (e) {
+      console.error(e);
     }
-    );
-    console.log(setMedications)
+
+    // setMedications((pre) => {
+    //   return [...pre, data];
+    // }
+    // );
+    // console.log(setMedications)
   };
 
   const onDeleteRecord = (record) => {
@@ -48,9 +61,9 @@ const Medications = () => {
       title: "Action",
       render: (record) => (
         <Space size="middle">
-          <a onClick={onDeleteRecord} style={{ color: "red" }}>
+          <div onClick={onDeleteRecord} style={{ color: "red" }}>
             Delete
-          </a>
+          </div>
         </Space>
       ),
     },
@@ -58,7 +71,7 @@ const Medications = () => {
 
   return (
     <>
-      <Form onFinish={onFinish}>
+      <Form onValuesChange={handleChange} onFinish={onFinish}>
         <Row className="mt-5 ml-3">
           <Space>
             <Form.Item label="Medication Name" name="medicationname">

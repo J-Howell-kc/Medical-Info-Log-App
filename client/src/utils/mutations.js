@@ -33,7 +33,7 @@ export const ADD_MEDICATION = gql`
     $dosage: String!
     $timetaken: String!
   ) {
-    medication(
+    addMedication(
       userId: $userId
       medicationName: $medicationName
       dosage: $dosage
