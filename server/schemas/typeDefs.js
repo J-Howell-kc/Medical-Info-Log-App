@@ -74,6 +74,8 @@ type Symptoms {
   type Query {
     users: [User]!
     user(userId: ID!): User
+    bios: [Bio]!
+    bio(bioId: ID!): Bio
     weights: [Weight]!
     weight(weightId: ID!): Weight
     medications: [Medication]!
@@ -91,6 +93,8 @@ type Symptoms {
     addUser(email: String!, password: String!): Auth
     addWeight(pounds: Int!): Weight
     removeWeight(weightId: ID!): Weight
+    addBio(firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!, allergies: String!)
+    removeBio(bioId: ID!): Bio
     addMedication(medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
     removeMedication(medicationId: ID!): Medication
     addNutrition(food: String!, drinks: String!, calories: Int!, date: String!): Nutrition
