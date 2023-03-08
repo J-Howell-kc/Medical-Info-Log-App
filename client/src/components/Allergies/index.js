@@ -7,15 +7,12 @@ import { ADD_ALLERGIES } from "../../utils/mutations";
 const { TextArea } = Input;
 
 const Allergies = () => {
-  //   const [componentDisabled, setComponentDisabled] = useState(true);
-
   return (
     <>
       <Form
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        // disabled={componentDisabled}
         style={{
           maxWidth: 600,
           marginTop: "50px",
