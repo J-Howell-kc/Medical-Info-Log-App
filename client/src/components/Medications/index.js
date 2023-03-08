@@ -25,7 +25,7 @@ const Medications = () => {
     console.log(setMedications)
   };
   
-  const onDeleteMedication = (record) => {
+  const onDeleteRecord = (record) => {
     console.log(record);
     setMedications((pre) => {
       return pre.filter((item) => item.medicationname !== record.medicationname);
@@ -48,7 +48,7 @@ const Medications = () => {
       title: "Action",
       render: (record) => (
         <Space size="middle">
-          <div onClick={onDeleteMedication} style={{ color: "red" }}>
+          <div onClick={onDeleteRecord} style={{ color: "red" }}>
             Delete
           </div>
         </Space>
