@@ -9,12 +9,12 @@ export const QUERY_ME = gql`
       DOB
       height
       address
-      phone
+      phone 
       allergies
       weight {
         _id
         pounds
-        date
+        timeTaken
       }
       medication {
         _id

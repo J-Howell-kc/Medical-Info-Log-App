@@ -15,12 +15,10 @@ const userSchema = new Schema({
   },
   firstName: {
     type: String,
-    required: true,
     trim: true,
   },
   lastName: {
     type: String, 
-    required: true,
     trim: true,
   },
   DOB: {
@@ -41,7 +39,6 @@ const userSchema = new Schema({
   },
   phone: {
     type: String,
-    unique: true,
     match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, 'Must be a valid phone number']
   },
   allergies: {
