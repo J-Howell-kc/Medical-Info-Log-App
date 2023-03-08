@@ -1,29 +1,28 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const nutritionSchema = new Schema({
-    food: {
+    meal: {
         type: String,
         trim: true,
-    },
-    drinks: {
+      },
+    timeEaten: {
         type: String,
-        trim: true,
-    },
-    calories: {
-        type: String,
-        default: 0,
-        trim: true,
-    },
-    date: { 
-        type: Date,
         trim: true,
     },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
+    timeTaken: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
+    createdBy: {
+        type: String,
+        required: true,
+      },
 })
 
-const Nutrition = model('Nutrition', nutritionSchema);
-
-module.exports = Nutrition;
+module.exports = nutritionSchema;

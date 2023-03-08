@@ -35,6 +35,4 @@ const symptomsSchema = new Schema({
     },
 });
 
-const Symptoms = model('Symptoms', symptomsSchema);
-
-module.exports = Symptoms;
+module.exports = symptomsSchema;

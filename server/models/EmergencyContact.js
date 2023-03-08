@@ -30,6 +30,5 @@ const emergencyContactSchema = new Schema({
     ref: 'User',
 },
 });
-const emergencyContact = model('emergencyContact', emergencyContactSchema);
 
-module.exports = emergencyContact;
+module.exports = emergencyContactSchema;

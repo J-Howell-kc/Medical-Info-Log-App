@@ -5,13 +5,7 @@ const typeDefs = gql`
     _id: ID
     email: String
     password: String
-    firstName: String
-    lastName: String
-    DOB: String
-    height: String
-    address: String
-    phone: String
-    allergies: String
+    bio: [Bio]
     weight: [Weight]
     medication: [Medication]
     nutrition: [Nutrition]
@@ -19,6 +13,18 @@ const typeDefs = gql`
     symptoms: [Symptoms]
   }
 
+  type Bio {
+    _id: ID
+    firstName: String
+    lastName: String
+    address: String
+    phone: String
+    DOB: String
+    height: String
+    gender: String
+    allergies: String
+  }
+  
   type Weight {
     _id: ID
     pounds: Int
@@ -68,6 +74,8 @@ type Symptoms {
   type Query {
     users: [User]!
     user(userId: ID!): User
+    bios: [Bio]!
+    bio(bioId: ID!): Bio
     weights: [Weight]!
     weight(weightId: ID!): Weight
     medications: [Medication]!
@@ -82,9 +90,11 @@ type Symptoms {
   }
 
   type Mutation {
-    addUser(email: String!, password: String!, firstName: String!, lastName: String!, DOB: String!, height: String!, address: String!, phone: String!, allergies: String!): Auth
-    addWeight(pounds: Int!, createdBy: String!): Weight
+    addUser(email: String!, password: String!): Auth
+    addWeight(pounds: Int!): Weight
     removeWeight(weightId: ID!): Weight
+    addBio(firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!, allergies: String!): Bio
+    removeBio(bioId: ID!): Bio
     addMedication(medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
     removeMedication(medicationId: ID!): Medication
     addNutrition(food: String!, drinks: String!, calories: Int!, date: String!): Nutrition
