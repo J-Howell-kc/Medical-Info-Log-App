@@ -19,20 +19,19 @@ const Medications = () => {
       },
     });
     setMedications((pre) => {
-      return [
-        ...pre,
-        { medicationname: data.medicationname, dosage: data.dosage },
-      ];
-    });
+      return [...pre, data];
+    }
+    );
+    console.log(setMedications)
   };
   
-  const onDeleteRecord = (record) => {
+  const onDeleteMedication = (record) => {
     console.log(record);
     setMedications((pre) => {
       return pre.filter((item) => item.medicationname !== record.medicationname);
     });
   };
-  
+
   const columns = [
     {
       key: "1",
@@ -49,7 +48,7 @@ const Medications = () => {
       title: "Action",
       render: (record) => (
         <Space size="middle">
-          <a onClick={onDeleteRecord} style={{ color: "red" }}>
+          <a onClick={onDeleteMedication} style={{ color: "red" }}>
             Delete
           </a>
         </Space>
