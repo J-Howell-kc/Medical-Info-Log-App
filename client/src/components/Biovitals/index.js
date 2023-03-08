@@ -1,21 +1,19 @@
 import { Button, Form, Input, DatePicker } from "antd";
-import ADD_WEIGHT from "../../utils/mutations";
-import ADD_USER from "../../utils/mutations";
+// import ADD_WEIGHT from "../../utils/mutations";
+// import ADD_USER from "../../utils/mutations";
 import Col from "antd/lib/grid/col";
 import Row from "antd/lib/grid/row";
 const { TextArea } = Input;
 
 const onFinish = (values) => {
-  
   console.log("Success:", values);
 };
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log("submit");
+const handleWeightSubmit = (values) => {
+  console.log("submit", values);
 };
 
 const Biovitals = () => {
@@ -98,7 +96,7 @@ const Biovitals = () => {
 
           <Col span={12}>
             <Form.Item label="Date of Birth" name="dateofbirth">
-              <DatePicker style={{ width: '100%' }} />
+              <DatePicker style={{ width: "100%" }} />
             </Form.Item>
 
             <Form.Item
@@ -112,7 +110,30 @@ const Biovitals = () => {
             >
               <Input suffix="in." />
             </Form.Item>
-
+          </Col>
+        </Row>
+        <Row style={{ justifyContent: "center" }} span={24}>
+          <Form.Item>
+            <Button
+              className="mb-4"
+              type="primary"
+              htmlType="submit"
+            >
+              Save
+            </Button>
+          </Form.Item>
+        </Row>
+      </Form>
+      <Form
+      onFinish={handleWeightSubmit}
+      labelCol={{
+          span: 11,
+        }}
+        wrapperCol={{
+          span: 14,
+        }}>
+        <Row span={24}>
+          <Col span={12}>
             <Form.Item
               label="Weight"
               name="weight"
@@ -124,22 +145,33 @@ const Biovitals = () => {
             >
               <Input suffix="lbs" />
             </Form.Item>
+            </Col>
+              <Col>
+            <Form.Item
+             label='Date of Weight Taken'
+             name='weightdate'
+             >
 
+             <DatePicker style={{ width: "100%" }} />
+             </Form.Item>
+               </Col>
+          
+          <Col span={12}>
           </Col>
         </Row>
-        <Row style={{ justifyContent: 'center' }} span={24}>
-            <Form.Item >
+        <Row style={{ justifyContent: "center" }} span={24}>
+
+            <Form.Item>
               <Button
-              
                 className="mb-4"
-                onSubmit={handleSubmit}
                 type="primary"
                 htmlType="submit"
               >
-                Save
+                Save Weight
               </Button>
+            
             </Form.Item>
-            </Row>
+        </Row>
       </Form>
     </div>
   );
