@@ -74,18 +74,6 @@ type Symptoms {
   type Query {
     users: [User]!
     user(userId: ID!): User
-    bios: [Bio]!
-    bio(bioId: ID!): Bio
-    weights: [Weight]!
-    weight(weightId: ID!): Weight
-    medications: [Medication]!
-    medication(medicationId: ID!): Medication
-    nutritions: [Nutrition]!
-    nutrition(nutritionId: ID!): Nutrition
-    emergencyContacts: [EmergencyContact]!
-    emergencyContact(emergencyContactId: ID!): EmergencyContact
-    symptoms: [Symptoms]!
-    symptom(symptomId: ID!): Symptoms
     me: User
   }
 
