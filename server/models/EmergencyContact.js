@@ -28,7 +28,16 @@ const emergencyContactSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-},
+  },
+  timeTaken: {
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
+  },
+  createdBy: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = emergencyContactSchema;
