@@ -38,10 +38,12 @@ const Emergencycontacts = () => {
         <Form.Item label="Email">
           <Input />
         </Form.Item>
+        <Form.Item label="Address" labelWrap>
+          <TextArea rows={4} />
+        </Form.Item>
         <Form.Item label="Notes" labelWrap>
           <TextArea rows={4} />
         </Form.Item>
-
         <Form.Item label="Submit">
           <Button
             type="primary"

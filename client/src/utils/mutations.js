@@ -149,8 +149,8 @@ export const REMOVE_SYMPTOMS = gql`
 `;
 
 export const ADD_ALLERGIES = gql`
-  mutation addMedication($userId: ID!, $medicationName: String!, $dosage: String!, $frequency: String!, $pillCount: Int!, $startDate: String!, $endDate: String!, $taken: Boolean!) {
-    addMedication(userId: $userId, medicationName: $medicationName, dosage: $dosage, frequency: $frequency, pillCount: $pillCount, startDate: $startDate, endDate: $endDate, taken: $taken) {
+  mutation addAllergies($userId: ID!, $allergies: String!) {
+    addAllergies(userId: $userId, allergies: $allergies) {
       _id
       allergies
     }
@@ -158,8 +158,8 @@ export const ADD_ALLERGIES = gql`
 `;
 
 export const REMOVE_ALLERGIES = gql`
-  mutation removeMedication($userId: ID!, $medicationName: String!, $dosage: String!, $frequency: String!, $pillCount: Int!, $startDate: String!, $endDate: String!, $taken: Boolean!) {
-    removeMedication(userId: $userId, medicationName: $medicationName, dosage: $dosage, frequency: $frequency, pillCount: $pillCount, startDate: $startDate, endDate: $endDate, taken: $taken) {
+  mutation removeAllergies($userId: ID!, $allergies: String!) {
+    removeMedication(userId: $userId, allergies: $allergies) {
       _id
       allergies
     }
