@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Symptoms, Nutrition, Medication, EmergencyContact, Weight } = require('../models');
+const { User, Symptoms, Nutrition, Medication, EmergencyContact, Weight, Bio } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -58,7 +58,15 @@ const resolvers = {
   weight : async (parent, { weightId }) => {
     return Weight.findOne({ _id: weightId });
   },
+
+  bios: async () => {
+    return Bio.find();  
   },
+
+  bio : async (parent, { bioId }) => {
+    return Bio.findOne({ _id: bioId });
+  },
+},
 
   Mutation: {
     addUser: async (parent, args) => {
@@ -125,6 +133,18 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
+    addBio: async (parent, { firstName, lastName, DOB, height, gender, address, phone, allergies }, context) => {
+      if (context.user) {
+
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { weight: [{firstName, lastName, DOB, height, gender, address, phone, allergies, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
     },
@@ -148,7 +168,11 @@ const resolvers = {
     removeWeight: async (parent, { weightId }) => {
       return Weight.findOneAndDelete({ _id: weightId });
     },
+
+    removeBio: async (parent, { bioId }) => {
+      return Bio.findOneAndDelete({ _id: bioId });
   },
+},
 };
 
 module.exports = resolvers;
