@@ -114,12 +114,17 @@ const resolvers = {
     //   return { token, medication };
     // },
 
-    // addEmergencyContact: async (parent, args) => {
-    //   const emergencyContact = await EmergencyContact.create(args);
-    //   const token = signToken(emergencyContact);
+    addEmergencyContact: async (parent, { firstName, lastName, phone, address, relationship }, context) => {
+      if (context.user) {
 
-    //   return { token, emergencyContact };
-    // },
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { emergencyContact: [{firstName, lastName, phone, address, relationship, user:context.user._id, createdBy:context.user.email,}] } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
 
     addWeight: async (parent, { pounds }, context) => {
       if (context.user) {
@@ -138,7 +143,7 @@ const resolvers = {
 
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { weight: [{firstName, lastName, DOB, height, gender, address, phone, allergies, user:context.user._id, createdBy:context.user.email,}] } },
+          { $push: { bio: [{firstName, lastName, DOB, height, gender, address, phone, allergies, user:context.user._id, createdBy:context.user.email,}] } },
           { new: true }
         );
       }
