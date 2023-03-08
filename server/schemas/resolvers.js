@@ -149,22 +149,78 @@ const resolvers = {
       return User.findOneAndDelete({ _id: userId });
     },
 
-    removeSymptom: async (parent, { symptomId }) => {
-      return Symptoms.findOneAndDelete({ _id: symptomId });
+    removeSymptom: async (parent, { symptomId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              symptoms: {
+                _id: symptomId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
-    removeNutrition: async (parent, { nutritionId }) => {
-      return Nutrition.findOneAndDelete({ _id: nutritionId });
+    removeNutrition: async (parent, { nutritionId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              nutrition: {
+                _id: nutritionId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
-    removeMedication: async (parent, { medicationId }) => {
-      return Medication.findOneAndDelete({ _id: medicationId });
+    removeMedication: async (parent, { medicationId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              medication: {
+                _id: medicationId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
-    removeEmergencyContact: async (parent, { emergencyContactId }) => {
-      return EmergencyContact.findOneAndDelete({ _id: emergencyContactId });
+    removeEmergencyContact: async (parent, { emergencyContactId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              emergencyContact: {
+                _id: emergencyContactId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-
+    
     removeWeight: async (parent, { weightId }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
@@ -183,8 +239,22 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    removeBio: async (parent, { bioId }) => {
-      return Bio.findOneAndDelete({ _id: bioId });
+    removeBio: async (parent, { bioId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              bio: {
+                _id: bioId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
   },
 },
 };
