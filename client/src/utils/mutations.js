@@ -95,27 +95,29 @@ export const ADD_WEIGHT = gql`
 `;
 
 export const ADD_EMERGENCYCONTACT = gql`
-  mutation addEmergencyContact($userId: ID!, $firstName: String!, $lastName: String!, $address: String!, $phone: String!, $relationship: String!) {
-    addEmergencyContact(userId: $userId, firstName: $firstName, lastName: $lastName, address: $address, phone: $phone, relationship: $relationship) {
+  mutation addEmergencyContact($userId: ID!, $firstName: String!, $lastName: String!, $address: String!, $phone: String!, $relationship: String!, $notes: String!) {
+    addEmergencyContact(userId: $userId, firstName: $firstName, lastName: $lastName, address: $address, phone: $phone, relationship: $relationship, notes: $notes) {
       _id
       firstName
       lastName
       address
       phone
       relationship
+      notes
     }
   }
 `;
 
 export const REMOVE_EMERGENCYCONTACT = gql`
-  mutation removeEmergencyContact($userId: ID!, $firstName: String!, $lastName: String!, $address: String!, $phone: String!, $relationship: String!) {
-    removeEmergencyContact(userId: $userId, firstName: $firstName, lastName: $lastName, address: $address, phone: $phone, relationship: $relationship) {
+  mutation removeEmergencyContact($userId: ID!, $firstName: String!, $lastName: String!, $address: String!, $phone: String!, $relationship: String!, $notes: String!) {
+    removeEmergencyContact(userId: $userId, firstName: $firstName, lastName: $lastName, address: $address, phone: $phone, relationship: $relationship, notes: $notes) {
       _id
       firstName
       lastName
       address
       phone
       relationship
+      notes
     }
   }
 `;
