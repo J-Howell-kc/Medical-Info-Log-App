@@ -165,8 +165,22 @@ const resolvers = {
       return EmergencyContact.findOneAndDelete({ _id: emergencyContactId });
     },
 
-    removeWeight: async (parent, { weightId }) => {
-      return Weight.findOneAndDelete({ _id: weightId });
+    removeWeight: async (parent, { weightId }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $pull: {
+              weight: {
+                _id: weightId,
+                createdBy: context.user.email,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     removeBio: async (parent, { bioId }) => {
