@@ -104,7 +104,7 @@ type Symptoms {
     addEmergencyContact(firstName: String!, lastName: String!, address: String!, phone: String!, relationship: String!): EmergencyContact
     removeEmergencyContact(emergencyContactId: ID!): EmergencyContact
     addSymptoms(symptom: String!, description: String!, intensity: Int!, date: String!, actionTaken: String!, dateStartStop: String!): Symptoms
-    removeSymptom(symptomId: ID!): Symptoms
+    removeSymptoms(symptomId: ID!): Symptoms
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
     updateUser(userId: ID!, email: String!, password: String!): User
