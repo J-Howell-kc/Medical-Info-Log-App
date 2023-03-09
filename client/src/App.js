@@ -1,5 +1,5 @@
 import React from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import Sidebar from "./components/Sidebar";
 import Selector from "./components/Header";
 import Biovitals from "./components/Biovitals";
@@ -9,13 +9,30 @@ import Allergies from "./components/Allergies";
 import Medications from "./components/Medications";
 import Nutrition from "./components/Nutrition";
 import Signup from "./pages/Signup";
+import { setContext } from "@apollo/client/link/context";
 import { useState } from "react";
 import "./app.css";
 
 import { Layout, Space } from "antd";
 const { Header, Footer, Content } = Layout;
-const client = new ApolloClient({
+
+const httpLink = createHttpLink({
   uri: "/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
