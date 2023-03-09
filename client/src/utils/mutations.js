@@ -237,10 +237,10 @@ export const REMOVE_SYMPTOMS = gql`
 `;
 
 export const ADD_ALLERGIES = gql`
-  mutation addAllergies($userId: ID!, $allergies: String!) {
-    addAllergies(userId: $userId, allergies: $allergies) {
+  mutation addAllergies($triggers: String!) {
+    addAllergies(triggers: $triggers) {
       _id
-      allergies
+      triggers
     }
   }
 `;

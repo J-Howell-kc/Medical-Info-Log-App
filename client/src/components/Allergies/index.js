@@ -1,15 +1,32 @@
-import { useState } from "react";
+import { useReducer} from "react";
+import { useState} from "react";
 import { PlusOutlined } from "@ant-design/icons";
-import { Form, Input, Button } from "antd";
-import { useMutation } from "@apollo/client";
+import { Form, Input, Button, DatePicker, InputNumber, Upload } from "antd";
+import { useMutation, useQuery} from "@apollo/client";
 import { ADD_ALLERGIES } from "../../utils/mutations";
+import { QUERY_USER } from "../../utils/queries";
+import {ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import Auth from '../../utils/auth';
 
 const { TextArea } = Input;
-
 const Allergies = () => {
-  return (
+
+const [form] = Form.useForm();
+const [addAllergies] = useMutation(ADD_ALLERGIES);
+
+const onFinish = async(values) => {
+  await addAllergies({
+  variables: {
+  ...values,
+  },
+  });
+  form.resetFields();
+  };
+
+return (
     <>
-      <Form
+      <Form onFinish={onFinish}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
@@ -19,7 +36,7 @@ const Allergies = () => {
           placeholder: "Enter allergies here.",
         }}
       >
-        <Form.Item label="Allergies" labelWrap>
+        <Form.Item label="Allergies" name="triggers" labelWrap>
           <TextArea rows={12} placeholder = "Enter all known allergies here."/>
         </Form.Item>
 
