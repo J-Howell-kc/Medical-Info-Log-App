@@ -3,10 +3,10 @@ import { Row, Space, Form, Input, Button, Table } from "antd";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_MEDICATION } from "../../utils/mutations";
 import { QUERY_USER } from "../../utils/queries";
-// import Auth from '../../utils/auth';
+import Auth from '../../utils/auth';
 
 const Medications = () => {
-  const [medications, setMedications] = useState("");
+  const [medications, setMedications] = useState([]);
 
   const [addMedication] = useMutation(ADD_MEDICATION);
   
@@ -16,27 +16,26 @@ const Medications = () => {
   
   const handleChange = (event) => {
     console.log(event);
-    if (!event.target?.medicationname || !event.target?.dosage) {
-      return false;
-    }else {
-      const { medicationname, dosage } = event.target;
+    const { name, value } = event.target;
       
       
-      setMedications([
+      setMedications({
         ...medications,
-        { medicationName: medicationname, dosage: dosage },
-      ]);
-    }
+        [name]: value
+  });
+    
   };
   
   const onFinish = async (event) => {
     console.log(medications);
     
     try {
+       
       
       const { data } = await addMedication({
         variables: { ...medications },
       });
+      Auth.login(data.login.token);
       console.log(data);
     } catch (e) {
       console.error(e);
@@ -49,15 +48,6 @@ const Medications = () => {
     // console.log(setMedications)
   };
 
-  const onDeleteRecord = (record) => {
-    console.log(record);
-    setMedications((pre) => {
-      return pre.filter(
-        (item) => item.medicationname !== record.medicationname
-      );
-    });
-  };
-
   const columns = [
     {
       key: "1",
@@ -68,18 +58,7 @@ const Medications = () => {
       key: "2",
       title: "Dosage",
       dataIndex: "dosage",
-    },
-    {
-      key: "3",
-      title: "Action",
-      render: (record) => (
-        <Space size="middle">
-          <div onClick={onDeleteRecord} style={{ color: "red" }}>
-            Delete
-          </div>
-        </Space>
-      ),
-    },
+    }
   ];
 
   return (
@@ -88,10 +67,10 @@ const Medications = () => {
         <Row className="mt-5 ml-3">
           <Space>
             <Form.Item label="Medication Name" name="medicationname">
-              <Input />
+              <Input name='medicationName' />
             </Form.Item>
             <Form.Item label="Dosage" name="dosage">
-              <Input />
+              <Input name='dosage'/>
             </Form.Item>
             <Form.Item>
               <Button type="primary" htmlType="submit">
