@@ -7,6 +7,18 @@ import { ADD_NUTRITION } from "../../utils/mutations";
 const { TextArea } = Input;
 
 const Nutrition = () => {
+  const [form] = Form.useForm();
+  const [addNutrition] = useMutation(ADD_NUTRITION);
+
+  const onFinish = async (values) => {
+    await addNutrition({
+      variables: {
+        ...values,
+        date: values.date.format("YYYY-MM-DD"),
+      },
+    });
+    form.resetFields();
+  };
   return (
     <>
       <Form
