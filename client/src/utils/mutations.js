@@ -122,9 +122,15 @@ export const REMOVE_NUTRITION = gql`
 `;
 
 export const ADD_WEIGHT = gql`
-  mutation addWeight($userId: ID!, $pounds: String!, $date: String!) {
-    addWeight(userId: $userId, pounds: $pounds, date: $date) {
-      _id
+  mutation addWeight(
+    $pounds: String!, 
+    $date: String!
+    ) {
+    addWeight(
+      pounds: $pounds, 
+      date: $date
+    ) {
+      _id 
       pounds
       date
     }

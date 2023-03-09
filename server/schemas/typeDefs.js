@@ -28,8 +28,8 @@ const typeDefs = gql`
   
   type Weight {
     _id: ID
-    pounds: Int
-    timeTaken: String
+    pounds: String
+    date: String
     createdBy: String
   }
 
@@ -91,7 +91,7 @@ type Symptoms {
 
   type Mutation {
     addUser(email: String!, password: String!): Auth
-    addWeight(pounds: Int!): Weight
+    addWeight(pounds: String!, date: String!): Weight
     removeWeight(weightId: ID!): Weight
     addAllergies(triggers: String!): Allergies
     removeAllergies(allergiesId: ID!): Allergies    

@@ -9,21 +9,20 @@ const { TextArea } = Input;
 const Biovitals = () => {
   const [addWeight] = useMutation(ADD_WEIGHT);
 
+  const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log("Success:", values);
   };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
 
-  const handleWeightSubmit = (values) => {
-    addWeight({
+
+  const handleWeightSubmit = async (values) => {
+    console.log(values)
+    await addWeight({
       variables: {
-        weight: values.weight,
-        date: values.date,
+        ...values
       },
     });
-    console.log("submit", values);
+   form.resetFields();
   };
 
   return (
@@ -40,7 +39,6 @@ const Biovitals = () => {
           remember: true,
         }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Row span={24}>
@@ -103,7 +101,7 @@ const Biovitals = () => {
 
           <Col span={12}>
             <Form.Item label="Date of Birth" name="dateofbirth">
-              <DatePicker style={{ width: "100%" }} />
+              <Input placeholder='MM/DD/YY' style={{ width: "100%" }} />
             </Form.Item>
 
             <Form.Item
@@ -140,7 +138,7 @@ const Biovitals = () => {
           <Col span={12}>
             <Form.Item
               label="Weight"
-              name="weight"
+              name="pounds"
               rules={[
                 {
                   message: "Please input your Weight!",
@@ -151,8 +149,8 @@ const Biovitals = () => {
             </Form.Item>
           </Col>
           <Col>
-            <Form.Item label="Date of Weight Taken" name="weightdate">
-              <DatePicker style={{ width: "100%" }} />
+            <Form.Item label="Date of Weight Taken" name="date">
+              <Input placeholder='MM/DD/YY' style={{ width: "100%" }} />
             </Form.Item>
           </Col>
 
