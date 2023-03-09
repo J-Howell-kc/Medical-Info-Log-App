@@ -95,12 +95,12 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    addWeight: async (parent, { pounds }, context) => {
+    addWeight: async (parent, { pounds, date }, context) => {
       if (context.user) {
 
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { weight: [{pounds, user:context.user._id, createdBy:context.user.email,}] } },
+          { $push: { weight: [{pounds, date, user:context.user._id, createdBy:context.user.email,}] } },
           { new: true }
         );
       }
