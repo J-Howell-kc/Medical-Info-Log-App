@@ -1,7 +1,8 @@
 import { Layout, Calendar } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
-import React, { useState } from "react";
+import React, { useState, useMutation } from "react";
 import Signup from "../../pages/Signup";
+import { LOGIN_USER } from "../../utils/mutations";
 const { Sider } = Layout;
 
 const siderStyle = {
@@ -12,9 +13,6 @@ const siderStyle = {
   backgroundColor: "#fff",
   flex: 'none',
 }
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
@@ -27,11 +25,22 @@ const onClick = (value) => {
 const Sidebar = () => {
   // const { token } = theme.useToken();
   // const wrapperStyle = {
-  //   width: '20%',
-  //   border: `1px solid ${token.colorBorderSecondary}`,
-  //   borderRadius: token.borderRadiusLG,
-  //   backgroundColor: '#7dbcea',
-  // };
+    //   width: '20%',
+    //   border: `1px solid ${token.colorBorderSecondary}`,
+    //   borderRadius: token.borderRadiusLG,
+    //   backgroundColor: '#7dbcea',
+    // };
+    const [login] = useMutation(LOGIN_USER);
+
+    const onFinish = async (values) => {
+      const { data } = await login({
+        variables: { ...values }
+      })
+      console.log("Success:", data);
+    };
+
+
+
   const [currentForm, setCurrentForm] = useState("login");
   return (
     <>
