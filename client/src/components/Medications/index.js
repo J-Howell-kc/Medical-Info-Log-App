@@ -1,20 +1,31 @@
 import { useState } from "react";
 import { Row, Space, Form, Input, Button, Table } from "antd";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { ADD_MEDICATION } from "../../utils/mutations";
+import { QUERY_ME } from "../../utils/queries";
 
 const Medications = () => {
   const [medications, setMedications] = useState("");
 
   const [addMedication] = useMutation(ADD_MEDICATION);
 
-  
+  // const [form] = Form.useForm()
+  const { loading, data } = useQuery(QUERY_ME);
+  console.log(data)
+
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setMedications({
+    console.log(event);
+    if (!event.target?.medicationname || !event.target?.dosage) {
+      return false;
+    }else {
+    const { medicationname, dosage } = event.target;
+    
+
+    setMedications([
       ...medications,
-      [name]: value,
-    });
+      { medicationName: medicationname, dosage: dosage },
+    ]);
+  }
   };
 
   const onFinish = async (event) => {

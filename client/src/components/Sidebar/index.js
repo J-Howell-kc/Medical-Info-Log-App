@@ -1,7 +1,9 @@
 import { Layout, Calendar } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import Signup from "../../pages/Signup";
+import { LOGIN_USER } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 const { Sider } = Layout;
 
 const siderStyle = {
@@ -12,9 +14,6 @@ const siderStyle = {
   backgroundColor: "#fff",
   flex: 'none',
 }
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
@@ -27,11 +26,23 @@ const onClick = (value) => {
 const Sidebar = () => {
   // const { token } = theme.useToken();
   // const wrapperStyle = {
-  //   width: '20%',
-  //   border: `1px solid ${token.colorBorderSecondary}`,
-  //   borderRadius: token.borderRadiusLG,
-  //   backgroundColor: '#7dbcea',
-  // };
+    //   width: '20%',
+    //   border: `1px solid ${token.colorBorderSecondary}`,
+    //   borderRadius: token.borderRadiusLG,
+    //   backgroundColor: '#7dbcea',
+    // };
+    const [loginUser] = useMutation(LOGIN_USER);
+
+    const onFinish = async (values) => {
+      const response = await loginUser({
+        variables: { ...values },
+      });
+      console.log(response);
+      console.log("Success:", values);
+    };
+
+
+
   const [currentForm, setCurrentForm] = useState("login");
   return (
     <>
