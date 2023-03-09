@@ -257,8 +257,144 @@ const resolvers = {
         );
       }
       throw new AuthenticationError('You need to be logged in!');
-    }
-},
+    },
+
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        return User.findByIdAndUpdate(context.user._id, args, { new: true });
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    updateAllergies: async (parent, { allergiesId, name, severity }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id, 'allergies._id': allergiesId },
+          {
+            $set: {
+              'allergies.$.name': name,
+              'allergies.$.severity': severity,
+            },
+          },
+          { new: true }
+        );
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    updateSymptom: async (parent, { symptomId, name, severity, date }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id, 'symptoms._id': symptomId },
+          {
+            $set: {
+              'symptoms.$.name': name,
+              'symptoms.$.severity': severity,
+              'symptoms.$.date': date,
+            },
+          },
+          { new: true }
+        );
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    updateNutrition: async (parent, { nutritionId, name, calories, date }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id, 'nutrition._id': nutritionId },
+          {
+            $set: {
+              'nutrition.$.name': name,
+              'nutrition.$.calories': calories,
+              'nutrition.$.date': date,
+            },
+          },
+          { new: true }
+        );
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    updateMedication: async (parent, { medicationId, name, dosage, date }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id, 'medication._id': medicationId },
+          {
+            $set: {
+              'medication.$.name': name,
+              'medication.$.dosage': dosage,
+              'medication.$.date': date,
+            },
+          },
+          { new: true }
+        );
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    updateEmergencyContact: async (parent, { emergencyContactId, name, phone, email }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id, 'emergencyContact._id': emergencyContactId },
+          {
+            $set: {
+              'emergencyContact.$.name': name,
+              'emergencyContact.$.phone': phone,
+              'emergencyContact.$.email': email,
+            },
+          },
+          { new: true }
+        );
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    
+    updateWeight: async (parent, { weightId, weight, date }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id, 'weight._id': weightId },
+          {
+            $set: {
+              'weight.$.weight': weight,
+              'weight.$.date': date,
+            },
+          },
+          { new: true }
+        );
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    updateBio: async (parent, { firstName, lastName, DOB, height, gender, address, phone}, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id, 'bio._id': bioId },
+          {
+            $set: {
+              'bio.$.firstName': firstName,
+              'bio.$.lastName': lastName,
+              'bio.$.DOB': DOB,
+              'bio.$.height': height,
+              'bio.$.gender': gender,
+              'bio.$.address': address,
+              'bio.$.phone': phone,
+            },
+          },
+          { new: true }
+        );
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+  },
 };
 
 module.exports = resolvers;
