@@ -4,7 +4,6 @@ const dateFormat = require('../utils/dateFormat');
 const symptomsSchema = new Schema({
     startDate: {
         type: Date,
-        required: true,
         trim: true,
     },
     endDate: {  
@@ -13,17 +12,14 @@ const symptomsSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
         trim: true,
     },
     duration: {
         type: String,
-        required: true,
         trim: true,
     },
     intensity: {
         type: Number,
-        required: true,
         trim: true,
     },
     actionTaken: {
@@ -41,7 +37,6 @@ const symptomsSchema = new Schema({
       },
     createdBy: {
         type: String,
-        required: true,
       },
 });
 
