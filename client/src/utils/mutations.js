@@ -75,48 +75,71 @@ export const REMOVE_MEDICATION = gql`
 
 export const ADD_NUTRITION = gql`
   mutation addNutrition(
-    $userId: ID!
-    $food: String!
-    $drinks: String!
-    $calories: Int!
     $date: String!
+    $breakfast: String!
+    $breakTime: String!
+    $lunch: String!
+    $lunchTime: String!
+    $dinner: String!
+    $dinnerTime: String!
+    $snack: String!
+    $snackTime: String!
   ) {
     addNutrition(
-      userId: $userId
-      food: $food
-      drinks: $drinks
-      calories: $calories
       date: $date
+      breakfast: $breakfast
+      breakTime: $breakTime
+      lunch: $lunch
+      lunchTime: $lunchTime
+      dinner: $dinner
+      dinnerTime: $dinnerTime
+      snack: $snack
+      snackTime: $snackTime
     ) {
       _id
-      food
-      drinks
-      calories
       date
+      breakfast
+      breakTime
+      lunch
+      lunchTime
+      dinner
+      dinnerTime
+      snack
+      snackTime
     }
   }
 `;
 
 export const REMOVE_NUTRITION = gql`
   mutation removeNutrition(
-    $userId: ID!
-    $food: String!
-    $drinks: String!
-    $calories: Int!
-    $date: String!
+    $breakfast: String!
+    $breakTime: String!
+    $lunch: String!
+    $lunchTime: String!
+    $dinner: String!
+    $dinnerTime: String!
+    $snack: String!
+    $snackTime: String!
   ) {
-    removeNutrition(
-      userId: $userId
-      food: $food
-      drinks: $drinks
-      calories: $calories
-      date: $date
+    addNutrition(
+      breakfast: $breakfast
+      breakTime: $breakTime
+      lunch: $lunch
+      lunchTime: $lunchTime
+      dinner: $dinner
+      dinnerTime: $dinnerTime
+      snack: $snack
+      snackTime: $snackTime
     ) {
       _id
-      food
-      drinks
-      calories
-      date
+      breakfast
+      breakTime
+      lunch
+      lunchTime
+      dinner
+      dinnerTime
+      snack
+      snackTime
     }
   }
 `;

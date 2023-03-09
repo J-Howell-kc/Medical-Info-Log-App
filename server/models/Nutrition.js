@@ -2,11 +2,39 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const nutritionSchema = new Schema({
-    meal: {
+    date: {
+        type: String,
+        trim: true,
+    },
+    breakfast: {
         type: String,
         trim: true,
       },
-    timeEaten: {
+    breakTime: {
+        type: String,
+        trim: true,
+    },
+    lunch: {
+        type: String,
+        trim: true,
+    },
+    lunchTime: {
+        type: String,
+        trim: true,
+    },
+    dinner: {
+        type: String,
+        trim: true,
+    },
+    dinnerTime: {
+        type: String,
+        trim: true,
+    },
+    snack: {
+        type: String,
+        trim: true,
+    },
+    snackTime: {
         type: String,
         trim: true,
     },

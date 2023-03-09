@@ -59,12 +59,12 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    addNutrition: async (parent, { food, drinks, calories, date }, context) => {
+    addNutrition: async (parent, { date, breakfast, breakTime, lunch, lunchTime, dinner, dinnerTime, snack, snackTime }, context) => {
       if (context.user) {
 
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { nutrition: [{food, drinks, calories, date, user:context.user._id, createdBy:context.user.email,}] } },
+          { $push: { nutrition: [{date, breakfast, breakTime, lunch, lunchTime, dinner, dinnerTime, snack, snackTime, user:context.user._id, createdBy:context.user.email,}] } },
           { new: true }
         );
       }
