@@ -1,8 +1,9 @@
 import { Layout, Calendar } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
-import React, { useState, useMutation } from "react";
+import React, { useState } from 'react'
 import Signup from "../../pages/Signup";
 import { LOGIN_USER } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 const { Sider } = Layout;
 
 const siderStyle = {
@@ -30,13 +31,14 @@ const Sidebar = () => {
     //   borderRadius: token.borderRadiusLG,
     //   backgroundColor: '#7dbcea',
     // };
-    const [login] = useMutation(LOGIN_USER);
+    const [loginUser] = useMutation(LOGIN_USER);
 
     const onFinish = async (values) => {
-      const { data } = await login({
-        variables: { ...values }
-      })
-      console.log("Success:", data);
+      const response = await loginUser({
+        variables: { ...values },
+      });
+      console.log(response);
+      console.log("Success:", values);
     };
 
 
