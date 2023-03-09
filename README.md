@@ -22,19 +22,19 @@ License Info: https://opensource.org/licenses/alphabetical
 from CLI, use npm run develop.
 
 ## Usage
-Use to keep track of symptoms, nutrition, medications and demographic data. SImply use input fields and dropdowns
+Use to keep track of symptoms, nutrition, medications and demographic data. Simply use tabs, input fields and dropdowns.
 
 ## Contributing
-undefined
+Please conatct us.
 
 ## Tests
-not sure. npm test?
+not sure. npm test? Test with Compass?
 
 ## Questions 
 ### GitHub Profile link
-https://github.com/J-Howell-kc <br/>
+https://github.com/J-Howell-kc , https://github.com/CECurtiss, https://github.com/fryylord, https://github.com/natemuci <br/>
 ### Email
-Feel free to direct any questions to howell_j@hotmail.com. Thanks.
+Feel free to direct any questions to howell_j@hotmail.com., rob@mchays.com, Thanks.
 
 ## Screenshot
-![screenshot]();
+![screenshot](); (/Users/brandonjhowell/bootcamp/Assignments/Medical-Info-Log-App/client/public/imgs/HAMSscreenshot.png);
