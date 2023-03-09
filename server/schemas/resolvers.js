@@ -45,7 +45,7 @@ const resolvers = {
       return { token, user };
     },
     
-    addSymptom: async (parent, { symtom, date }, context) => {
+    addSymptoms: async (parent, { symptoms, date }, context) => {
       if (context.user) {
 
         return await User.findOneAndUpdate(

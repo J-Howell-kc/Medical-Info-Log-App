@@ -1,4 +1,4 @@
-import { useReducer} from "react";
+import React, { useReducer} from "react";
 import { useState} from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Form, Input, Button, DatePicker, InputNumber, Upload } from "antd";
@@ -48,16 +48,8 @@ const onFinish = async (event) => {
 
   setSymptoms("");
 }
-// const onFinish = (values) => {
-// addSymptoms({
-// variables: {
-// ...values,
-// severity: parseInt(values.severity),
-// date: values.date.format("YYYY-MM-DD"),
-// },
-// });
-// form.resetFields();
-// };
+
+
 
   return (
     
