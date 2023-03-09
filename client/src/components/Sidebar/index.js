@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Signup from "../../pages/Signup";
 import { LOGIN_USER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
+import auth from "../../utils/auth";
 const { Sider } = Layout;
 
 const siderStyle = {
@@ -37,6 +38,7 @@ const Sidebar = () => {
       const response = await loginUser({
         variables: { ...values },
       });
+      auth.login(response.data.login.token);
       console.log(response);
       console.log("Success:", values);
     };

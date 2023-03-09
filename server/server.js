@@ -9,10 +9,6 @@ const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
-  Mutation: {
-    engine: {
-      reportSchema: true,
-    },},
   typeDefs,
   resolvers,
   context: authMiddleware,

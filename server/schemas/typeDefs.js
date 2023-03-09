@@ -70,7 +70,11 @@ type EmergencyContact {
 type Symptoms {
     _id: ID
     symptom: String
+    description: String
+    intensity: Int
+    actionTaken: String
     date: String
+    dateStartStop: String
     createdBy: String
   }
 
@@ -93,14 +97,14 @@ type Symptoms {
     removeAllergies(allergiesId: ID!): Allergies    
     addBio(firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!): Bio
     removeBio(bioId: ID!): Bio
-    addMedication(medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
+    addMedication(medicationName: String!, dosage: String!): Medication
     removeMedication(medicationId: ID!): Medication
     addNutrition(food: String!, drinks: String!, calories: Int!, date: String!): Nutrition
     removeNutrition(nutritionId: ID!): Nutrition
     addEmergencyContact(firstName: String!, lastName: String!, address: String!, phone: String!, relationship: String!): EmergencyContact
     removeEmergencyContact(emergencyContactId: ID!): EmergencyContact
-    addSymptoms(symptoms: String!, date: String!): Symptoms
-    removeSymptoms(symptomsId: ID!): Symptoms
+    addSymptoms(symptom: String!, description: String!, intensity: Int!, date: String!, actionTaken: String!, dateStartStop: String!): Symptoms
+    removeSymptom(symptomId: ID!): Symptoms
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
     updateUser(userId: ID!, email: String!, password: String!): User
