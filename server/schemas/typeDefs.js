@@ -74,8 +74,8 @@ type Symptoms {
     intensity: Int
     actionTaken: String
     date: String
-    createdBy: String
     dateStartStop: String
+    createdBy: String
   }
 
   type Auth {

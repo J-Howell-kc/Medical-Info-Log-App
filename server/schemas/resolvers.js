@@ -45,14 +45,14 @@ const resolvers = {
       return { token, user };
     },
     
-    addSymptoms: async (parent, { symptom, description, date, intensity, actionTaken, datestopstart }, context) => {
+    addSymptoms: async (parent, { symptom, description, date, intensity, actionTaken, dateStartStop }, context) => {
       console.log(context.user);
 
       if (context.user) {
 
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { symptoms: [{symptom, description, date, intensity, datestopstart, actionTaken, user:context.user._id, createdBy:context.user.email,}] } },
+          { $push: { symptoms: [{symptom, description, date, intensity, dateStartStop, actionTaken, user:context.user._id, createdBy:context.user.email,}] } },
           { new: true }
         );
       }
