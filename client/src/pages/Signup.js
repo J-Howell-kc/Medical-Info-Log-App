@@ -71,16 +71,16 @@ const Signup = ({setCurrentForm}) => {
                 />
                 <button
                   className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
+                  style={{ backgroundColor: '#0384fc'}}
                   type="submit"
                 >
-                  Submit
+                  Signup
                 </button>
               </form>
               
             )}
             <button onClick={() => setCurrentForm("login")} className="btn btn-block btn-info mt-3"
-                  style={{ cursor: 'pointer' }}>
+                  style={{ backgroundColor: '#0384fc' }}>
               Login
             </button>
             {error && (
