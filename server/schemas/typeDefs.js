@@ -114,7 +114,7 @@ type Symptoms {
     updateMedication(medicationId: ID!, medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
     updateNutrition(nutritionId: ID!, food: String!, drinks: String!, calories: Int!, date: String!): Nutrition
     updateEmergencyContact(emergencyContactId: ID!, firstName: String!, lastName: String!, address: String!, phone: String!, relationship: String!): EmergencyContact
-    updateSymptom(symptomId: ID!, symptom: String!, date: String!): Symptoms
+    updateSymptoms(symptomsIds: ID!, symptoms: String!, date: String!): Symptoms
   }
 `;
 

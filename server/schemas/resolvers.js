@@ -135,14 +135,14 @@ const resolvers = {
       return User.findOneAndDelete({ _id: userId });
     },
 
-    removeSymptom: async (parent, { symptomId }, context) => {
+    removeSymptoms: async (parent, { symptomsId }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $pull: {
               symptoms: {
-                _id: symptomId,
+                _id: symptomsId,
                 createdBy: context.user.email,
               },
             },
@@ -285,10 +285,10 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    updateSymptom: async (parent, { symptomId, name, severity, date }, context) => {
+    updateSymptoms: async (parent, { symptomsId, name, severity, date }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
-          { _id: context.user._id, 'symptoms._id': symptomId },
+          { _id: context.user._id, 'symptom._id': symptomsId },
           {
             $set: {
               'symptoms.$.name': name,
