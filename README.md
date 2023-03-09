@@ -34,7 +34,7 @@ not sure. npm test? Test with Compass?
 ### GitHub Profile link
 https://github.com/J-Howell-kc , https://github.com/CECurtiss, https://github.com/fryylord, https://github.com/natemuci <br/>
 ### Email
-Feel free to direct any questions to howell_j@hotmail.com., rob@mchays.com, Thanks.
+Feel free to direct any questions to howell_j@hotmail.com., rob@mchays.com, curtissclinton@gmail.com, and/or Thanks.
 
 ## Screenshot
 ![screenshot](); (/Users/brandonjhowell/bootcamp/Assignments/Medical-Info-Log-App/client/public/imgs/HAMSscreenshot.png);
