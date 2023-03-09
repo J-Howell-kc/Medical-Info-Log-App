@@ -28,13 +28,13 @@ Use to keep track of symptoms, nutrition, medications and demographic data. Simp
 Please conatct us.
 
 ## Tests
-not sure. npm test? Test with Compass?
+npm run develop and pray?
 
 ## Questions 
 ### GitHub Profile link
 https://github.com/J-Howell-kc , https://github.com/CECurtiss, https://github.com/fryylord, https://github.com/natemuci <br/>
 ### Email
-Feel free to direct any questions to howell_j@hotmail.com., rob@mchays.com, curtissclinton@gmail.com, and/or Thanks.
+Feel free to direct any questions to howell_j@hotmail.com., rob@mchays.com, curtissclinton@gmail.com, and/or  nate.muci@gmail.com. Thanks.
 
 ## Screenshot
 ![screenshot](); (/Users/brandonjhowell/bootcamp/Assignments/Medical-Info-Log-App/client/public/imgs/HAMSscreenshot.png);
