@@ -103,6 +103,14 @@ type Symptoms {
     removeSymptom(symptomId: ID!): Symptoms
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
+    updateUser(userId: ID!, email: String!, password: String!): User
+    updateWeight(weightId: ID!, pounds: Int!): Weight
+    updateAllergies(allergiesId: ID!, allergies: String!): Allergies
+    updateBio(bioId: ID!, firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!): Bio
+    updateMedication(medicationId: ID!, medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
+    updateNutrition(nutritionId: ID!, food: String!, drinks: String!, calories: Int!, date: String!): Nutrition
+    updateEmergencyContact(emergencyContactId: ID!, firstName: String!, lastName: String!, address: String!, phone: String!, relationship: String!): EmergencyContact
+    updateSymptom(symptomId: ID!, symptom: String!, date: String!): Symptoms
   }
 `;
 

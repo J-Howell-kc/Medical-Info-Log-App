@@ -31,7 +31,6 @@ address:{
 },
 phone: {
     type: String,
-    unique: true,
     match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, 'Must be a valid phone number']
 },
 user: {
