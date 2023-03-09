@@ -256,3 +256,34 @@ export const REMOVE_ALLERGIES = gql`
     }
   }
 `;
+
+export const ADD_BIO = gql`
+  mutation addBio(
+    $firstName: String!
+    $lastName: String!
+    $address: String!
+    $phone: String!
+    $DOB: String!
+    $height: String!
+    $gender: String!
+  ) {
+    addBio(
+      firstName: $firstName
+      lastName: $lastName
+      address: $address
+      phone: $phone
+      DOB: $DOB
+      height: $height
+      gender: $gender
+    ) {
+      _id
+      firstName
+      lastName
+      address
+      phone
+      DOB
+      height
+      gender
+    }
+  }
+`;

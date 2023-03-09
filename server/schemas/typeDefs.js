@@ -23,7 +23,6 @@ const typeDefs = gql`
     DOB: String
     height: String
     gender: String
-    allergies: String
   }
   
   type Weight {

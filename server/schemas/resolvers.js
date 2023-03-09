@@ -107,12 +107,12 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    addBio: async (parent, { firstName, lastName, DOB, height, gender, address, phone }, context) => {
+    addBio: async (parent, { firstName, lastName, address, phone, DOB, height, gender }, context) => {
       if (context.user) {
 
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { bio: [{firstName, lastName, DOB, height, gender, address, phone, user:context.user._id, createdBy:context.user.email,}] } },
+          { $push: { bio: [{firstName, lastName, address, phone, DOB, height, gender, user:context.user._id, createdBy:context.user.email,}] } },
           { new: true }
         );
       }
