@@ -5,6 +5,8 @@ import { Form, Input, Button, DatePicker, InputNumber, Upload } from "antd";
 import { useMutation, useQuery} from "@apollo/client";
 import { ADD_SYMPTOMS } from "../../utils/mutations";
 import { QUERY_USER } from "../../utils/queries";
+import {ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 // const { RangePicker } = DatePicker;
 const { TextArea } = Input;
@@ -44,6 +46,7 @@ const onFinish = async (event) => {
     console.error(e);
   }
 
+  setSymptoms("");
 }
 // const onFinish = (values) => {
 // addSymptoms({
