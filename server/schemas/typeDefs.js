@@ -35,7 +35,7 @@ const typeDefs = gql`
 
   type Allergies {
     _id: ID
-    Allergies: String
+    triggers: String
     timeTaken: String
     createdBy: String
   }
@@ -89,7 +89,7 @@ type Symptoms {
     addUser(email: String!, password: String!): Auth
     addWeight(pounds: Int!): Weight
     removeWeight(weightId: ID!): Weight
-    addAllergies(allergies: String!): Allergies
+    addAllergies(triggers: String!): Allergies
     removeAllergies(allergiesId: ID!): Allergies    
     addBio(firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!): Bio
     removeBio(bioId: ID!): Bio

@@ -3,7 +3,7 @@ const dateFormat = require('../utils/dateFormat');
 
 const allergySchema = new Schema({
 
-allergies: {
+triggers: {
     type: String,
     trim: true,
   },

@@ -117,12 +117,12 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    addAllergies: async (parent, { name, severity }, context) => {
+    addAllergies: async (parent, { triggers }, context) => {
       if (context.user) {
 
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { allergies: [{name, severity, user:context.user._id, createdBy:context.user.email,}] } },
+          { $push: { allergies: [{triggers, user:context.user._id, createdBy:context.user.email,}] } },
           { new: true }
         );
       }
@@ -267,14 +267,13 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    updateAllergies: async (parent, { allergiesId, name, severity }, context) => {
+    updateAllergies: async (parent, { allergiesId, allergies }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: context.user._id, 'allergies._id': allergiesId },
           {
             $set: {
-              'allergies.$.name': name,
-              'allergies.$.severity': severity,
+              'allergies.$.allergies': allergies,
             },
           },
           { new: true }
@@ -356,14 +355,13 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     
-    updateWeight: async (parent, { weightId, weight, date }, context) => {
+    updateWeight: async (parent, { weightId, pounds }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: context.user._id, 'weight._id': weightId },
           {
             $set: {
-              'weight.$.weight': weight,
-              'weight.$.date': date,
+              'weight.$.pounds': pounds,
             },
           },
           { new: true }
