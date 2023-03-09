@@ -1,6 +1,7 @@
 import { Button, Form, Input, DatePicker } from "antd";
 import { useMutation } from "@apollo/client";
 import { ADD_WEIGHT } from "../../utils/mutations";
+import { ADD_BIO } from "../../utils/mutations";
 
 import Col from "antd/lib/grid/col";
 import Row from "antd/lib/grid/row";
@@ -8,22 +9,27 @@ const { TextArea } = Input;
 
 const Biovitals = () => {
   const [addWeight] = useMutation(ADD_WEIGHT);
+  const [addBio] = useMutation(ADD_BIO);
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  const [form] = Form.useForm();
 
-  const handleWeightSubmit = (values) => {
-    addWeight({
+  const onFinish = async (values) => {
+    await addBio({
       variables: {
-        weight: values.weight,
-        date: values.date,
+        ...values,
       },
     });
-    console.log("submit", values);
+    console.log("Success:", values);
+  };
+
+
+  const handleWeightSubmit = async (values) => {
+    await addWeight({
+      variables: {
+        ...values
+      },
+    });
+   form.resetFields();
   };
 
   return (
@@ -40,14 +46,13 @@ const Biovitals = () => {
           remember: true,
         }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Row span={24}>
           <Col span={12}>
             <Form.Item
               label="First Name"
-              name="firstname"
+              name="firstName"
               rules={[
                 {
                   message: "Please input your First Name!",
@@ -59,7 +64,7 @@ const Biovitals = () => {
 
             <Form.Item
               label="Last Name"
-              name="lastname"
+              name="lastName"
               rules={[
                 {
                   message: "Please input your Last Name!",
@@ -83,7 +88,7 @@ const Biovitals = () => {
 
             <Form.Item
               label="Phone Number"
-              name="phonenumber"
+              name="phone"
               rules={[
                 {
                   message: "Please input your Phone Number!",
@@ -102,13 +107,13 @@ const Biovitals = () => {
           </Col>
 
           <Col span={12}>
-            <Form.Item label="Date of Birth" name="dateofbirth">
-              <DatePicker style={{ width: "100%" }} />
+            <Form.Item label="Date of Birth" name="DOB">
+              <Input placeholder='MM/DD/YY' style={{ width: "100%" }} />
             </Form.Item>
 
             <Form.Item
               label="Height"
-              name="Height"
+              name="height"
               rules={[
                 {
                   message: "Please input your Height!",
@@ -116,6 +121,17 @@ const Biovitals = () => {
               ]}
             >
               <Input suffix="in." />
+            </Form.Item>
+            <Form.Item
+              label="Gender"
+              name="gender"
+              rules={[
+                {
+                  message: "Please input your Gender!",
+                },
+              ]}
+            >
+              <Input />
             </Form.Item>
           </Col>
         </Row>
@@ -140,7 +156,7 @@ const Biovitals = () => {
           <Col span={12}>
             <Form.Item
               label="Weight"
-              name="weight"
+              name="pounds"
               rules={[
                 {
                   message: "Please input your Weight!",
@@ -151,8 +167,8 @@ const Biovitals = () => {
             </Form.Item>
           </Col>
           <Col>
-            <Form.Item label="Date of Weight Taken" name="weightdate">
-              <DatePicker style={{ width: "100%" }} />
+            <Form.Item label="Date of Weight Taken" name="date">
+              <Input placeholder='MM/DD/YY' style={{ width: "100%" }} />
             </Form.Item>
           </Col>
 

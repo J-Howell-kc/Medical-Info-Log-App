@@ -23,13 +23,12 @@ const typeDefs = gql`
     DOB: String
     height: String
     gender: String
-    allergies: String
   }
   
   type Weight {
     _id: ID
-    pounds: Int
-    timeTaken: String
+    pounds: String
+    date: String
     createdBy: String
   }
 
@@ -95,7 +94,7 @@ type Symptoms {
 
   type Mutation {
     addUser(email: String!, password: String!): Auth
-    addWeight(pounds: Int!): Weight
+    addWeight(pounds: String!, date: String!): Weight
     removeWeight(weightId: ID!): Weight
     addAllergies(triggers: String!): Allergies
     removeAllergies(allergiesId: ID!): Allergies    
@@ -117,7 +116,7 @@ type Symptoms {
     updateBio(bioId: ID!, firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!): Bio
     updateMedication(medicationId: ID!, medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
     updateNutrition(nutritionId: ID!, food: String!, drinks: String!, calories: Int!, date: String!): Nutrition
-    updateEmergencyContact(emergencyContactId: ID!, firstName: String!, lastName: String!, address: String!, phone: String!, relationship: String!): EmergencyContact
+    updateEmergencyContact(emergencyContactId: ID!, firstName: String!, lastName: String!, relationship: String!, phone: String!, address: String!): EmergencyContact
     updateSymptoms(symptomsIds: ID!, symptoms: String!, date: String!): Symptoms
   }
 `;

@@ -112,6 +112,7 @@ export const ADD_NUTRITION = gql`
 
 export const REMOVE_NUTRITION = gql`
   mutation removeNutrition(
+
     $breakfast: String!
     $breakTime: String!
     $lunch: String!
@@ -145,9 +146,15 @@ export const REMOVE_NUTRITION = gql`
 `;
 
 export const ADD_WEIGHT = gql`
-  mutation addWeight($userId: ID!, $pounds: String!, $date: String!) {
-    addWeight(userId: $userId, pounds: $pounds, date: $date) {
-      _id
+  mutation addWeight(
+    $pounds: String!, 
+    $date: String!
+    ) {
+    addWeight(
+      pounds: $pounds, 
+      date: $date
+    ) {
+      _id 
       pounds
       date
     }
@@ -156,27 +163,24 @@ export const ADD_WEIGHT = gql`
 
 export const ADD_EMERGENCYCONTACT = gql`
   mutation addEmergencyContact(
-    $userId: ID!
-    $name: String!
+    $firstName: String!
+    $lastName: String!
     $address: String!
     $phone: String!
     $relationship: String!
-    $notes: String!
   ) {
     addEmergencyContact(
-      userId: $userId
-      name: $name
+      firstName: $firstName
+      lastName: $lastName
       address: $address
       phone: $phone
       relationship: $relationship
-      notes: $notes
     ) {
-      _id
-      name
+      firstName
+      lastName
       address
       phone
       relationship
-      notes
     }
   }
 `;
@@ -273,6 +277,37 @@ export const REMOVE_ALLERGIES = gql`
     removeMedication(userId: $userId, allergies: $allergies) {
       _id
       allergies
+    }
+  }
+`;
+
+export const ADD_BIO = gql`
+  mutation addBio(
+    $firstName: String!
+    $lastName: String!
+    $address: String!
+    $phone: String!
+    $DOB: String!
+    $height: String!
+    $gender: String!
+  ) {
+    addBio(
+      firstName: $firstName
+      lastName: $lastName
+      address: $address
+      phone: $phone
+      DOB: $DOB
+      height: $height
+      gender: $gender
+    ) {
+      _id
+      firstName
+      lastName
+      address
+      phone
+      DOB
+      height
+      gender
     }
   }
 `;

@@ -32,6 +32,7 @@ const Nutrition = () => {
           <DatePicker />
         </Form.Item>
 
+
         <Form.Item label="Meal 1" name="breakfast" labelWrap>
           <TextArea rows={4} placeholder="Enter breakfast information here."/>
         </Form.Item>
@@ -56,6 +57,7 @@ const Nutrition = () => {
         <Form.Item label="Time(s)" name="snackTime" labelWrap>
           <Input placeholder = "Enter time(s) of snack(s) here."/>
         </Form.Item>
+
 
         <Form.Item label="Submit">
           <Button
