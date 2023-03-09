@@ -76,20 +76,39 @@ export const REMOVE_MEDICATION = gql`
 export const ADD_NUTRITION = gql`
   mutation addNutrition(
     $userId: ID!
-    $food: String!
+    $meal1: String!
+    $time1: String!
+    $meal2: String!
+    $time2: String!
+    $meal3: String!
+    $time3: String!
+    $snacks: String!
+    $time4: String!
     $drinks: String!
-    $calories: Int!
     $date: String!
   ) {
     addNutrition(
       userId: $userId
-      food: $food
+      meal1: $meal1
+      time1: $time1
+      meal2: $meal2
+      time2: $time2
+      meal3: $meal3
+      time3: $time3
+      snacks: $snacks
+      time4: $time4
       drinks: $drinks
-      calories: $calories
-      date: $date
+            date: $date
     ) {
       _id
-      food
+      meal1
+      time1
+      meal2
+      time2
+      meal3
+      time3
+      snacks
+      time4
       drinks
       calories
       date
@@ -100,20 +119,39 @@ export const ADD_NUTRITION = gql`
 export const REMOVE_NUTRITION = gql`
   mutation removeNutrition(
     $userId: ID!
-    $food: String!
+    $meal1: String!
+    $time1: String!
+    $meal2: String!
+    $time2: String!
+    $meal3: String!
+    $time3: String!
+    $snacks: String!
+    $time4: String!
     $drinks: String!
-    $calories: Int!
     $date: String!
   ) {
     removeNutrition(
       userId: $userId
-      food: $food
+      meal1: $meal1
+      time1: $time1
+      meal2: $meal2
+      time2: $time2
+      meal3: $meal3
+      time3: $time3
+      snacks: $snacks
+      time4: $time4
       drinks: $drinks
-      calories: $calories
-      date: $date
+            date: $date
     ) {
       _id
-      food
+      meal1
+      time1
+      meal2
+      time2
+      meal3
+      time3
+      snacks
+      time4
       drinks
       calories
       date
