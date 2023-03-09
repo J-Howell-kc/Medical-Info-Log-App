@@ -1,55 +1,11 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
-export const QUERY_ME = gql`
-  query me {
-    me {
+export const QUERY_USER = gql`
+  query user {
+    user {
       _id
-      firstName
-      LastName
-      DOB
-      height
-      address
-      phone 
-      allergies
-      weight {
-        _id
-        pounds
-        timeTaken
-      }
-      medication {
-        _id
-        medicationName
-        dosage
-        frequency
-        pillCount
-        startDate
-        endDate
-        taken
-      }
-      nutrition {
-        _id
-        food
-        drinks
-        calories
-        date
-      }
-      emergencyContact {
-        _id
-        firstName
-        lastName
-        address
-        phone
-        relationship
-      }
-      symptoms {
-        _id
-        description
-        startDate
-        endDate
-        intensity
-        duration
-        actionTaken
-      }
+      email
+      password
     }
   }
 `;
@@ -68,8 +24,8 @@ export const QUERY_MEDICATION = gql`
       user {
         _id
       }
+    }
   }
-}
 `;
 
 export const QUERY_NUTRITION = gql`
@@ -132,4 +88,3 @@ export const QUERY_WEIGHT = gql`
     }
   }
 `;
-

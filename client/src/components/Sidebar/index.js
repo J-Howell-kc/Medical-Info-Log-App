@@ -110,7 +110,7 @@ const Sidebar = () => {
           }}
         >
           <Button type="primary" htmlType="submit">
-            Submit
+            Login
           </Button>
 
         </Form.Item>
