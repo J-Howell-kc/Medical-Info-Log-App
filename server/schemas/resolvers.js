@@ -47,6 +47,7 @@ const resolvers = {
     
     addSymptoms: async (parent, { symptom, description, date, intensity, actionTaken, datestopstart }, context) => {
       console.log(context.user);
+
       if (context.user) {
 
         return await User.findOneAndUpdate(

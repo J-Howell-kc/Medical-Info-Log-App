@@ -1,4 +1,4 @@
-import { useReducer} from "react";
+import React, { useReducer} from "react";
 import { useState} from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Form, Input, Button, DatePicker, InputNumber, Upload } from "antd";
