@@ -7,63 +7,60 @@ import { ADD_SYMPTOMS } from "../../utils/mutations";
 import { QUERY_USER } from "../../utils/queries";
 import {ApolloProvider } from "@apollo/client";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import Auth from '../../utils/auth';
 
 // const { RangePicker } = DatePicker;
 const { TextArea } = Input;
-
 const Symptoms = () => {
-  const [symptoms, setSymptoms] = useState("");
+  // const [symptoms, setSymptoms] = useState("");
 
-  // const [form] = Form.useForm();
+  const [form] = Form.useForm();
 const [addSymptoms] = useMutation(ADD_SYMPTOMS);
-const { loading, data } = useQuery(QUERY_USER);
-console.log(data)
 
-const handleChange = (event) => {
-  console.log(event);
-  if (!event.target?.description  || !event.target?.symptom || !event.target?.date || !event.target?.datestartstop || !event.target?.intensity || !event.target?.actiontaken) {
-    return false;
-  }else {
-  const { symptom, date, datestartstop, description, intensity, actiontaken } = event.target;
+// const handleChange = (event) => {
+//   console.log(event);
+//   if (!event.target?.description  || !event.target?.symptom || !event.target?.date || !event.target?.datestartstop || !event.target?.intensity || !event.target?.actiontaken) {
+//     return false;
+//   }else {
+//   const { symptom, description, intensity, date, actiontaken, dateStartStop } = event.target;
   
 
-  setSymptoms([
-    ...symptoms,
-    { description: description, symptom: symptom, date: date, datestartstop: datestartstop, intensity: intensity, actiontaken: actiontaken },
-  ]);
-}
-};
-
-const onFinish = async (event) => {
-  console.log(symptoms);
-
-  try {
-    const { data } = await addSymptoms({
-      variables: { ...symptoms },
-    });
-    console.log(data);
-  } catch (e) {
-    console.error(e);
-  }
-
-  setSymptoms("");
-}
-// const onFinish = (values) => {
-// addSymptoms({
-// variables: {
-// ...values,
-// severity: parseInt(values.severity),
-// date: values.date.format("YYYY-MM-DD"),
-// },
-// });
-// form.resetFields();
+//   setSymptoms(
+//     ...symptoms,
+//     symptom, description, intensity, date, actiontaken, dateStartStop,
+//   );
+// }
 // };
+
+// const onFinish = async (event) => {
+//   console.log(symptoms);
+
+//   try {
+//     const { data } = await addSymptoms({
+//       variables: { ...symptoms },
+//     });
+//     console.log(data);
+//   } catch (e) {
+//     console.error(e);
+//   }
+
+//   setSymptoms("");
+// }
+const onFinish = async(values) => {
+await addSymptoms({
+variables: {
+...values,
+date: values.date.format("YYYY-MM-DD"),
+},
+});
+form.resetFields();
+};
 
   return (
     
     <>
     
-      <Form onValuesChange={handleChange} onFinish = {onFinish}
+      <Form onFinish = {onFinish}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
@@ -76,7 +73,7 @@ const onFinish = async (event) => {
         <Form.Item label="Date" name = "date">
           <DatePicker />
         </Form.Item>
-        <Form.Item label="Date Start/Stop" name = "datestopstart">
+        <Form.Item label="Date Start/Stop" name = "dateStartStop">
           <Input placeholder = "Enter start and stop dates here."/>
         </Form.Item>
 
@@ -86,7 +83,7 @@ const onFinish = async (event) => {
         <Form.Item label="Intensity (1-10)" name = "intensity">
           <InputNumber min={1} max={10} />
         </Form.Item>
-        <Form.Item label="Action taken:" name = "actiontaken" labelWrap>
+        <Form.Item label="Action taken:" name = "actionTaken" labelWrap>
           <TextArea rows={8} placeholder = "Enter actions taken here."/>
         </Form.Item>
 
