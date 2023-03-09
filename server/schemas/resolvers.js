@@ -45,24 +45,24 @@ const resolvers = {
       return { token, user };
     },
     
-    addSymptom: async (parent, { name, severity, date }, context) => {
+    addSymptom: async (parent, { symtom, date }, context) => {
       if (context.user) {
 
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { symptoms: [{name, severity, date, user:context.user._id, createdBy:context.user.email,}] } },
+          { $push: { symptoms: [{symtom, date, user:context.user._id, createdBy:context.user.email,}] } },
           { new: true }
         );
       }
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    addNutrition: async (parent, { name, calories, fat, carbs, protein }, context) => {
+    addNutrition: async (parent, { food, drinks, calories, date }, context) => {
       if (context.user) {
 
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { nutrition: [{name, calories, fat, carbs, protein, user:context.user._id, createdBy:context.user.email,}] } },
+          { $push: { nutrition: [{food, drinks, calories, date, user:context.user._id, createdBy:context.user.email,}] } },
           { new: true }
         );
       }
