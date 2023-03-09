@@ -75,86 +75,72 @@ export const REMOVE_MEDICATION = gql`
 
 export const ADD_NUTRITION = gql`
   mutation addNutrition(
-    $userId: ID!
-    $meal1: String!
-    $time1: String!
-    $meal2: String!
-    $time2: String!
-    $meal3: String!
-    $time3: String!
-    $snacks: String!
-    $time4: String!
-    $drinks: String!
     $date: String!
+    $breakfast: String!
+    $breakTime: String!
+    $lunch: String!
+    $lunchTime: String!
+    $dinner: String!
+    $dinnerTime: String!
+    $snack: String!
+    $snackTime: String!
   ) {
     addNutrition(
-      userId: $userId
-      meal1: $meal1
-      time1: $time1
-      meal2: $meal2
-      time2: $time2
-      meal3: $meal3
-      time3: $time3
-      snacks: $snacks
-      time4: $time4
-      drinks: $drinks
-            date: $date
+      date: $date
+      breakfast: $breakfast
+      breakTime: $breakTime
+      lunch: $lunch
+      lunchTime: $lunchTime
+      dinner: $dinner
+      dinnerTime: $dinnerTime
+      snack: $snack
+      snackTime: $snackTime
     ) {
       _id
-      meal1
-      time1
-      meal2
-      time2
-      meal3
-      time3
-      snacks
-      time4
-      drinks
-      calories
       date
+      breakfast
+      breakTime
+      lunch
+      lunchTime
+      dinner
+      dinnerTime
+      snack
+      snackTime
     }
   }
 `;
 
 export const REMOVE_NUTRITION = gql`
   mutation removeNutrition(
-    $userId: ID!
-    $meal1: String!
-    $time1: String!
-    $meal2: String!
-    $time2: String!
-    $meal3: String!
-    $time3: String!
-    $snacks: String!
-    $time4: String!
-    $drinks: String!
-    $date: String!
+
+    $breakfast: String!
+    $breakTime: String!
+    $lunch: String!
+    $lunchTime: String!
+    $dinner: String!
+    $dinnerTime: String!
+    $snack: String!
+    $snackTime: String!
   ) {
-    removeNutrition(
-      userId: $userId
-      meal1: $meal1
-      time1: $time1
-      meal2: $meal2
-      time2: $time2
-      meal3: $meal3
-      time3: $time3
-      snacks: $snacks
-      time4: $time4
-      drinks: $drinks
-            date: $date
+    addNutrition(
+      breakfast: $breakfast
+      breakTime: $breakTime
+      lunch: $lunch
+      lunchTime: $lunchTime
+      dinner: $dinner
+      dinnerTime: $dinnerTime
+      snack: $snack
+      snackTime: $snackTime
     ) {
       _id
-      meal1
-      time1
-      meal2
-      time2
-      meal3
-      time3
-      snacks
-      time4
-      drinks
-      calories
-      date
+      breakfast
+      breakTime
+      lunch
+      lunchTime
+      dinner
+      dinnerTime
+      snack
+      snackTime
     }
   }
 `;

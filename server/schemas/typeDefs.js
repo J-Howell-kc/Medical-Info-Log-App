@@ -49,11 +49,15 @@ const typeDefs = gql`
 
 type Nutrition {
     _id: ID
-    food: String
-    drinks: String
-    calories: Int
-    date: String
-    createdBy: String
+    date: String!
+    breakfast: String!
+    breakTime: String!
+    lunch: String!
+    lunchTime: String!
+    dinner: String!
+    dinnerTime: String!
+    snack: String!
+    snackTime: String!
   }
 
 type EmergencyContact {
@@ -98,7 +102,7 @@ type Symptoms {
     removeBio(bioId: ID!): Bio
     addMedication(medicationName: String!, dosage: String!): Medication
     removeMedication(medicationId: ID!): Medication
-    addNutrition(food: String!, drinks: String!, calories: Int!, date: String!): Nutrition
+    addNutrition(date: String!, breakfast: String!, breakTime: String!, lunch: String!, lunchTime: String!, dinner: String!, dinnerTime: String!, snack: String!, snackTime: String!): Nutrition
     removeNutrition(nutritionId: ID!): Nutrition
     addEmergencyContact(firstName: String!, lastName: String!, address: String!, phone: String!, relationship: String!): EmergencyContact
     removeEmergencyContact(emergencyContactId: ID!): EmergencyContact
