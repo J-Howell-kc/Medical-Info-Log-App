@@ -97,7 +97,7 @@ type Symptoms {
     removeAllergies(allergiesId: ID!): Allergies    
     addBio(firstName: String!, lastName: String!, address: String!, phone: String!, DOB: String!, height: String!, gender: String!): Bio
     removeBio(bioId: ID!): Bio
-    addMedication(medicationName: String!, dosage: String!, frequency: String!, pillCount: Int!, startDate: String!, endDate: String!, taken: Boolean!): Medication
+    addMedication(medicationName: String!, dosage: String!): Medication
     removeMedication(medicationId: ID!): Medication
     addNutrition(food: String!, drinks: String!, calories: Int!, date: String!): Nutrition
     removeNutrition(nutritionId: ID!): Nutrition

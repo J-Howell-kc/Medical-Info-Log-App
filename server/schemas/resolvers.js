@@ -71,12 +71,12 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    addMedication: async (parent, { name, dosage, frequency, startDate, endDate }, context) => {
+    addMedication: async (parent, { medicationName, dosage }, context) => {
       if (context.user) {
 
         return await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { medication: [{name, dosage, frequency, startDate, endDate, user:context.user._id, createdBy:context.user.email,}] } },
+          { $push: { medication: [{medicationName, dosage, user:context.user._id, createdBy:context.user.email,}] } },
           { new: true }
         );
       }

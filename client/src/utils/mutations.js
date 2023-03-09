@@ -26,21 +26,16 @@ export const LOGIN_USER = gql`
 
 export const ADD_MEDICATION = gql`
   mutation addMedication(
-    $userId: ID!
     $medicationName: String!
     $dosage: String!
-    $timetaken: String!
   ) {
     addMedication(
-      userId: $userId
       medicationName: $medicationName
       dosage: $dosage
-      timetaken: $timetaken
     ) {
       _id
       medicationName
       dosage
-      timetaken
     }
   }
 `;
