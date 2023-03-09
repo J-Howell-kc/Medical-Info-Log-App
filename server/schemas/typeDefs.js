@@ -70,8 +70,12 @@ type EmergencyContact {
 type Symptoms {
     _id: ID
     symptom: String
+    description: String
+    intensity: Int
+    actionTaken: String
     date: String
     createdBy: String
+    dateStartStop: String
   }
 
   type Auth {
@@ -99,8 +103,8 @@ type Symptoms {
     removeNutrition(nutritionId: ID!): Nutrition
     addEmergencyContact(firstName: String!, lastName: String!, address: String!, phone: String!, relationship: String!): EmergencyContact
     removeEmergencyContact(emergencyContactId: ID!): EmergencyContact
-    addSymptoms(symptoms: String!, date: String!): Symptoms
-    removeSymptoms(symptomsId: ID!): Symptoms
+    addSymptoms(symptom: String!, description: String!, intensity: Int!, date: String!, actionTaken: String!, dateStartStop: String!): Symptoms
+    removeSymptom(symptomId: ID!): Symptoms
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
     updateUser(userId: ID!, email: String!, password: String!): User

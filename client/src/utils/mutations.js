@@ -192,24 +192,24 @@ export const REMOVE_EMERGENCYCONTACT = gql`
 
 export const ADD_SYMPTOMS = gql`
   mutation addSymptoms(
-    $userId: ID!
+    $symptom: String!
     $description: String!
-    $intensity: String!
+    $intensity: Int!
     $date: String!
     $actionTaken: String!
+    $dateStartStop: String!
   ) {
     addSymptoms(
-      userId: $userId
+      symptom: $symptom
       description: $description
       intensity: $intensity
       date: $date
       actionTaken: $actionTaken
+      dateStartStop: $dateStartStop
     ) {
       _id
-      startDate
-      endDate
+      symptom
       description
-      duration
       intensity
       actionTaken
     }
@@ -232,10 +232,7 @@ export const REMOVE_SYMPTOMS = gql`
       actionTaken: $actionTaken
     ) {
       _id
-      startDate
-      endDate
       description
-      duration
       intensity
       actionTaken
     }
