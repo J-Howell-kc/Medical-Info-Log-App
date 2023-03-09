@@ -2,19 +2,11 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const symptomsSchema = new Schema({
-    startDate: {
-        type: Date,
-        trim: true,
-    },
-    endDate: {  
-        type: Date,
-        trim: true,
-    },
-    description: {
+    symptom: {
         type: String,
         trim: true,
     },
-    duration: {
+    description: {
         type: String,
         trim: true,
     },
@@ -23,6 +15,14 @@ const symptomsSchema = new Schema({
         trim: true,
     },
     actionTaken: {
+        type: String,
+        trim: true,
+    },
+    date: {
+        type: String,
+        trim: true,
+    },
+    dateStartStop: {
         type: String,
         trim: true,
     },

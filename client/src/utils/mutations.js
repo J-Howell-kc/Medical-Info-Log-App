@@ -211,7 +211,9 @@ export const ADD_SYMPTOMS = gql`
       symptom
       description
       intensity
+      date
       actionTaken
+      dateStartStop
     }
   }
 `;
