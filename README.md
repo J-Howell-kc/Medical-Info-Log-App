@@ -37,4 +37,4 @@ https://github.com/J-Howell-kc , https://github.com/CECurtiss, https://github.co
 Feel free to direct any questions to howell_j@hotmail.com., rob@mchays.com, curtissclinton@gmail.com, and/or  nate.muci@gmail.com. Thanks.
 
 ## Screenshot
-![screenshot](); (/Users/brandonjhowell/bootcamp/Assignments/Medical-Info-Log-App/client/public/imgs/HAMSscreenshot.png);
+![screenshot](); (client/public/imgs/HAMSscreenshot.png);
