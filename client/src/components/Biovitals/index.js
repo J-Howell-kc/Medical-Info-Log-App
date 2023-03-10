@@ -1,4 +1,4 @@
-import { Button, Form, Input, DatePicker } from "antd";
+import { Button, Form, Input } from "antd";
 import { useMutation } from "@apollo/client";
 import { ADD_WEIGHT } from "../../utils/mutations";
 import { ADD_BIO } from "../../utils/mutations";

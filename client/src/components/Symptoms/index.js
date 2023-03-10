@@ -1,13 +1,6 @@
-import { useReducer } from "react";
-import { useState } from "react";
-import { PlusOutlined } from "@ant-design/icons";
-import { Form, Input, Button, DatePicker, InputNumber, Upload } from "antd";
-import { useMutation, useQuery } from "@apollo/client";
+import { Form, Input, Button, DatePicker, InputNumber } from "antd";
+import { useMutation } from "@apollo/client";
 import { ADD_SYMPTOMS } from "../../utils/mutations";
-import { QUERY_USER } from "../../utils/queries";
-import { ApolloProvider } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import Auth from "../../utils/auth";
 
 const { TextArea } = Input;
 const Symptoms = () => {
