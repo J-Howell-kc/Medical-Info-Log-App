@@ -1,9 +1,6 @@
-import { useState } from "react";
-import { PlusOutlined } from "@ant-design/icons";
 import { Form, Input, Button, DatePicker } from "antd";
 import { useMutation } from "@apollo/client";
 import { ADD_NUTRITION } from "../../utils/mutations";
-import Auth from '../../utils/auth';
 
 const { TextArea } = Input;
 
